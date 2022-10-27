@@ -29,13 +29,19 @@
             return Ok(foundUser);
         }
 
+        [HttpGet("AllUsers")]
+        public async Task<ActionResult<List<User>>> GetAllUsers()
+        {
+            var foundUsers = await _context.Users.ToListAsync();
+            return Ok(foundUsers);
+        }
+
         [HttpPost]
         public async Task<ActionResult> Post(User user)
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return Ok(user);
-            
         }
 
     }

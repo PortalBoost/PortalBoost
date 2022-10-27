@@ -10,11 +10,13 @@
     {
         public int ID { get; set; }
         
-        public int EmployeeID { get; set; }
+        //public int EmployeeID { get; set; }
 
         public string Name { get; set; } = "";
         public string CompanyInfo { get; set; } = "";
 
-        public Employee? Employee { get; set; }
+        public ICollection<Employee> Employees { get; set; }
+
+        //public Employee? Employee { get; set; }
     }
 }

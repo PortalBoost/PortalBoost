@@ -1,6 +1,7 @@
 ﻿namespace PortalBoost.Data.DB
 {
     using Microsoft.EntityFrameworkCore;
+    using PortalBoost.Data.Models;
 
     public class AppDbInitializer
     {
@@ -18,9 +19,14 @@
 
         public void InitDb()
         {
-            _context.Database.EnsureCreated();
-            _context.Database.Migrate();
+            //_context.Database.EnsureCreated();
+            //_context.Database.Migrate();
             
+        }
+
+        public void SeedDb()
+        {
+            _context.Users.Add(new User { UserName = "Test", ID = 1 });
         }
 
     }
