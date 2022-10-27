@@ -1,4 +1,4 @@
-﻿namespace PortalBoost.Data.DB
+﻿namespace PortalBoost.Data.Database
 {
     using Microsoft.EntityFrameworkCore;
     using PortalBoost.Data.Models;
@@ -7,7 +7,7 @@
     {
 
         // TODO: Create and apply a new migration upon running the program.
-        // 
+        // TODO: Seed data properly in dev environment.
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
             Database.Migrate();
@@ -24,8 +24,6 @@
             modelBuilder.Entity<Company>().ToTable("Company");
             modelBuilder.Entity<Employee>().ToTable("Employee");
             modelBuilder.Entity<User>().ToTable("User");
-
-
 
             modelBuilder.Entity<User>().HasData(
                 new User { ID = 1, UserName = "user", FirstName = "John", LastName = "Doe" }

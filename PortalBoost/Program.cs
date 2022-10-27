@@ -1,6 +1,6 @@
 
 using Microsoft.EntityFrameworkCore;
-using PortalBoost.Data.DB;
+using PortalBoost.Data.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +12,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    //AppDbInitializer initializer = new(AppDbContext);
-    
-    //initializer.InitDb();
+
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }

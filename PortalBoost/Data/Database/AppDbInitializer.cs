@@ -1,4 +1,4 @@
-﻿namespace PortalBoost.Data.DB
+﻿namespace PortalBoost.Data.Database
 {
     using Microsoft.EntityFrameworkCore;
     using PortalBoost.Data.Models;
