@@ -1,12 +1,12 @@
 
-using Microsoft.EntityFrameworkCore;
 using PortalBoost.Data.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PortalBoostContext")));
+
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
 
 var app = builder.Build();
 
