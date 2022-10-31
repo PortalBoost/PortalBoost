@@ -1,5 +1,7 @@
 ﻿namespace PortalBoost.Data.Models
 {
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -8,15 +10,20 @@
 
     public class Company
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         public int ID { get; set; }
-        
-        //public int EmployeeID { get; set; }
 
         public string Name { get; set; } = "";
-        public string CompanyInfo { get; set; } = "";
 
-        public ICollection<Employee> Employees { get; set; }
+        public IEnumerable<string>? Description { get; set; }
 
-        //public Employee? Employee { get; set; }
+        public IEnumerable<string>? Techniques { get; set; }
+
+        [BsonElement("systemsUsed")]
+        public IEnumerable<string>? SystemsUsed { get; set; }
+
+        public IEnumerable<User>? Employees { get; set; }
+
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace PortalBoost.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-    using PortalBoost.Data.Models;
-    using PortalBoost.Data.Services;
+using Microsoft.AspNetCore.Mvc;
+using PortalBoost.Data.Models;
+using PortalBoost.Data.Services;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -11,24 +11,21 @@
 
     [ApiController]
     [Route("api/[controller]")]
-    public class UserController : ControllerBase
+    public class CompanyController : ControllerBase
     {
+        private readonly CompanyService _companyService;
 
-        private readonly UserService _userService;
-
-        public UserController(UserService userService)
+        public CompanyController(CompanyService companyService)
         {
-            _userService = userService;
+            _companyService = companyService;
         }
 
         [HttpGet("AllUsers")]
         public async Task<ActionResult<List<User>>> Get()
         {
-            var users = await _userService.GetAsync();
+            var users = await _companyService.GetAsync();
             if (users == null) return NotFound();
             return Ok(users);
         }
-
-
     }
 }
