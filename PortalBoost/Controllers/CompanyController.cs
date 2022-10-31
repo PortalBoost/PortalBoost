@@ -1,8 +1,8 @@
 ﻿namespace PortalBoost.Controllers
 {
-using Microsoft.AspNetCore.Mvc;
-using PortalBoost.Data.Models;
-using PortalBoost.Data.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using PortalBoost.Data.Models;
+    using PortalBoost.Data.Services;
     using System;
     using System.Collections.Generic;
     using System.Linq;
