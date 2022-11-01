@@ -15,7 +15,7 @@
         private readonly IMongoCollection<User> _userCollection;
         private readonly IMongoCollection<Company> _companyCollection;
 
-        // TODO: Get values directly from MongoDbSettings instead of hardcoding them in
+        // TODO: Get values directly from MongoDbSettings instead of hardcoding them in.
         public MongoDBSeeder()
         {
             MongoClient client = new("mongodb://localhost:27017");
