@@ -20,7 +20,7 @@
             _companyService = companyService;
         }
 
-        [HttpGet("AllUsers")]
+        [HttpGet("AllCompanies")]
         public async Task<ActionResult<List<User>>> Get()
         {
             var users = await _companyService.GetAsync();
