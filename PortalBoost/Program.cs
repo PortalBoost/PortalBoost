@@ -1,11 +1,26 @@
 
+using PortalBoost.Data.Database;
+using PortalBoost.Data.DBUtils;
+using PortalBoost.Data.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+BSONSettings.InitSettings();
 
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<UserService>();
+builder.Services.AddSingleton<CompanyService>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    // TODO: Seed method if env is development
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -17,7 +32,6 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
