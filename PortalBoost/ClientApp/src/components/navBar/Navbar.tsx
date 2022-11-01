@@ -1,4 +1,4 @@
-
+import {FaBeer} from 'react-icons/fa'
 
 const Navbar = () => {
 
@@ -6,7 +6,11 @@ const Navbar = () => {
 
 
 	return (
-		null
+		<div>
+			<div>
+				<h1>logo</h1>
+			</div>
+		</div>
 	)
 }
 
