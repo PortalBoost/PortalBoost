@@ -12,10 +12,9 @@ using MongoDB.Bson;
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public int ID { get; set; }
+        public string? ID { get; set; }
 
-        [BsonElement("userName")]
-        public string UserName { get; set; } = "";
+        public string Username { get; set; } = "";
 
         [BsonElement("firstName")]
         public string FirstName { get; set; } = "";
