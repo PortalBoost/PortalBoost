@@ -9,31 +9,28 @@ import ViewCompanies from './pages/viewCompanies/ViewCompanies';
 function App() {
 
   return (
-    <>
+    <Router>
 
-      <Router>
+      <h1 className='text-6xl'>
+        <Link to="/">Yeet</Link>
+      </h1>
 
-        <h1 className='text-6xl'>
-          <Link to="/">Yeet</Link>
-        </h1>
+      {/* Header */}
+      <ContentWrapper>
 
-        {/* Header */}
-        <ContentWrapper>
+        <Routes>
+          {/* If logged in, show LandingPage, else show LoginPage */}
+          <Route path="/employees" element={<ViewEmployees />} />
+          <Route path="/companies" element={<ViewCompanies />} />
+          <Route path='/' element={<LandingPage />} />
+          <Route path="*" element={<PageNotFound />} />
 
-          <Routes>
-            {/* If logged in, show LandingPage, else show LoginPage */}
-            <Route path="employees" element={<ViewEmployees />} />
-            <Route path="companies" element={<ViewCompanies />} />
-            <Route path='/' element={<LandingPage />} />
-            <Route path="*" element={<PageNotFound />} />
+        </Routes>
 
-          </Routes>
+      </ContentWrapper>
+      {/* Footer */}
 
-        </ContentWrapper>
-        {/* Footer */}
-
-      </Router>
-    </>
+    </Router>
   )
 }
 
