@@ -1,32 +1,36 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import ContentWrapper from './components/common/ContentWrapper';
 import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
+import ViewEmployees from './pages/viewEmployees/ViewEmployees';
+import ViewCompanies from './pages/viewCompanies/ViewCompanies';
 
 
 function App() {
 
   return (
-    <>
-      <h1 className='text-6xl'>Yeet</h1>
-      <Router>
+    <Router>
 
-        {/* Header */}
-        <ContentWrapper>
+      <h1 className='text-6xl'>
+        <Link to="/">Yeet</Link>
+      </h1>
 
-          <Routes>
-            {/* If logged in, show LandingPage, else show LoginPage */}
-            <Route path='/' element={<LandingPage />} />
-            <Route path="*" element={<PageNotFound />} />
+      {/* Header */}
+      <ContentWrapper>
 
-          </Routes>
+        <Routes>
+          {/* If logged in, show LandingPage, else show LoginPage */}
+          <Route path="/employees" element={<ViewEmployees />} />
+          <Route path="/companies" element={<ViewCompanies />} />
+          <Route path='/' element={<LandingPage />} />
+          <Route path="*" element={<PageNotFound />} />
 
-        </ContentWrapper>
-        {/* Footer */}
+        </Routes>
 
-      </Router>
-    </>
+      </ContentWrapper>
+      {/* Footer */}
+
+    </Router>
   )
 }
 
