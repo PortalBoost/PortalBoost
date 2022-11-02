@@ -3,7 +3,9 @@ import { useState } from 'react'
 function App() {
 
   return (
-    <h1>Yeet</h1>
+    <>
+      <h1 className='text-6xl'>Yeet</h1>
+    </>
   )
 }
 
