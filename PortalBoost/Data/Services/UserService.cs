@@ -30,6 +30,5 @@
         /// </summary>
         /// <returns> A list of users </returns>
         public async Task<List<User>> GetAsync() => await _userCollection.Find(_ => true).ToListAsync();
-
     }
 }
