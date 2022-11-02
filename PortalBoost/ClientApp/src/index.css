@@ -20,6 +20,10 @@
   p {
     @apply font-serif;
   }
+
+  body {
+    @apply min-h-screen;
+  }
 }
 
 /*#region fonts */
