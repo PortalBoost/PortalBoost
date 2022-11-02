@@ -21,7 +21,7 @@
         }
 
         [HttpGet("AllCompanies")]
-        public async Task<ActionResult<List<User>>> Get()
+        public async Task<ActionResult<List<Company>>> Get()
         {
             var users = await _companyService.GetAsync();
             if (users == null) return NotFound();

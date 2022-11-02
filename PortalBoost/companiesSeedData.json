@@ -1,0 +1,292 @@
+[
+	{
+		"name": "Gislason Inc",
+		"description": [ "This is a placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"techniques": [ "C#", "React", "TypeScript" ],
+		"systemsUsed": [ "Public web", "Admin web", "External Integration" ],
+		"employees": [
+			{
+				"_id": "6360e3f4fc13ae4ed00009f6",
+				"username": "lopfer0",
+				"firstName": "Lyn",
+				"lastName": "Opfer",
+				"email": "lopfer0@dell.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed00009f7",
+				"username": "vspringford1",
+				"firstName": "Vincenz",
+				"lastName": "Springford",
+				"email": "vspringford1@slashdot.org",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed00009f8",
+				"username": "bbellino2",
+				"firstName": "Benedikta",
+				"lastName": "Bellino",
+				"email": "bbellino2@woothemes.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			}
+		]
+	},
+
+	{
+		"name": "Herzog-Herzog",
+		"description": [ "This is a placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"techniques": [ "C#", "React", "TypeScript", "MongoDB Atlas" ],
+		"systemsUsed": [ "External Integrations", "Admin web" ],
+		"employees": [
+			{
+				"_id": "6360e3f4fc13ae4ed00009f9",
+				"username": "rorniz3",
+				"firstName": "Raymund",
+				"lastName": "Orniz",
+				"email": "rorniz3@unicef.org",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed00009fb",
+				"username": "hharnell5",
+				"firstName": "Hale",
+				"lastName": "Harnell",
+				"email": "hharnell5@time.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed00009fc",
+				"username": "creadman6",
+				"firstName": "Conny",
+				"lastName": "Readman",
+				"email": "creadman6@abc.net.au",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			}
+		]
+	},
+	{
+		"name": "Kovacek-Abshire",
+		"description": [ "This is another placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"techniques": [ "C#", "Angular", "JavaScript", ".NET Core", "SQL Server" ],
+		"systemsUsed": [ "Public web", "Admin web", "External DB" ],
+		"employees": [
+			{
+				"_id": "6360e3f4fc13ae4ed00009fd",
+				"username": "rdavidson7",
+				"firstName": "Randall",
+				"lastName": "Davidson",
+				"email": "rdavidson7@wunderground.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed00009fe",
+				"username": "jroncelli8",
+				"firstName": "Joaquin",
+				"lastName": "Roncelli",
+				"email": "jroncelli8@fotki.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed00009ff",
+				"username": "mpeterken9",
+				"firstName": "Modesty",
+				"lastName": "Peterken",
+				"email": "mpeterken9@cdbaby.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a00",
+				"username": "frudsdella",
+				"firstName": "Fanchon",
+				"lastName": "Rudsdell",
+				"email": "frudsdella@npr.org",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a01",
+				"username": "mpreistb",
+				"firstName": "Melisse",
+				"lastName": "Preist",
+				"email": "mpreistb@github.io",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			}
+		]
+	},
+
+	{
+		"name": "Terry LLC",
+		"description": [ "This is yet another placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"techniques": [ "C#", "React", "JavaScript" ],
+		"systemsUsed": [ "Public web", "Admin web", "External Integration" ],
+		"employees": [
+			{
+				"_id": "6360e3f4fc13ae4ed0000a02",
+				"username": "fhaltc",
+				"firstName": "Finlay",
+				"lastName": "Halt",
+				"email": "fhaltc@sfgate.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a03",
+				"username": "jmarod",
+				"firstName": "Jud",
+				"lastName": "Maro",
+				"email": "jmarod@dedecms.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a04",
+				"username": "pfirpie",
+				"firstName": "Preston",
+				"lastName": "Firpi",
+				"email": "pfirpie@time.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a05",
+				"username": "tpichef",
+				"firstName": "Tuesday",
+				"lastName": "Piche",
+				"email": "tpichef@i2i.jp",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a06",
+				"username": "fbartoszekg",
+				"firstName": "Fulvia",
+				"lastName": "Bartoszek",
+				"email": "fbartoszekg@mozilla.org",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			}
+		]
+	},
+
+	{
+		"name": "Yost-Pacocha",
+		"description": [ "This is a placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"techniques": [ "C#", "Vue", "TypeScript" ],
+		"systemsUsed": [ "Public web", "Admin web", "External Integration" ],
+		"employees": [
+			{
+				"_id": "6360e3f4fc13ae4ed0000a07",
+				"username": "mmcneillieh",
+				"firstName": "Miof mela",
+				"lastName": "McNeillie",
+				"email": "mmcneillieh@engadget.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a08",
+				"username": "whuetti",
+				"firstName": "Worden",
+				"lastName": "Huett",
+				"email": "whuetti@zdnet.com",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			},
+			{
+				"_id": "6360e3f4fc13ae4ed0000a09",
+				"username": "dbeswickj",
+				"firstName": "Daisie",
+				"lastName": "Beswick",
+				"email": "dbeswickj@phoca.cz",
+				"oneLiner": null,
+				"presentation": null,
+				"skill": null,
+				"title": null,
+				"hash": null,
+				"salt": null
+			}
+		]
+	}
+]
