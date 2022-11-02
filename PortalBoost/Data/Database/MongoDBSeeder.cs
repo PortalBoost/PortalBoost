@@ -38,7 +38,7 @@
         }
 
         // TODO: Error handling
-        private string ReadTextFromFile(string filename)
+        private static string ReadTextFromFile(string filename)
         {
             string filePath = Environment.CurrentDirectory + $@"\{filename}";
 

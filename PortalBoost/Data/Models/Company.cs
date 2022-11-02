@@ -24,6 +24,5 @@ using MongoDB.Bson;
         public IEnumerable<string>? SystemsUsed { get; set; }
 
         public IEnumerable<User>? Employees { get; set; }
-
     }
 }

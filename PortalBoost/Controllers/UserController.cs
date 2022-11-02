@@ -13,7 +13,6 @@
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-
         private readonly UserService _userService;
 
         public UserController(UserService userService)
@@ -28,7 +27,5 @@
             if (users == null) return NotFound();
             return Ok(users);
         }
-
-
     }
 }
