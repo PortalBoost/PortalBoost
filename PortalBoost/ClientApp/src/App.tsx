@@ -4,6 +4,7 @@ import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
 import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
+import Header from './components/header/Header';
 
 
 function App() {
@@ -11,11 +12,9 @@ function App() {
   return (
     <Router>
 
-      <h1 className='text-6xl'>
-        <Link to="/">Yeet</Link>
-      </h1>
-
       {/* Header */}
+      <Header />
+      
       <ContentWrapper>
 
         <Routes>
