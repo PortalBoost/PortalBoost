@@ -4,6 +4,7 @@ import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
 import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
+import LoginPage from "./pages/loginPage/LoginPage";
 import Header from './components/header/Header';
 
 
@@ -14,14 +15,16 @@ function App() {
 
       {/* Header */}
       <Header />
-      
+
       <ContentWrapper>
 
         <Routes>
           {/* If logged in, show LandingPage, else show LoginPage */}
+
           <Route path="/employees" element={<ViewEmployees />} />
           <Route path="/companies" element={<ViewCompanies />} />
-          <Route path='/' element={<LandingPage />} />
+          {/* <Route path='/' element={<LandingPage />} /> */}
+          <Route path="/" element={<LoginPage />} />
           <Route path="*" element={<PageNotFound />} />
 
         </Routes>
