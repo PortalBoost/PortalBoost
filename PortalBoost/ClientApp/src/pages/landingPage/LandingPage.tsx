@@ -3,7 +3,9 @@
 const LandingPage = () => {
 
 	return (
-		null
+		<div>
+			<p className="">This is a LandingPage</p>
+		</div>
 	)
 }
 

@@ -17,7 +17,9 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    // TODO: Seed method if env is development
+    MongoDBSeeder seeder = new();
+    seeder.SeedMockData();
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
@@ -36,6 +38,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); ;
+app.MapFallbackToFile("index.html");
 
 app.Run();
