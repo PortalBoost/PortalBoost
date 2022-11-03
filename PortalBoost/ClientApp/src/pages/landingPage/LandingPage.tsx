@@ -2,7 +2,7 @@ import { useRecoilState, useRecoilValue } from "recoil"
 import { Navigate } from "react-router-dom"
 import successfullLogin from "../../atoms/successfulLogin"
 import userState from "../../atoms/userState"
-import { testUser } from "../../models/testUser"
+import { TestUser } from "../../models/TestUser"
 
 
 
@@ -15,7 +15,7 @@ const LandingPage = () => {
 	// TODO: Redirect to "/" as a logged out user
 	const testHandleLogout = () => {
 		// Test stuff, resets testUser object. There's probably a better way of doing this
-		const emtpyUser: testUser = {
+		const emtpyUser: TestUser = {
 			username: "",
 			email: "",
 			password: "",
