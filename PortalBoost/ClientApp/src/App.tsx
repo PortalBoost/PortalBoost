@@ -15,16 +15,15 @@ function App() {
 
   const validLogin = useRecoilValue(successfullLogin)
 
+  // TODO: Add authentication layer instead of the validLogin solution.
   return (
     <Router>
 
-      {/* Header */}
       <Header />
 
       <ContentWrapper>
 
         <Routes>
-          {/* TODO: If logged in, show LandingPage, else show LoginPage */}
 
           <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
           <Route path="/companies" element={validLogin ? <ViewCompanies /> : <LoginPage />} />
