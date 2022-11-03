@@ -1,5 +1,5 @@
 import { useRecoilState, useRecoilValue } from "recoil"
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import successfullLogin from "../../atoms/successfulLogin"
 import userState from "../../atoms/userState"
 import { TestUser } from "../../models/TestUser"
@@ -7,7 +7,7 @@ import { TestUser } from "../../models/TestUser"
 
 
 const LandingPage = () => {
-
+	const navigate = useNavigate();
 	//Test stuff
 	const [loggedinUser, setLoggedinUser] = useRecoilState(userState)
 	const [validLogin, setValidLogin] = useRecoilState(successfullLogin)
@@ -20,9 +20,8 @@ const LandingPage = () => {
 			email: "",
 			password: "",
 		}
-		setLoggedinUser(emtpyUser)
-		setValidLogin(false)
-
+		setLoggedinUser(emtpyUser);
+		setValidLogin(false);
 	}
 
 	return (
@@ -30,7 +29,7 @@ const LandingPage = () => {
 			<p className="">This is a LandingPage</p>
 			<p>You appear to be logged in as: </p>
 			<p className="font-bold">Username: {loggedinUser.username}<br /> Email: {loggedinUser.email} </p>
-			<button>Test-logout</button>
+			<button onClick={testHandleLogout}>Test-logout</button>
 		</div>
 	)
 }

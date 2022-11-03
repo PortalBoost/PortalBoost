@@ -24,11 +24,10 @@ function App() {
       <ContentWrapper>
 
         <Routes>
-          {/* If logged in, show LandingPage, else show LoginPage */}
+          {/* TODO: If logged in, show LandingPage, else show LoginPage */}
 
           <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
           <Route path="/companies" element={validLogin ? <ViewCompanies /> : <LoginPage />} />
-          {/* <Route path='/' element={<LandingPage />} /> */}
           <Route path="/" element={validLogin ? <LandingPage /> : <LoginPage />} />
           <Route path="*" element={<PageNotFound />} />
 
