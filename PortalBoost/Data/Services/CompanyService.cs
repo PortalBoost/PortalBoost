@@ -26,5 +26,23 @@
         /// </summary>
         /// <returns> A list of companies </returns>
         public async Task<List<Company>> GetAsync() => await _companyCollection.Find(_ => true).ToListAsync();
+
+
+        /// <summary>
+        /// Gets a company by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Company> GetCompanyById(string id)
+        {
+            return (await _companyCollection.FindAsync(c => c.ID == id)).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Deletes a company by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<DeleteResult> DeleteAsync(string id) => await _companyCollection.DeleteOneAsync(c => c.ID == id);
     }
 }

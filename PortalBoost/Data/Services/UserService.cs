@@ -30,5 +30,22 @@
         /// </summary>
         /// <returns> A list of users </returns>
         public async Task<List<User>> GetAsync() => await _userCollection.Find(_ => true).ToListAsync();
+
+        /// <summary>
+        /// Gets a user by id.
+        /// </summary>
+        /// <param name="id"> The id of the user to be found. </param>
+        /// <returns>The first user with matching id.</returns>
+        public async Task<User> GetUserById(string id)
+        {
+            return (await _userCollection.FindAsync(u => u.ID == id)).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Deletes a user by id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<DeleteResult> DeleteAsync(string id) => await _userCollection.DeleteOneAsync(u => u.ID == id);
     }
 }
