@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
 
+	//importera theme färger från tailwind config.
 
 	return (
 		<header>

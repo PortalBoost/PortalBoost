@@ -1,19 +1,26 @@
 import {BsPerson} from 'react-icons/bs'
+import { useState} from 'react'
 
 const Navbar = () => {
 
-
+const [isOpen, setIsOpen] = useState(true)
 
 
 	return (
-		<div className="display-flex absolute top-0 mb-3 p-5 w-screen">
-			<div>
-				<h1>logo here</h1>
-			</div>
-			<div className="bg-gray-600 border-yellow-400 rounded-xl p-1 flex flex-shrink-0" >
-				<p><BsPerson /></p>
-			</div>
+		<div className="fixed top-0 left-0 h-screen w-30s flex flex-col
+		bg-white dark:bg-gray-900 shadow-lg">
+		  
+		<div>
+		<ul>
+			<li>
+				medarbetare
+			</li>
+			<li>
+				kunder
+			</li>
+			</ul>	
 		</div>
+</div>
 	)
 }
 
