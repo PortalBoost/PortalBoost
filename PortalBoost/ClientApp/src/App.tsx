@@ -5,6 +5,7 @@ import PageNotFound from './pages/pageNotFound/PageNotFound';
 import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
 import Header from './components/header/Header';
+import Navbar from './components/navBar/Navbar';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
 
       {/* Header */}
       <Header />
+      <Navbar/>
       
       <ContentWrapper>
 
