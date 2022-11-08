@@ -8,10 +8,10 @@ const [isOpen, setIsOpen] = useState(true)
 
 	return (
 		<div className="fixed top-0 left-0 h-screen w-30s flex flex-col
-		bg-white dark:bg-gray-900 shadow-lg">
+		bg-white dark:bg-n-gray shadow-lg">
 		  
-		<div>
-		<ul>
+		<div className="mt-40 text-white p-4">
+		<ul className="hover:text-n-purple gap-4">
 			{/* länk till personsida */}
 			<li>
 				medarbetare
