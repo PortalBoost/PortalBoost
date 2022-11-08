@@ -1,7 +1,7 @@
 import {BsPerson} from 'react-icons/bs'
 import { useState} from 'react'
 
-const Navbar = () => {
+const Navbar: React.FC<{}> = () => {
 
 const [isOpen, setIsOpen] = useState(true)
 
@@ -12,9 +12,11 @@ const [isOpen, setIsOpen] = useState(true)
 		  
 		<div>
 		<ul>
+			{/* länk till personsida */}
 			<li>
 				medarbetare
 			</li>
+			{/* länk till companysida */}
 			<li>
 				kunder
 			</li>
