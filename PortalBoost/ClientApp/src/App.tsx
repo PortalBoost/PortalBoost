@@ -22,9 +22,10 @@ function App() {
     <Router>
 
       <Header />
-      {/* <Navbar/> */}
+      <Navbar/>
+      
       {/* navbar för mobilläge */}
-      <MobileNavbar />
+      {/* <MobileNavbar /> */}
 
       <ContentWrapper>
 
