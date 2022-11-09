@@ -32,7 +32,7 @@ const EmployeePreview = () => {
 			</div>
 			<hr className="my-1"></hr>
 			<div className="p-4 pt-2">
-				<div className="text-n-purple font-semibold text-lg">Person Name</div>
+				<div className="text-n-purple font-semibold text-lg underline-offset-2 ">Person Name</div>
 				<p className="mt-2 font-bold">One-liner</p>
 				<p className="">Short intro stuff, interesting things in here. Short and sweet. </p>
 			</div>
