@@ -1,31 +1,31 @@
-import {BsPerson} from 'react-icons/bs'
-import { useState} from 'react'
+import {RiSuitcaseLine} from 'react-icons/ri'
+import {AiOutlineTeam} from 'react-icons/ai'
 
-const MobileNavbar: React.FC<{}> = () => {
-
-const [isOpen, setIsOpen] = useState(true)
-
+const MobileNavBar: React.FC<{}> = () => {
 
 	return (
-		<div className="fixed bottom-0 h-s30 w-screen flex flex-col
-		 dark:bg-n-gray">
-		  
-		<div className="mt-40 text-white p-4">
-		<ul className="hover:text-n-purple gap-4">
-			{/* länk till personsida */}
-			{/* ikon till personer */}
-			<li>
-				medarbetare
-			</li>
-			{/* ikon till företag */}
-			{/* länk till companysida */}
-			<li>
-				kunder
-			</li>
-			</ul>	
+		<div className="fixed bottom-0 flex 
+		 dark:bg-n-gray shadow-xl">
+			<div className=" text-black border-pink-700">
+				
+				<ul className=" flex justify-around p-2 w-screen ">
+					
+					{/* länk till personsida */}
+					<li className="hover:text-n-turquoise-dark  border-pink-600 grid justify-items-center">
+						<p><AiOutlineTeam /></p>
+						<p>medarbetare</p>
+					</li>
+
+					{/* länk till companysida */}
+					<li className="hover:text-n-turquoise-dark grid justify-items-center">
+						<p><RiSuitcaseLine /></p>
+						<p>kunder</p>
+					</li>
+				
+				</ul>
+			</div>
 		</div>
-</div>
 	)
 }
 
-export default MobileNavbar
+export default MobileNavBar
