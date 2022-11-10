@@ -33,6 +33,7 @@ function App() {
 
           <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
           <Route path="/companies" element={validLogin ? <ViewCompanies /> : <LoginPage />} />
+          <Route path="/companies/testCompany" element={validLogin ? <LandingPage /> : <LoginPage />} />
           <Route path="/" element={validLogin ? <LandingPage /> : <LoginPage />} />
           <Route path="*" element={<PageNotFound />} />
 
