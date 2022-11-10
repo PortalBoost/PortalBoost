@@ -11,10 +11,8 @@ interface EmployeeModalProps {
 
 // TODO: Reusable modal container instead?
 // TODO: Esc to close modal
-// TODO: Center inner container?
-// TODO: Scroll through modal
 // TODO: Close button, fixed at top. When scrolled down, fixed at bottom.
-// TODO: Remove horizontal scroll?
+// TODO: Animation.
 const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 
 
