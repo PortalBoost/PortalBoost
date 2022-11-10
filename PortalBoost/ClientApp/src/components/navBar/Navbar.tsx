@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Navbar: React.FC<{}> = () => {
 
-	//TODO: use atom instead of state
+	//TODO: use recoilstate instead of state 
 	const [isOpen, setIsOpen] = useState(true)
 
 	const navBarItem = "hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center"
@@ -54,3 +54,6 @@ const Navbar: React.FC<{}> = () => {
 }
 
 export default Navbar
+
+
+
