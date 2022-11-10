@@ -22,7 +22,7 @@ const ViewEmployees = () => {
 		{ testEmployeeID: 10 },
 	]
 
-	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-2 max-w-xs truncate shrink">Searchbar - layout placeholder </div>
+	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-2 sm:w-96 max-w-xs truncate shrink">Searchbar - placeholder </div>
 	//TODO: Proper grid sizing
 	return (
 		<div className="container mt-20 p-5">

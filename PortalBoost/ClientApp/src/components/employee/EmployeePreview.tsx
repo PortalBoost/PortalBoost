@@ -21,7 +21,6 @@ const EmployeePreview = ({ testId }: TestEmployeeProps) => {
 	// TODO: Nicer looking outline
 	// TODO: Hover effects
 	// TODO: Overlays?
-	// TODO: Crop image
 	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[600px] h-[300px] p-1 m-1 shrink flex justify-center items-center rounded-lg
 	 bg-gradient-to-br opacity-50 from-n-offwhite ">Placeholder Picture</div>
 
@@ -39,8 +38,8 @@ const EmployeePreview = ({ testId }: TestEmployeeProps) => {
 				<hr className="m-1"></hr>
 				<div className="p-4 pt-2">
 					<div className="text-n-purple font-semibold text-lg">Person Name {testId}</div>
-					<p className="mt-2 font-bold">One-liner</p>
-					<p className="">Short intro stuff, interesting things in here. Short and sweet. </p>
+					{/* <p className="mt-2 font-bold">One-liner</p> */}
+					<p className="mt-2 italic">Short one-liner intro, interesting things in here. Short and sweet. </p>
 				</div>
 			</div>
 			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} testId={testId} />

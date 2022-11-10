@@ -1,13 +1,7 @@
 
+import { useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5"
-// Container
-// Card Header/Top section
-// Image
-// Name(?)
-// Card contents
-// About-me sections
-// Card footer(?)
-// Send a message button (email)
+
 
 interface EmployeeModalProps {
 	isOpen: boolean;
@@ -16,6 +10,7 @@ interface EmployeeModalProps {
 }
 
 // TODO: Reusable modal container instead?
+// TODO: Esc to close modal
 // TODO: Center inner container?
 // TODO: Scroll through modal
 // TODO: Close button, fixed at top. When scrolled down, fixed at bottom.
@@ -24,7 +19,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 
 
 
-	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px] p-1 m-1 shrink flex justify-center items-center rounded-lg
+	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px]  shrink flex justify-center items-center 
 	bg-gradient-to-br opacity-50 from-n-offwhite ">Placeholder Picture</div>
 
 
@@ -33,12 +28,12 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 			{
 				isOpen && (
 
-					< div
+					< div id="modal-overlay"
 						className="bg-black bg-opacity-50 fixed top-0 right-0 left-0 w-full h-full z-50"
 						onClick={toggleOpen} >
 
 						{/** Modal background */}
-						<div className="bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
+						<div id="modal" className="bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
 						w-full h-screen sm:max-w-3xl xs:h-auto overflow-auto
 						rounded-sm  "
 							onClick={(e) => e.stopPropagation()}>
@@ -46,18 +41,19 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 							{/** Main Content */}
 							<div className=" w-full h-full rounded-sm">
 								{/** Fake image*/}
-								<div className="flex justify-center ">
+								<div className="flex justify-center mb-2 ">
 									{placeholderProfilePicture}
 								</div>
 								<hr className="m-1 sm:mx-5"></hr>
 								{/** Card Content */}
-								<div className="p-3 sm:py-5 sm:px-10">
-									<div className="text-n-purple font-semibold text-lg">Person Name {testId}</div>
-									<p className="mt-2 font-bold">One-liner</p>
-									<p className="">Short intro stuff, interesting things in here. Short and sweet. </p>
-									<p className="mt-2 font-bold">More stuff</p>
+								<div className="p-3 sm:py-8 sm:pb-20 sm:px-10">
+									<div className="text-n-purple text-3xl uppercase py-2 "> Person name {testId}</div>
+									<div className="bg-gradient-to-r from-n-purple  p-0.5 w-2/5 rounded-full"></div>
+									{/* <p className="mt-2 font-bold">One-liner</p> */}
+									<p className="pt-2 italic">Short intro stuff, interesting things in here. Short and sweet. </p>
+									<p className="mt-2 font-bold">Presentation</p>
 									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
-									<p className="mt-2 font-bold">Additional stuff</p>
+									<p className="mt-2 font-bold">Surprising fact</p>
 									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
 								</div>
 
