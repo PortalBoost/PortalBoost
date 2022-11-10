@@ -16,7 +16,6 @@ const EmployeePreview = ({ testId }: TestEmployeeProps) => {
 
 	const toggleOpen = () => {
 		setOpenModal(!openModal)
-		console.log(openModal)
 	}
 	// TODO: Hover/Touch differences on mobile
 	// TODO: Nicer looking outline
