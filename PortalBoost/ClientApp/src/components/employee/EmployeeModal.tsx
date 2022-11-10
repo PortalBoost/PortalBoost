@@ -1,5 +1,5 @@
 
-import { AiFillCloseCircle } from "react-icons/ai"
+import { IoCloseCircleOutline } from "react-icons/io5"
 // Container
 // Card Header/Top section
 // Image
@@ -15,8 +15,8 @@ interface EmployeeModalProps {
 	testId: number; // TODO:  Send in real User 
 }
 
-//TODO: Reusable modal container instead?
-//TODO: Center inner container?
+// TODO: Reusable modal container instead?
+// TODO: Center inner container?
 // TODO: Scroll through modal
 // TODO: Close button, fixed at top. When scrolled down, fixed at bottom.
 // TODO: Remove horizontal scroll?
@@ -24,10 +24,9 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 
 
 
-
-
-	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[600px] h-[300px] p-1 m-1 shrink flex justify-center items-center rounded-lg
+	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px] p-1 m-1 shrink flex justify-center items-center rounded-lg
 	bg-gradient-to-br opacity-50 from-n-offwhite ">Placeholder Picture</div>
+
 
 	return (
 		<>
@@ -40,7 +39,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 
 						{/** Modal background */}
 						<div className="bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
-						w-full h-screen sm:max-w-3xl xs:h-auto overflow-scroll
+						w-full h-screen sm:max-w-3xl xs:h-auto overflow-auto
 						rounded-sm  "
 							onClick={(e) => e.stopPropagation()}>
 
@@ -61,11 +60,12 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 									<p className="mt-2 font-bold">Additional stuff</p>
 									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
 								</div>
-								<AiFillCloseCircle onClick={toggleOpen} style={{
-									position: "fixed", top: "0", right: "0",
-									fontSize: "50px", margin: "10px",
-									color: ""
-								}} />
+
+								<div role="button" id="close-modal" onClick={toggleOpen}
+									className="fixed top-0 right-0  ">
+									<IoCloseCircleOutline className="hover:rotate-90 transition-transform text-4xl m-2 text-white filter drop-shadow-lg " />
+								</div>
+
 							</div>
 
 						</div>
