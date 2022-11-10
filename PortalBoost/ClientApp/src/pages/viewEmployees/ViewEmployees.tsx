@@ -25,14 +25,14 @@ const ViewEmployees = () => {
 	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-2 sm:w-96 max-w-xs truncate shrink">Searchbar - placeholder </div>
 	//TODO: Proper grid sizing
 	return (
-		<div className="container mt-20 p-5">
+		<div className="mt-20 ">
 			<div className="flex flex-col gap-10 ">
 				<div className="mx-auto flex">
 					{placeholderSearchbar}
 				</div>
 
 				{/** Test container */}
-				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
 					{TEST_EMPLOYEES.map((x) => (
 						<EmployeePreview key={x.testEmployeeID} testId={x.testEmployeeID} />
 					))}

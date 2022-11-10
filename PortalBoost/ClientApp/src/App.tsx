@@ -20,6 +20,10 @@ function App() {
   // TODO: EmployeePreview minimalistic rounded version
   // TODO: Proper Employee interface using the data model from backend. User interface extends employee interface(?)
   // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
+  useEffect(() => {
+    console.log(validLogin)
+  }, [validLogin])
+
   return (
     <Router>
 
@@ -29,11 +33,11 @@ function App() {
 
         <Routes>
 
-          {/* <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
+          <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
           <Route path="/companies" element={validLogin ? <ViewCompanies /> : <LoginPage />} />
           <Route path="/" element={validLogin ? <LandingPage /> : <LoginPage />} />
-          <Route path="*" element={<PageNotFound />} /> */}
-          <Route path="/" element={<ViewEmployees></ViewEmployees>} />
+          <Route path="*" element={<PageNotFound />} />
+
         </Routes>
 
       </ContentWrapper>
