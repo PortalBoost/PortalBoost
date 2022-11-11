@@ -27,12 +27,18 @@ const ViewEmployees = () => {
 	return (
 		<div className="mt-20 ">
 			<div className="flex flex-col gap-10 ">
+
 				<div className="mx-auto flex">
 					{placeholderSearchbar}
 				</div>
-
+				<div className="bg-gradient-to-br from-n-blue flex flex-col  sh p-5  max-w-full rounded-sm">
+					<p className="text-2xl ">Meet the MyTeam Team!</p>
+					<div className="bg-gradient-to-r from-n-dark p-[1px] max-w-xs rounded-full"></div>
+					<p className="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat animi quidem aut voluptate eius voluptas ad ipsa officia</p>
+					<p className="pt-2">Entertaining sentence about having a fika. Sentence about getting in touch via mail. </p>
+				</div>
 				{/** Test container */}
-				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-5">
 					{TEST_EMPLOYEES.map((x) => (
 						<EmployeePreview key={x.testEmployeeID} testId={x.testEmployeeID} />
 					))}

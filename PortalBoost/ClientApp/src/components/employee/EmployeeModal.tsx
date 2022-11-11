@@ -1,7 +1,7 @@
 
 import { useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5"
-
+import { RiMailSendLine } from "react-icons/ri"
 
 interface EmployeeModalProps {
 	isOpen: boolean;
@@ -13,6 +13,7 @@ interface EmployeeModalProps {
 // TODO: Esc to close modal
 // TODO: Close button, fixed at top. When scrolled down, fixed at bottom.
 // TODO: Animation.
+// TODO: Send message button: Take email of viewed employee, open default mail program. 
 const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 
 
@@ -44,7 +45,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 								</div>
 								<hr className="m-1 sm:mx-5"></hr>
 								{/** Card Content */}
-								<div className="p-3 sm:py-8 sm:pb-20 sm:px-10">
+								<div className="p-3 xs:py-8 xs:pb-12 sm:px-10">
 									<div className="text-n-purple text-3xl uppercase py-2 "> Person name {testId}</div>
 									<div className="bg-gradient-to-r from-n-purple  p-0.5 w-2/5 rounded-full"></div>
 									{/* <p className="mt-2 font-bold">One-liner</p> */}
@@ -52,7 +53,8 @@ const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
 									<p className="mt-2 font-bold">Presentation</p>
 									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
 									<p className="mt-2 font-bold">Surprising fact</p>
-									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
+									<p className=""> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
+									<button className="mt-5 flex items-center px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
 								</div>
 
 								<div role="button" id="close-modal" onClick={toggleOpen}
