@@ -2,7 +2,7 @@ import { useRecoilState, useRecoilValue } from "recoil"
 import { useNavigate } from "react-router-dom"
 import successfullLogin from "../../atoms/successfulLogin"
 import userState from "../../atoms/userState"
-import { TestUser } from "../../models/TestUser"
+import UserModel from "../../models/userModel"
 
 
 
@@ -14,14 +14,17 @@ const LandingPage = () => {
 
 	const testHandleLogout = () => {
 		// Test stuff, resets testUser object. There's probably a better way of doing this
-		const emtpyUser: TestUser = {
+		const emptyUser: UserModel = {
+			id: "",
 			username: "",
 			email: "",
 			password: "",
 		}
-		setLoggedinUser(emtpyUser);
+		setLoggedinUser(emptyUser);
 		setValidLogin(false);
 	}
+
+
 
 	return (
 		<div className="">

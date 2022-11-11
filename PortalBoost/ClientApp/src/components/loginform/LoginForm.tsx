@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useRecoilState } from "recoil";
 import successfullLogin from "../../atoms/successfulLogin";
 import userState from "../../atoms/userState";
-import { TestUser } from "../../models/TestUser";
+import UserModel from "../../models/userModel";
 
 
 
@@ -22,13 +22,14 @@ const LoginForm = () => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		// testUser used to mock API response with a real user-object
-		const testUser: TestUser = {
+		// loggedInUser used to mock API response with a real user-object
+		const loggedInUser: UserModel = {
+			id: "123",
 			username: "TestUser",
 			email: emailField,
 			password: passField
 		}
-		setLoggedInUser(testUser)
+		setLoggedInUser(loggedInUser)
 		setLoggedInSuccess(true)
 	}
 
