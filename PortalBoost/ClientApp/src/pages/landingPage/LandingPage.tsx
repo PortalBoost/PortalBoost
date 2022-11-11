@@ -7,12 +7,11 @@ import { TestUser } from "../../models/TestUser"
 
 
 const LandingPage = () => {
-	const navigate = useNavigate();
+
 	//Test stuff
 	const [loggedinUser, setLoggedinUser] = useRecoilState(userState)
 	const [validLogin, setValidLogin] = useRecoilState(successfullLogin)
 
-	// TODO: Redirect to "/" as a logged out user
 	const testHandleLogout = () => {
 		// Test stuff, resets testUser object. There's probably a better way of doing this
 		const emtpyUser: TestUser = {
@@ -25,7 +24,7 @@ const LandingPage = () => {
 	}
 
 	return (
-		<div>
+		<div className="">
 			<p className="">This is a LandingPage</p>
 			<p>You appear to be logged in as: </p>
 			<p className="font-bold">Username: {loggedinUser.username}<br /> Email: {loggedinUser.email} </p>

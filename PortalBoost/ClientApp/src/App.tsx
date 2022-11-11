@@ -8,6 +8,8 @@ import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
 import LoginPage from "./pages/loginPage/LoginPage";
 import Header from './components/header/Header';
+import Navbar from './components/navBar/Navbar';
+import MobileNavbar from './components/navBar/MobileNavBar';
 import successfullLogin from "./atoms/successfulLogin";
 
 
@@ -16,10 +18,22 @@ function App() {
   const validLogin = useRecoilValue(successfullLogin)
 
   // TODO: Add authentication layer instead of the validLogin solution.
+  // TODO: Reusable modal component
+  // TODO: EmployeePreview minimalistic rounded version
+  // TODO: Proper Employee interface using the data model from backend. User interface extends employee interface(?)
+  // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
+  useEffect(() => {
+    console.log(validLogin)
+  }, [validLogin])
+
   return (
     <Router>
 
       <Header />
+      <Navbar/>
+      
+      {/* navbar för mobilläge */}
+      {/* <MobileNavbar /> */}
 
       <ContentWrapper>
 
