@@ -44,7 +44,6 @@ function App() {
 
         <Routes>
 
-
           <Route path="/" element={<AuthRoute />} >
             <Route path="/" element={<LandingPage />} />
             <Route path="/employees" element={<ViewEmployees />} />
