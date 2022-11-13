@@ -18,7 +18,7 @@ function App() {
 
   const validLogin = useRecoilValue(successfullLogin)
 
-  // TODO: Add authentication layer instead of the validLogin solution.
+  // BUG: When being logged in and navigating to 404 page, user is logged out..
   // TODO: Reusable modal component
   // TODO: EmployeePreview minimalistic rounded version
   // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 

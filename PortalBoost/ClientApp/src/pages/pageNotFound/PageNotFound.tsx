@@ -6,7 +6,7 @@ const PageNotFound = () => {
 	return (
 		<div>
 			<p>Error 404 - Page not found </p>
-			<button className="bg-n-sky p-1 rounded-md hover:shadow-lg">
+			<button className="">
 				<Link to="/">Return home</Link>
 			</button>
 		</div>
