@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import AuthRoute from "./components/AuthRoute";
 import ContentWrapper from './components/common/ContentWrapper';
 import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
@@ -43,9 +44,13 @@ function App() {
 
         <Routes>
 
-          <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
-          <Route path="/companies" element={validLogin ? <ViewCompanies /> : <LoginPage />} />
-          <Route path="/" element={validLogin ? <LandingPage /> : <LoginPage />} />
+
+          <Route path="/" element={<AuthRoute />} >
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/employees" element={<ViewEmployees />} />
+            <Route path="/companies" element={<ViewCompanies />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route path="*" element={<PageNotFound />} />
 
         </Routes>
