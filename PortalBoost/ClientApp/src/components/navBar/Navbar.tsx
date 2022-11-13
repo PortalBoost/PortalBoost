@@ -4,9 +4,10 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { IoLogOutOutline } from 'react-icons/io5'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 
 const Navbar: React.FC<{}> = () => {
-
+	const auth = useAuth();
 	//TODO: use recoilstate instead of state 
 	const [isOpen, setIsOpen] = useState(true)
 
@@ -44,7 +45,7 @@ const Navbar: React.FC<{}> = () => {
 
 				{/* TODO: add functionality to log out*/}
 				{/* log out button */}
-				<div className="fixed bottom-2 hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center">
+				<div onClick={auth.logout} className="fixed bottom-2 hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center">
 					<p><IoLogOutOutline /></p>
 					<p>Log out</p>
 				</div>

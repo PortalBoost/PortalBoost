@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import AuthRoute from "./components/AuthRoute";
 import ContentWrapper from './components/common/ContentWrapper';
 import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
@@ -17,7 +18,7 @@ function App() {
 
   const validLogin = useRecoilValue(successfullLogin)
 
-  // TODO: Add authentication layer instead of the validLogin solution.
+  // BUG: When being logged in and navigating to 404 page, user is logged out..
   // TODO: Reusable modal component
   // TODO: EmployeePreview minimalistic rounded version
   // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
@@ -43,9 +44,12 @@ function App() {
 
         <Routes>
 
-          <Route path="/employees" element={validLogin ? <ViewEmployees /> : <LoginPage />} />
-          <Route path="/companies" element={validLogin ? <ViewCompanies /> : <LoginPage />} />
-          <Route path="/" element={validLogin ? <LandingPage /> : <LoginPage />} />
+          <Route path="/" element={<AuthRoute />} >
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/employees" element={<ViewEmployees />} />
+            <Route path="/companies" element={<ViewCompanies />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />}></Route>
           <Route path="*" element={<PageNotFound />} />
 
         </Routes>

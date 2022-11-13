@@ -1,7 +1,7 @@
 
 const BASE_URL = "/api/User"
 
-//TODO: Separate the fetch and handling of request into separate APIhandler/facade? Default body/header stuff.
+//TODO: Separate the fetch and handling of request into separate APIhandler/facade/hook? Default body/header stuff.
 const getUsers = async () => {
 
 	// Handle response, network error?

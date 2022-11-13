@@ -4,11 +4,15 @@ import successfullLogin from "../../atoms/successfulLogin";
 import userState from "../../atoms/userState";
 import UserModel from "../../models/userModel";
 import { loginUser } from "../../services/API/userService";
+import useAuth from "../../hooks/useAuth";
+
 
 
 
 
 const LoginForm = () => {
+	const auth = useAuth();
+
 	const [emailField, setEmailField] = useState("");
 	const [usernameField, setUsernameField] = useState("");
 	const [passField, setPassField] = useState("");
@@ -28,18 +32,6 @@ const LoginForm = () => {
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		// loggedInUser used to mock API response with a real user-object
-
-		// const loggedInUser: UserModel = {
-		// 	id: "123",
-		// 	username: "TestUser",
-		// 	email: emailField,
-		// 	password: passField
-		// }
-		// setLoggedInUser(loggedInUser)
-		// setLoggedInSuccess(true)
-
-		// TEST_LOGIN
 		setDisableLogin(true)
 		const testLogin = await loginUser(emailField, passField)
 		if (testLogin == 404) {
@@ -47,8 +39,7 @@ const LoginForm = () => {
 			setShowInfoText(true)
 		}
 		else {
-			setLoggedInUser(testLogin)
-			setLoggedInSuccess(true)
+			auth.login(testLogin)
 		}
 		setDisableLogin(false)
 	}
