@@ -37,7 +37,15 @@
   }
 
   button:active {
-    @apply bg-n-turquoise-light
+    @apply bg-n-turquoise-light;
+  }
+
+  button:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  button:disabled:hover {
+    @apply shadow-none bg-n-turquoise;
   }
 }
 

@@ -25,7 +25,9 @@ const loginUser = async (username: string, password: string) => {
 	};
 
 	const response = await fetch(`${BASE_URL}/LoginPass`, reqOptions)
-	if (!response.ok) throw new Error(`Error: ${response.status}`)
+	if (!response.ok) {
+		return response.status;
+	}
 	const data = await response.json();
 	return await data;
 }

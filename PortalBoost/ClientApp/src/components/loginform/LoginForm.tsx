@@ -20,6 +20,11 @@ const LoginForm = () => {
 	const [showPassHelpText, setShowPassHelpText] = useState(false)
 	const [passWordHelpText, setpassWordHelpText] = useState("password-help-text");
 
+	const [infoText, setInfoText] = useState("infoTextPlaceholder")
+	const [showInfoText, setShowInfoText] = useState(false)
+
+	const [disableLogin, setDisableLogin] = useState(false)
+
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -35,11 +40,17 @@ const LoginForm = () => {
 		// setLoggedInSuccess(true)
 
 		// TEST_LOGIN
+		setDisableLogin(true)
 		const testLogin = await loginUser(emailField, passField)
-		if (testLogin) console.log("Succesfull login")
-		console.log(testLogin)
-
-
+		if (testLogin == 404) {
+			setInfoText("User could not be found")
+			setShowInfoText(true)
+		}
+		else {
+			setLoggedInUser(testLogin)
+			setLoggedInSuccess(true)
+		}
+		setDisableLogin(false)
 	}
 
 	const handlePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +68,7 @@ const LoginForm = () => {
 		<div className="flex flex-col justify-center items-center  border-2 rounded-md p-5 py-10 xs:p-20  bg-white">
 			<h2 className="font-lighter pb-10">PortalBoost Login</h2>
 
-			<form onSubmit={(e) => handleSubmit(e)}>
+			<form onSubmit={(e) => handleSubmit(e)} onFocus={() => setShowInfoText(false)}>
 				<div className="pb-0" >
 					<label id="email" className="font-sans sr-only">E-mail</label>
 					<input id="email" name="email" type="text" autoComplete="password" placeholder="E-mail" onChange={handleEmailChange} required
@@ -74,9 +85,10 @@ const LoginForm = () => {
 					<span className={`text-xs ${showPassHelpText ? "visible" : "invisible"}`}>{passWordHelpText}</span>
 				</div>
 
-				<button className="bg-n-turquoise text-white p-1 rounded-md w-full hover:shadow-lg hover:bg-n-turquoise-dark transition-shadow active:bg-n-turquoise-light">Login</button>
-			</form>
+				<button disabled={disableLogin} className=" bg-n-turquoise text-white p-1 rounded-md w-full hover:shadow-lg hover:bg-n-turquoise-dark transition-shadow active:bg-n-turquoise-light">Login</button>
 
+			</form>
+			<p className={`${showInfoText ? "visible" : "invisible"} mt-4 text-red-400 font-sans`}> {infoText} </p>
 		</div>
 
 	)

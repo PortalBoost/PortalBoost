@@ -1,5 +1,20 @@
 [
   {
+    "_id": "6360e3f4fc13ae4ed00209f9",
+    "username": "user",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "user@user.com",
+    "oneLiner": null,
+    "presentation": null,
+    "skill": null,
+    "title": null,
+    "hash": null,
+    "salt": null,
+    "password": "1234"
+  },
+
+  {
     "_id": "6360e3f4fc13ae4ed00009f6",
     "username": "lopfer0",
     "firstName": "Lyn",
