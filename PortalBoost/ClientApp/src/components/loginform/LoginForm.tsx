@@ -3,12 +3,14 @@ import { useRecoilState } from "recoil";
 import successfullLogin from "../../atoms/successfulLogin";
 import userState from "../../atoms/userState";
 import UserModel from "../../models/userModel";
+import { loginUser } from "../../services/API/userService";
 
 
 
 
 const LoginForm = () => {
 	const [emailField, setEmailField] = useState("");
+	const [usernameField, setUsernameField] = useState("");
 	const [passField, setPassField] = useState("");
 	const [loggedInUser, setLoggedInUser] = useRecoilState(userState)
 	const [loggedInSuccess, setLoggedInSuccess] = useRecoilState(successfullLogin)
@@ -18,19 +20,26 @@ const LoginForm = () => {
 	const [showPassHelpText, setShowPassHelpText] = useState(false)
 	const [passWordHelpText, setpassWordHelpText] = useState("password-help-text");
 
-
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		// loggedInUser used to mock API response with a real user-object
-		const loggedInUser: UserModel = {
-			id: "123",
-			username: "TestUser",
-			email: emailField,
-			password: passField
-		}
-		setLoggedInUser(loggedInUser)
-		setLoggedInSuccess(true)
+
+		// const loggedInUser: UserModel = {
+		// 	id: "123",
+		// 	username: "TestUser",
+		// 	email: emailField,
+		// 	password: passField
+		// }
+		// setLoggedInUser(loggedInUser)
+		// setLoggedInSuccess(true)
+
+		// TEST_LOGIN
+		const testLogin = await loginUser(emailField, passField)
+		if (testLogin) console.log("Succesfull login")
+		console.log(testLogin)
+
+
 	}
 
 	const handlePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,7 +60,7 @@ const LoginForm = () => {
 			<form onSubmit={(e) => handleSubmit(e)}>
 				<div className="pb-0" >
 					<label id="email" className="font-sans sr-only">E-mail</label>
-					<input id="email" name="email" type="email" autoComplete="password" placeholder="E-mail" onChange={handleEmailChange} required
+					<input id="email" name="email" type="text" autoComplete="password" placeholder="E-mail" onChange={handleEmailChange} required
 						className="relative block rounded-sm px-2 py-1 text-sm font-arial text-n-dark placeholder-n-dark ring-1 ring-n-dark focus:outline-none focus:ring-2">
 					</input>
 					<span className={`text-xs ${showEmailHelpText ? "visible" : "invisible"}`}>{emailHelpText}</span>
