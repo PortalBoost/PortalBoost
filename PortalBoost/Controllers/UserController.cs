@@ -53,5 +53,19 @@
                 return NotFound();
             }
         }
+
+        /// <summary>
+        /// Tries to find and return a user by username and password.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>Code 200 with a user object if a matching user is found. Code 404 not found if user could not be found.</returns>
+        [HttpPost("LoginPass")]
+        public async Task<ActionResult<User>> LoginUsingPassword([FromBody] User user)
+        {
+            var foundUser = await _userService.LoginPasswordAsync(user.Username, user.Password);
+            if (foundUser == null) return NotFound();
+            return Ok(foundUser);
+        }
     }
 }

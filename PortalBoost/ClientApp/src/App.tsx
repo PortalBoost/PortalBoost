@@ -20,18 +20,22 @@ function App() {
   // TODO: Add authentication layer instead of the validLogin solution.
   // TODO: Reusable modal component
   // TODO: EmployeePreview minimalistic rounded version
-  // TODO: Proper Employee interface using the data model from backend. User interface extends employee interface(?)
   // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
   useEffect(() => {
     console.log(validLogin)
   }, [validLogin])
 
+
+  /** Test-user login:
+   *  username: user
+   *  password: 1234
+   */
   return (
     <Router>
 
       <Header />
-      <Navbar/>
-      
+      <Navbar />
+
       {/* navbar för mobilläge */}
       {/* <MobileNavbar /> */}
 

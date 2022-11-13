@@ -1,5 +1,20 @@
 [
   {
+    "_id": "6360e3f4fc13ae4ed00209f9",
+    "username": "user",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "user@user.com",
+    "oneLiner": null,
+    "presentation": null,
+    "skill": null,
+    "title": null,
+    "hash": null,
+    "salt": null,
+    "password": "1234"
+  },
+
+  {
     "_id": "6360e3f4fc13ae4ed00009f6",
     "username": "lopfer0",
     "firstName": "Lyn",
@@ -10,7 +25,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "ZHvhVhkhGM"
   },
 
   {
@@ -24,7 +40,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "GDRsglIY"
   },
 
   {
@@ -38,7 +55,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "mHwKrkg"
   },
 
   {
@@ -52,7 +70,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "9YHaFk1wf"
   },
 
   {
@@ -66,7 +85,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "9hDOKiayP"
   },
 
   {
@@ -80,7 +100,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "mdE6KqPJtxJF"
   },
 
   {
@@ -94,7 +115,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "oWCQHc"
   },
 
   {
@@ -108,7 +130,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "WYkjyCK"
   },
 
   {
@@ -122,7 +145,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "bvhfVFldh5SK"
   },
 
   {
@@ -136,7 +160,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "x0ye8lrfmrEa"
   },
 
   {
@@ -150,7 +175,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "PBOXpK"
   },
 
   {
@@ -164,7 +190,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "HQh4RHY"
   },
 
   {
@@ -178,7 +205,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "GXnPF5"
   },
 
   {
@@ -192,7 +220,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "GrLQCOdquKoC"
   },
 
   {
@@ -206,7 +235,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "2Tqe9J"
   },
 
   {
@@ -220,7 +250,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "W3YzyIQ0G71"
   },
 
   {
@@ -234,7 +265,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "5lVVoHuqd9"
   },
 
   {
@@ -248,7 +280,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "ddUUnyIH0"
   },
 
   {
@@ -262,7 +295,8 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "8zDeVpaQ0Dd"
   },
 
   {
@@ -276,6 +310,7 @@
     "skill": null,
     "title": null,
     "hash": null,
-    "salt": null
+    "salt": null,
+    "password": "ngQJRIA7"
   }
 ]

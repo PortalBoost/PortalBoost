@@ -47,5 +47,13 @@
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<DeleteResult> DeleteAsync(string id) => await _userCollection.DeleteOneAsync(u => u.ID == id);
+
+        /// <summary>
+        /// Returns a user by username and password.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns>A user with matching username and password.</returns>
+        public async Task<User> LoginPasswordAsync(string username, string password) => await _userCollection.Find(x => x.Username == username && x.Password == password).FirstOrDefaultAsync();
     }
 }
