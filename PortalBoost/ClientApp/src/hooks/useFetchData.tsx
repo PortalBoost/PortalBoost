@@ -10,9 +10,8 @@ const useFetchData = () => {
 	const [companyData, setCompanyData] = useRecoilState(companyDataState)
 
 
-
+	// TODO: Loop error.
 	const getUsers = async () => {
-
 		const users = await getUsers();
 		console.log(users)
 	}

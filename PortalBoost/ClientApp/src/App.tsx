@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import AuthRoute from "./components/AuthRoute";
 import ContentWrapper from './components/common/ContentWrapper';
 import LandingPage from './pages/landingPage/LandingPage';
@@ -14,20 +14,33 @@ import MobileNavbar from './components/navBar/MobileNavBar';
 import successfullLogin from "./atoms/successfulLoginState";
 import useFetchData from "./hooks/useFetchData";
 import { getUsers } from "./services/API/userService";
+import userDataState from "./atoms/userDataState";
+import { getCompanies } from "./services/API/companyService";
+import companyDataState from "./atoms/companyDataState";
 
 
 function App() {
-
+  const setUserData = useSetRecoilState(userDataState)
+  const setCompanyData = useSetRecoilState(companyDataState)
   const validLogin = useRecoilValue(successfullLogin)
-  const getData = useFetchData();
+
+  // TODO: Move out into hook
+  const getData = async () => {
+    const users = await getUsers();
+    const companies = await getCompanies();
+    setUserData(users)
+    setCompanyData(companies)
+    console.log(users)
+    console.log(companies)
+  }
 
   // TODO: Reusable modal component
   // TODO: EmployeePreview minimalistic rounded version
   // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
   useEffect(() => {
     console.log(validLogin)
-    const users = getData.getUsers();
-    console.log(users)
+    getData();
+
   }, [])
 
 
