@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useRecoilState } from "recoil";
-import successfullLogin from "../../atoms/successfulLogin";
+import successfullLogin from "../../atoms/successfulLoginState";
 import userState from "../../atoms/userState";
 import UserModel from "../../models/userModel";
 import { loginUser } from "../../services/API/userService";

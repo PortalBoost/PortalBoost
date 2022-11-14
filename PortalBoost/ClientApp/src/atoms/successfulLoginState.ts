@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 
-const successfullLogin = atom({
+const successfullLoginState = atom({
 	key: "successfullLogin",
 	default: false
 });
 
-export default successfullLogin;
+export default successfullLoginState;

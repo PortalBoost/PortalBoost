@@ -11,20 +11,24 @@ import LoginPage from "./pages/loginPage/LoginPage";
 import Header from './components/header/Header';
 import Navbar from './components/navBar/Navbar';
 import MobileNavbar from './components/navBar/MobileNavBar';
-import successfullLogin from "./atoms/successfulLogin";
+import successfullLogin from "./atoms/successfulLoginState";
+import useFetchData from "./hooks/useFetchData";
+import { getUsers } from "./services/API/userService";
 
 
 function App() {
 
   const validLogin = useRecoilValue(successfullLogin)
+  const getData = useFetchData();
 
-  // BUG: When being logged in and navigating to 404 page, user is logged out..
   // TODO: Reusable modal component
   // TODO: EmployeePreview minimalistic rounded version
   // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
   useEffect(() => {
     console.log(validLogin)
-  }, [validLogin])
+    const users = getData.getUsers();
+    console.log(users)
+  }, [])
 
 
   /** Test-user login:

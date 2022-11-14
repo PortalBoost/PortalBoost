@@ -6,7 +6,7 @@ const getUsers = async () => {
 
 	// Handle response, network error?
 	const response = await fetch(`${BASE_URL}/AllUsers`)
-	if (!response.ok) throw new Error(`Error: ${response.status}`)
+
 	const data = await response.json();
 	return data;
 }
