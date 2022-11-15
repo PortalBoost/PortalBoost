@@ -18,7 +18,7 @@ const useAuth = () => {
 		setUserAuth(false);
 	}
 
-	const login = (user: UserModel) => {
+	const setValidLogin = (user: UserModel) => {
 		setCurrentUser(user);
 		setUserAuth(true)
 		navigate("/")
@@ -26,7 +26,7 @@ const useAuth = () => {
 
 	return {
 		logout,
-		login
+		setValidLogin
 	}
 };
 

@@ -9,20 +9,20 @@ import useAuth from "../../hooks/useAuth";
 
 
 
-
+// TODO: Proper responsiveness
+// TODO: Style the default input-validation messages.
 const LoginForm = () => {
-	const auth = useAuth();
+	const { setValidLogin } = useAuth();
 
-	const [emailField, setEmailField] = useState("");
 	const [usernameField, setUsernameField] = useState("");
 	const [passField, setPassField] = useState("");
 	const [loggedInUser, setLoggedInUser] = useRecoilState(userState)
 	const [loggedInSuccess, setLoggedInSuccess] = useRecoilState(successfullLogin)
 
-	const [showEmailHelpText, setShowEmailHelpText] = useState(false)
-	const [emailHelpText, setEmailHelpText] = useState("email-help-text");
-	const [showPassHelpText, setShowPassHelpText] = useState(false)
-	const [passWordHelpText, setpassWordHelpText] = useState("password-help-text");
+	const [showHelpTextUsername, setShowHelpTextUsername] = useState(false)
+	const [helpTextUsername, setHelpTextUsername] = useState("username-help-text");
+	const [showHelpTextPass, setShowHelpTextPass] = useState(false)
+	const [helpTextPassword, setHelpTextPassword] = useState("password-help-text");
 
 	const [infoText, setInfoText] = useState("infoTextPlaceholder")
 	const [showInfoText, setShowInfoText] = useState(false)
@@ -33,27 +33,26 @@ const LoginForm = () => {
 		e.preventDefault();
 
 		setDisableLogin(true)
-		const testLogin = await loginUser(emailField, passField)
-		if (testLogin == 404) {
+		const loginRequest = await loginUser(usernameField, passField)
+		if (loginRequest == 404) {
 			setInfoText("User could not be found")
 			setShowInfoText(true)
 		}
 		else {
-			auth.login(testLogin)
+			setValidLogin(loginRequest)
 		}
 		setDisableLogin(false)
 	}
 
-	const handlePassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handlePassFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassField(e.target.value)
 	}
 
-	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setEmailField(e.target.value)
+	const handleUserFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setUsernameField(e.target.value)
 	}
 
-	// TODO: Proper responsiveness
-	// TODO: Style the default input-validation messages.
+
 	return (
 
 		<div className="flex flex-col justify-center items-center  border-2 rounded-md p-5 py-10 xs:p-20  bg-white">
@@ -61,19 +60,19 @@ const LoginForm = () => {
 
 			<form onSubmit={(e) => handleSubmit(e)} onFocus={() => setShowInfoText(false)}>
 				<div className="pb-0" >
-					<label id="email" className="font-sans sr-only">E-mail</label>
-					<input id="email" name="email" type="text" autoComplete="password" placeholder="E-mail" onChange={handleEmailChange} required
+					<label id="username" className="font-sans sr-only">Username</label>
+					<input id="username" name="username" type="text" autoComplete="password" placeholder="Username" onChange={handleUserFieldChange} required
 						className="relative block rounded-sm px-2 py-1 text-sm font-arial text-n-dark placeholder-n-dark ring-1 ring-n-dark focus:outline-none focus:ring-2">
 					</input>
-					<span className={`text-xs ${showEmailHelpText ? "visible" : "invisible"}`}>{emailHelpText}</span>
+					<span className={`text-xs ${showHelpTextUsername ? "visible" : "invisible"}`}>{helpTextUsername}</span>
 				</div>
 
 				<div className="">
 					<label id="password" className="font-sans sr-only">Password</label>
-					<input id="password" name="password" type="password" autoComplete="password" placeholder="Password" onChange={handlePassChange} required
+					<input id="password" name="password" type="password" autoComplete="password" placeholder="Password" onChange={handlePassFieldChange} required
 						className="relative block rounded-sm px-2 py-1 text-sm font-arial text-n-dark placeholder-n-dark ring-1 ring-n-dark focus:outline-none focus:ring-2">
 					</input>
-					<span className={`text-xs ${showPassHelpText ? "visible" : "invisible"}`}>{passWordHelpText}</span>
+					<span className={`text-xs ${showHelpTextPass ? "visible" : "invisible"}`}>{helpTextPassword}</span>
 				</div>
 
 				<button disabled={disableLogin} className=" bg-n-turquoise text-white p-1 rounded-md w-full hover:shadow-lg hover:bg-n-turquoise-dark transition-shadow active:bg-n-turquoise-light">Login</button>
