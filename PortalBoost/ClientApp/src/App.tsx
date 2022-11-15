@@ -24,8 +24,6 @@ import companyDataState from "./atoms/companyDataState";
 function App() {
   const setUserData = useSetRecoilState(userDataState)
   const setCompanyData = useSetRecoilState(companyDataState)
-  const validLogin = useRecoilValue(successfullLogin)
-
 
   // TODO: Move out into useFetchData hook
   const getData = async () => {
@@ -36,7 +34,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(validLogin)
     getData();
   }, [])
 
