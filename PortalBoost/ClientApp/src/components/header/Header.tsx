@@ -12,7 +12,7 @@ const Header = () => {
 
 					<div className="text-4xl ">
 						<Link to="/">
-							Nexer
+							Nexer Portal Boost
 						</Link>
 					</div>
 					<div className=" border-black rounded-xl p-2 flex flex-shrink-0" >

@@ -10,10 +10,11 @@ const PreviewCard:React.FC<{id:number, companyName:string, companyDescription:st
 	const cardImage = "rounded-lg w-full h-40 object-cover object-center mb-6"
 	const cardTitle = "text-2xl font-medium text-gray-900 mb-3"
 	const cardText = "leading-relaxed text-base"
-
+	
+	//for card: w-screen md:w-1/3 p-4
 	return (
-		<div className="w-screen md:w-1/3 p-4">
-			<div className={isHovered ? cardHover : card}>
+		<div className="grid p-4 bg-pink-500">
+			<div className={card}>
 				<img className={cardImage} src="https://dummyimage.com/720x400" alt="image" />
 				<h2 className={cardTitle}>{companyName}</h2>
 				<p className={cardText}>{companyDescription}</p>

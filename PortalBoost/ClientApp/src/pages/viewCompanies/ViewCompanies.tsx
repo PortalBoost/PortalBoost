@@ -13,18 +13,20 @@ const ViewCompanies = () => {
 	]
 
 	return (
-		<div> Here's a bunch of companies. 
+		<div className="m-10 ml-60"> Here's a bunch of companies. 
+		<div className="">
 			{/* search bar */}
 
 			{/* preview card */}
-			<Link to="/companies/testCompany">
+			
 			{testCompanies.map((company) => (
 				<PreviewCard 
 				key={company.companyId} 
 				id={company.companyId}
 				companyName={company.companyName} 
 				companyDescription={company.companyDescription}/>))}
-			</Link>
+			
+			</div>
 		</div>
 	)
 }
