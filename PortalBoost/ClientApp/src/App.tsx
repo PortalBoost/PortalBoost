@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import AuthRoute from "./components/AuthRoute";
 import ContentWrapper from './components/common/ContentWrapper';
 import LandingPage from './pages/landingPage/LandingPage';
@@ -11,20 +11,34 @@ import LoginPage from "./pages/loginPage/LoginPage";
 import Header from './components/header/Header';
 import Navbar from './components/navBar/Navbar';
 import MobileNavbar from './components/navBar/MobileNavBar';
-import successfullLogin from "./atoms/successfulLogin";
+import successfullLogin from "./atoms/successfulLoginState";
+import useFetchData from "./hooks/useFetchData";
+import { getUsers } from "./services/API/userService";
+import userDataState from "./atoms/userDataState";
+import { getCompanies } from "./services/API/companyService";
+import companyDataState from "./atoms/companyDataState";
 
-
+// TODO: Reusable modal component
+// TODO: EmployeePreview minimalistic rounded version
+// TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
 function App() {
-
+  const setUserData = useSetRecoilState(userDataState)
+  const setCompanyData = useSetRecoilState(companyDataState)
   const validLogin = useRecoilValue(successfullLogin)
 
-  // BUG: When being logged in and navigating to 404 page, user is logged out..
-  // TODO: Reusable modal component
-  // TODO: EmployeePreview minimalistic rounded version
-  // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
+
+  // TODO: Move out into useFetchData hook
+  const getData = async () => {
+    const users = await getUsers();
+    const companies = await getCompanies();
+    setUserData(users)
+    setCompanyData(companies)
+  }
+
   useEffect(() => {
     console.log(validLogin)
-  }, [validLogin])
+    getData();
+  }, [])
 
 
   /** Test-user login:

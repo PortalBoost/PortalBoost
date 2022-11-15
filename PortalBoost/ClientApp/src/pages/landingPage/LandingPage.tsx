@@ -1,6 +1,6 @@
 import { useRecoilState, useRecoilValue } from "recoil"
 import { useNavigate } from "react-router-dom"
-import successfullLogin from "../../atoms/successfulLogin"
+import successfullLogin from "../../atoms/successfulLoginState"
 import userState from "../../atoms/userState"
 import UserModel from "../../models/userModel"
 import useAuth from "../../hooks/useAuth"

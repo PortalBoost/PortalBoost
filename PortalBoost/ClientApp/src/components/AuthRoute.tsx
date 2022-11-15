@@ -1,5 +1,5 @@
 import { useRecoilValue } from "recoil";
-import successfullLogin from "../atoms/successfulLogin";
+import successfullLogin from "../atoms/successfulLoginState";
 import { Navigate, Outlet } from "react-router-dom";
 
 const AuthRoute = () => {
