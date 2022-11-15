@@ -14,6 +14,7 @@ const useFetchData = () => {
 	const getUsers = async () => {
 		const users = await getUsers();
 		console.log(users)
+
 	}
 
 	return {

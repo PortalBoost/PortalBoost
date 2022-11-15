@@ -18,29 +18,26 @@ import userDataState from "./atoms/userDataState";
 import { getCompanies } from "./services/API/companyService";
 import companyDataState from "./atoms/companyDataState";
 
-
+// TODO: Reusable modal component
+// TODO: EmployeePreview minimalistic rounded version
+// TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
 function App() {
   const setUserData = useSetRecoilState(userDataState)
   const setCompanyData = useSetRecoilState(companyDataState)
   const validLogin = useRecoilValue(successfullLogin)
 
-  // TODO: Move out into hook
+
+  // TODO: Move out into useFetchData hook
   const getData = async () => {
     const users = await getUsers();
     const companies = await getCompanies();
     setUserData(users)
     setCompanyData(companies)
-    console.log(users)
-    console.log(companies)
   }
 
-  // TODO: Reusable modal component
-  // TODO: EmployeePreview minimalistic rounded version
-  // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
   useEffect(() => {
     console.log(validLogin)
     getData();
-
   }, [])
 
 
