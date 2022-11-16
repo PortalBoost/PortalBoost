@@ -1,9 +1,9 @@
 import { atom } from "recoil";
 import CompanyModel from "../models/companyModel";
 
-const companyDataState = atom({
+const companyDataState = atom<CompanyModel[]>({
 	key: "companyData",
-	default: <CompanyModel[]>([])
+	default: []
 });
 
 export default companyDataState;

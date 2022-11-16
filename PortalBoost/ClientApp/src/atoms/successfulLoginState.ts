@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-const successfullLoginState = atom({
+const successfullLoginState = atom<boolean>({
 	key: "successfullLogin",
 	default: false
 });
