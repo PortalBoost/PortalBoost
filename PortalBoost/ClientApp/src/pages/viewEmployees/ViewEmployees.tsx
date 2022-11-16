@@ -1,3 +1,5 @@
+import { useRecoilValue } from "recoil"
+import userDataState from "../../atoms/userDataState"
 import EmployeePreview from "../../components/employee/EmployeePreview"
 
 
@@ -6,8 +8,8 @@ import EmployeePreview from "../../components/employee/EmployeePreview"
 
 
 const ViewEmployees = () => {
+	const employeeData = useRecoilValue(userDataState)
 
-	//TODO: Get all employees/mock employees. Map out all employees in container, show employeepreview for each employee. On click, get id, show modal with usermodal with same id.
 
 	const TEST_EMPLOYEES = [
 		{ testEmployeeID: 1 },
