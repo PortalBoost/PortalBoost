@@ -5,17 +5,14 @@ const BASE_URL = "/api/User"
 
 
 //TODO: Separate the fetch and handling of request into separate APIhandler/facade/hook? Default body/header stuff.
-const getUsers = async () => {
+const fetchUsers = async () => {
 
-	// Handle response, network error?
+
 	const response = await fetch(`${BASE_URL}/AllUsers`)
 	const json = await response.json();
 
-	// const data = json.map((user: UserModel) => {
-	// 	return user as EmployeeModel
-	// });
+	if (!response.ok) throw new Error(`Error: ${response.status}`)
 
-	//TODO: There must be a better way of not getting the password prop. Casting to EmployeeModel doesn't work.
 	const data = json.map((employee: UserModel) => {
 		employee.password = ""
 		return employee
@@ -44,5 +41,5 @@ const loginUser = async (username: string, password: string) => {
 	return data;
 }
 
-export { getUsers, loginUser }
+export { fetchUsers, loginUser }
 

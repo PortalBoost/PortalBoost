@@ -13,31 +13,23 @@ import Navbar from './components/navBar/Navbar';
 import MobileNavbar from './components/navBar/MobileNavBar';
 import successfullLogin from "./atoms/successfulLoginState";
 import useFetchData from "./hooks/useFetchData";
-import { getUsers } from "./services/API/userService";
-import userDataState from "./atoms/userDataState";
-import { getCompanies } from "./services/API/companyService";
+import EmployeeModel from "./models/employeeModel";
 import companyDataState from "./atoms/companyDataState";
+import CompanyModel from "./models/companyModel";
+
+
 
 // TODO: Reusable modal component
 // TODO: EmployeePreview minimalistic rounded version
 // TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
 function App() {
-  const setUserData = useSetRecoilState(userDataState)
-  const setCompanyData = useSetRecoilState(companyDataState)
+
   const validLogin = useRecoilValue(successfullLogin)
-
-
-  // TODO: Move out into useFetchData hook
-  const getData = async () => {
-    const users = await getUsers();
-    const companies = await getCompanies();
-    setUserData(users)
-    setCompanyData(companies)
-  }
+  const { setData } = useFetchData();
 
   useEffect(() => {
     console.log(validLogin)
-    getData();
+    setData();
   }, [])
 
 
