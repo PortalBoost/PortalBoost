@@ -9,6 +9,7 @@ import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
 import LoginPage from "./pages/loginPage/LoginPage";
 import Header from './components/header/Header';
+import Footer from "./components/footer/Footer";
 import Navbar from './components/navBar/Navbar';
 import MobileNavbar from './components/navBar/MobileNavBar';
 import successfullLogin from "./atoms/successfulLoginState";
@@ -46,7 +47,9 @@ function App() {
     <Router>
 
       <Header />
+
       <Navbar />
+
 
       {/* navbar för mobilläge */}
       {/* <MobileNavbar /> */}
@@ -66,7 +69,7 @@ function App() {
         </Routes>
 
       </ContentWrapper>
-      {/* Footer */}
+      <Footer />
 
     </Router>
   )
