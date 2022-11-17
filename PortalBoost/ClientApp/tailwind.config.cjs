@@ -39,6 +39,7 @@ module.exports = {
       "arial": ["Arimo", ...defaultTheme.fontFamily.sans]
     },
     screens: {
+      "xxs": "290px", ...defaultTheme.screens,
       "xs": "475px", ...defaultTheme.screens,
     }
   },
