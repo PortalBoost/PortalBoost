@@ -7,7 +7,9 @@ import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
 import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
+import CompanyPage from './pages/viewCompanies/CompanyPage';
 import LoginPage from "./pages/loginPage/LoginPage";
+import Profile from "./pages/profilePage/Profile";
 import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
 import ConditionalNavbar from './components/navBar/ConditionalNavbar';
@@ -50,6 +52,9 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/employees" element={<ViewEmployees />} />
             <Route path="/companies" element={<ViewCompanies />} />
+            <Route path="/testComp" element={<CompanyPage />} />
+            <Route path="/profile" element={<Profile />} />
+
           </Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="*" element={<PageNotFound />} />

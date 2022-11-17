@@ -16,7 +16,11 @@ const Header = () => {
 						</Link>
 					</div>
 					<div className=" border-black rounded-xl p-2 flex flex-shrink-0" >
-						<p className="hover-text"><BsPerson /></p>	
+						<p className="hover-text">
+							<Link to="./profile">
+							<BsPerson />
+							<p className="justify-items-center">profile</p> 
+							</Link></p>	
 					</div>
 				</div>
 			</div>
