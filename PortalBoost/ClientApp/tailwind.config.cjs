@@ -31,6 +31,9 @@ module.exports = {
         },
         "n-dark": "#222222",
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      }
     },
     fontFamily: {
       "sans": ["BwGradual", ...defaultTheme.fontFamily.sans],
@@ -41,7 +44,7 @@ module.exports = {
     screens: {
       "xxs": "290px", ...defaultTheme.screens,
       "xs": "475px", ...defaultTheme.screens,
-    }
+    },
   },
   plugins: [],
 }

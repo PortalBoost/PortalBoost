@@ -23,9 +23,12 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 				</div>
 
 				<div onClick={toggleOpen}
-					className="p-4 pt-2 bg-white shadow-md -mt-6 cursor-pointer" >
-					<div className="flex max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600"></div>
+					className="p-4 pt-2 bg-white shadow-sm -mt-6 cursor-pointer" >
+					<div className="relative">
+						<div className=" bg-gradient-to-r from-transparent to-transparent via-black h-0.5  w-3/4  absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-2"></div>
+					</div>
 					<div className="text-n-purple font-semibold text-lg text-center">{employee.firstName} {employee.lastName}</div>
+					<div className="flex mx-auto max-w-0 group-hover:max-w-[50%] transition-all duration-500 h-0.5 bg-n-purple"></div>
 					<p className="mt-2 italic text-center">Short one-liner intro, interesting things in here. Short and sweet. </p>
 				</div>
 
