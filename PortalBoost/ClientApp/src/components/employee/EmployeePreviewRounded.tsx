@@ -20,12 +20,12 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 		<>
 			<div className=" flex flex-col relative group ">
 
-				<div onClick={toggleOpen} className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer" >
+				<div onClick={toggleOpen} className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-transform " >
 					{placeholderImage}
 				</div>
 
 				<div onClick={toggleOpen}
-					className="p-4 pt-2 bg-white shadow-sm -mt-6 cursor-pointer" >
+					className="p-4 pt-2 bg-white group-hover:shadow-xl -mt-6 cursor-pointer transition-shadow z-0 rounded-b-2xl" >
 					<div className="relative">
 						<div className=" bg-gradient-to-r from-transparent to-transparent via-black h-0.5  w-3/4  absolute top-1/2 left-1/2 -translate-x-1/2  -translate-y-2"></div>
 					</div>
