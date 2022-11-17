@@ -1,4 +1,5 @@
 import { useState } from "react"
+import EmployeeModel from "../../models/employeeModel";
 import EmployeeModal from "./EmployeeModal"
 
 // TODO: Get employee ID, send ID to employeemodal
@@ -8,7 +9,7 @@ interface TestEmployeeProps {
 	testId: number;
 }
 
-const EmployeePreview = ({ testId }: TestEmployeeProps) => {
+const EmployeePreview = ({ employee }: { employee: EmployeeModel }) => {
 
 	const [openModal, setOpenModal] = useState(false)
 
@@ -35,14 +36,15 @@ const EmployeePreview = ({ testId }: TestEmployeeProps) => {
 				<div className="flex justify-center ">
 					{placeholderProfilePicture}
 				</div>
+
 				<hr className="m-1"></hr>
 				<div className="p-4 pt-2">
-					<div className="text-n-purple font-semibold text-lg">Person Name {testId}</div>
+					<div className="text-n-purple font-semibold text-lg">{employee.firstName} {employee.lastName}</div>
 					{/* <p className="mt-2 font-bold">One-liner</p> */}
 					<p className="mt-2 italic">Short one-liner intro, interesting things in here. Short and sweet. </p>
 				</div>
 			</div>
-			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} testId={testId} />
+			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />
 		</>
 	)
 }

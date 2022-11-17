@@ -39,10 +39,10 @@ const ViewEmployees = () => {
 					<p className="pt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure fugiat animi quidem aut voluptate eius voluptas ad ipsa officia</p>
 					<p className="pt-2">Entertaining sentence about having a fika. Sentence about getting in touch via mail. </p>
 				</div>
-				{/** Test container */}
+
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-5">
-					{TEST_EMPLOYEES.map((x) => (
-						<EmployeePreview key={x.testEmployeeID} testId={x.testEmployeeID} />
+					{employeeData.map((employee) => (
+						<EmployeePreview employee={employee} />
 					))}
 				</div>
 
