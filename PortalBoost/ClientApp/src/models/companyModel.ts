@@ -6,5 +6,5 @@ export default interface CompanyModel {
 	description?: string[];
 	techniques?: string[];
 	systemsUsed: string[];
-	employees?: EmployeeModel[];
+	employees: EmployeeModel[];
 }

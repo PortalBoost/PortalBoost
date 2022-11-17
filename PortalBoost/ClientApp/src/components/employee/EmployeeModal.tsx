@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5"
 import { RiMailSendLine } from "react-icons/ri"
+import useFetchData from "../../hooks/useFetchData";
 
 interface EmployeeModalProps {
 	isOpen: boolean;
@@ -15,7 +16,7 @@ interface EmployeeModalProps {
 // TODO: Animation.
 // TODO: Send message button: Take email of viewed employee, open default mail program. 
 const EmployeeModal = ({ isOpen, toggleOpen, testId }: EmployeeModalProps) => {
-
+	const { getEmployeeAssignments } = useFetchData();
 
 
 	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px]  shrink flex justify-center items-center 
