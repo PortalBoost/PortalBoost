@@ -15,11 +15,11 @@ const Header = () => {
 							PortalBoost
 						</Link>
 					</div>
-					<div className=" border-black rounded-xl p-2 flex flex-shrink-0" >
-						<p className="hover-text">
+					<div className="rounded-xl p-2 flex flex-shrink-0" >
+						<p className=" hover:text-n-purple-light ease-in-out duration-300">
 							<Link to="./profile">
-							<BsPerson />
-							<p className="justify-items-center">profile</p> 
+							<p><BsPerson /></p>
+							<p>profile</p> 
 							</Link></p>	
 					</div>
 				</div>
