@@ -1,9 +1,9 @@
 import { atom } from "recoil";
-import { TestUser } from "../models/TestUser";
+import UserModel from "../models/userModel";
 
-const userState = atom({
+const userState = atom<UserModel>({
 	key: "userState",
-	default: {} as TestUser
+	default: {} as UserModel
 });
 
 export default userState;

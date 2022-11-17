@@ -33,6 +33,9 @@ using MongoDB.Bson;
 
         public string Title { get; set; } = "";
 
+        //TODO: Remove password field from model+database when/if hash+salt is implemented?
+        public string Password { get; set; } = "";
+
         public string Hash { get; set; } = "";
 
         public string Salt { get; set; } = "";

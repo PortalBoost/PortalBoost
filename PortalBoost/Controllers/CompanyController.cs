@@ -1,6 +1,7 @@
 ﻿namespace PortalBoost.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using MongoDB.Driver;
     using PortalBoost.Data.Models;
     using PortalBoost.Data.Services;
     using System;
@@ -27,5 +28,31 @@
             if (users == null) return NotFound();
             return Ok(users);
         }
+
+
+        [HttpGet("GetCompanyById")]
+        public async Task<ActionResult<Company>> Get(string id)
+        {
+            var company = await _companyService.GetCompanyById(id);
+            if (company == null)
+            {
+                return NotFound();
+            }
+            return Ok(company);
+        }
+
+        [HttpDelete("DeleteCompany")]
+        public async Task<ActionResult<DeleteResult>> Delete(string id)
+        {
+            var deletion = await _companyService.DeleteAsync(id);
+            if (deletion.IsAcknowledged)
+            {
+                return Ok();
+            } else
+            {
+                return NotFound();
+            }
+        }
+
     }
 }

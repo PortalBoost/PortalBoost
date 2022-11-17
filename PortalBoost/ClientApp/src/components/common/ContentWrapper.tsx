@@ -7,7 +7,7 @@ type PropsT = {
 const ContentWrapper = (props: PropsT) => {
 
 	return (
-		<div className="container mx-auto max-w-8xl">
+		<div className="container mx-auto max-w-4xl md:max-w-6xl">
 			{props.children}
 		</div>
 	)

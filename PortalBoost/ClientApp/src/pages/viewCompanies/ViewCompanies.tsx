@@ -1,8 +1,18 @@
+import { useRecoilValue } from "recoil"
+import companyDataState from "../../atoms/companyDataState"
+import useFetchData from "../../hooks/useFetchData";
+import CompanyModel from "../../models/companyModel";
 import PreviewCard from '../../components/previewCard/PreviewCard'
 import { Link } from 'react-router-dom'
 
 const ViewCompanies = () => {
 
+	const companyData = useRecoilValue(companyDataState)
+	const { getUsersAtCompany } = useFetchData();
+
+	// Lägg in ID från valt company in som id parameter, och så får man tillbaka en array med anställda som jobbar på det företaget
+	const usersWorkingAtASpecificCompanyTest = getUsersAtCompany({ id: "6374cf17193bf25d5515a513" } as CompanyModel)
+	
 	//data for testing
 	const testCompanies = [
 		{companyId: 1, companyName: "Company 1", companyDescription: "This is a company. A fine one. Not a regular company, but a company still. Company with a goal. What more do you want to know? ..."},

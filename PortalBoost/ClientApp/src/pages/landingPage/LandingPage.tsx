@@ -1,31 +1,26 @@
 import { useRecoilState, useRecoilValue } from "recoil"
 import { useNavigate } from "react-router-dom"
-import successfullLogin from "../../atoms/successfulLogin"
+import successfullLogin from "../../atoms/successfulLoginState"
 import userState from "../../atoms/userState"
-import { TestUser } from "../../models/TestUser"
+import UserModel from "../../models/userModel"
+import useAuth from "../../hooks/useAuth"
 
 
 
 const LandingPage = () => {
-	const navigate = useNavigate();
+	const auth = useAuth();
 	//Test stuff
 	const [loggedinUser, setLoggedinUser] = useRecoilState(userState)
 	const [validLogin, setValidLogin] = useRecoilState(successfullLogin)
 
-	// TODO: Redirect to "/" as a logged out user
 	const testHandleLogout = () => {
-		// Test stuff, resets testUser object. There's probably a better way of doing this
-		const emtpyUser: TestUser = {
-			username: "",
-			email: "",
-			password: "",
-		}
-		setLoggedinUser(emtpyUser);
-		setValidLogin(false);
+		auth.logout();
 	}
 
+
+
 	return (
-		<div>
+		<div className="">
 			<p className="">This is a LandingPage</p>
 			<p>You appear to be logged in as: </p>
 			<p className="font-bold">Username: {loggedinUser.username}<br /> Email: {loggedinUser.email} </p>
