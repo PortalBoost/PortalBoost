@@ -52,7 +52,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/employees" element={<ViewEmployees />} />
             <Route path="/companies" element={<ViewCompanies />} />
-            <Route path="/testComp" element={<CompanyPage />} />
+            <Route path="/companies/testCompany" element={<CompanyPage />} />
             <Route path="/profile" element={<Profile />} />
 
           </Route>

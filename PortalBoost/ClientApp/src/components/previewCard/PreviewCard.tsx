@@ -15,7 +15,7 @@ const PreviewCard:React.FC<{id:number, companyName:string, companyDescription:st
 	return (
 		<div className="">
 			<div className={card}>
-				<img className={cardImage} src="https://dummyimage.com/720x400" alt="image" />
+				<img className={cardImage} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
 				<h2 className={cardTitle}>{companyName}</h2>
 				<p className={cardText}>{companyDescription}</p>
 			</div>

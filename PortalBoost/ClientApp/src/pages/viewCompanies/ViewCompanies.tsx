@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 
 const ViewCompanies = () => {
 
+	const companyCardsGrid = "m-10 xl:ml-0 lg:ml-60 md:m-10 md:ml-40sm:m-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+
 	const companyData = useRecoilValue(companyDataState)
 	const { getUsersAtCompany } = useFetchData();
 
@@ -23,18 +25,21 @@ const ViewCompanies = () => {
 	]
 
 	return (
-		<div className="m-10 xl:ml-0 lg:ml-60 md:m-10 md:ml-60 sm:m-5"> Here's a bunch of companies. 
-		<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+		<div className=" "> 
+		<h1 className="flex justify-center m-10"> Våra kunder</h1>
+		<div className={companyCardsGrid}>
 			{/* search bar */}
 
 			{/* preview card */}
 			
 			{testCompanies.map((company) => (
+				<Link to="./testCompany">
 				<PreviewCard 
 				key={company.companyId} 
 				id={company.companyId}
 				companyName={company.companyName} 
-				companyDescription={company.companyDescription}/>))}
+				companyDescription={company.companyDescription}/>
+				</Link>))}
 			
 			</div>
 		</div>
