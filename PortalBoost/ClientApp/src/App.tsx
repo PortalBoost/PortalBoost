@@ -7,17 +7,17 @@ import LandingPage from './pages/landingPage/LandingPage';
 import PageNotFound from './pages/pageNotFound/PageNotFound';
 import ViewEmployees from './pages/viewEmployees/ViewEmployees';
 import ViewCompanies from './pages/viewCompanies/ViewCompanies';
+import CompanyPage from './pages/viewCompanies/CompanyPage';
 import LoginPage from "./pages/loginPage/LoginPage";
+import Profile from "./pages/profilePage/Profile";
 import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
-import Navbar from './components/navBar/Navbar';
-import MobileNavbar from './components/navBar/MobileNavBar';
+import ConditionalNavbar from './components/navBar/ConditionalNavbar';
 import successfullLogin from "./atoms/successfulLoginState";
 import useFetchData from "./hooks/useFetchData";
 import EmployeeModel from "./models/employeeModel";
 import companyDataState from "./atoms/companyDataState";
 import CompanyModel from "./models/companyModel";
-
 
 
 // TODO: Reusable modal component
@@ -42,12 +42,7 @@ function App() {
     <Router>
 
       <Header />
-
-      <Navbar />
-
-
-      {/* navbar för mobilläge */}
-      {/* <MobileNavbar /> */}
+      <ConditionalNavbar/>
 
       <ContentWrapper>
 
@@ -57,6 +52,9 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/employees" element={<ViewEmployees />} />
             <Route path="/companies" element={<ViewCompanies />} />
+            <Route path="/companies/testCompany" element={<CompanyPage />} />
+            <Route path="/profile" element={<Profile />} />
+
           </Route>
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="*" element={<PageNotFound />} />
