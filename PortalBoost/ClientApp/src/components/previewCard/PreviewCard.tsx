@@ -5,7 +5,7 @@ const PreviewCard:React.FC<{id:number, companyName:string, companyDescription:st
 	
 	const [isHovered, setIsHovered] = useState(false)
 
-	const card = "bg-white rounded-lg shadow-lg p-5 "
+	const card = "bg-white rounded-lg shadow-lg p-5"
 	const cardHover = "bg-white rounded-lg shadow-lg p-4 transform hover:scale-105 transition duration-300 ease-in-out"
 	const cardImage = "rounded-xl w-full h-40 object-cover object-center mb-6"
 	const cardTitle = "text-2xl font-medium text-gray-900 mb-3 "

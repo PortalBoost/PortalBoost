@@ -21,7 +21,7 @@ const Header = () => {
 						<p className={profileIcon}>
 							<Link to="./profile">
 							<p><BsPerson /></p>
-							<p>profile</p> 
+							<p>profil</p> 
 							</Link></p>	
 					</div>
 				</div>
