@@ -8,12 +8,13 @@ const name = "pt-20 pb-10"
 const description = "p-4 pl-0 w-full "
 const image= "rounded-xl w-60 h-60 object-cover object-center mb-6 absolute right-1/4 top-60 border-2 p-6 h-40"
 
+//TODO: routing via id
+
 const CompanyPage = () => {
 	return(
 		<div className="grid grid-cols-2 m-10 p-10 rounded-lg shadow-lg">
 			<div>
-				<Link to="./companies">
-
+				<Link to="/companies">
 					<button className={buttonStyling}>
 						<p className="px-2 "><AiOutlineArrowLeft /></p>
 						Fler kunder</button>
@@ -27,10 +28,10 @@ const CompanyPage = () => {
 				</div>
 				
 			</div>
-			<div>
+			<div className="flex flex-col-reverse">
 				<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
 
-				<div className="">Här kommer teamet</div>
+				<div className="absolute right-1/4 ">Här kommer teamet eventuellt</div>
 			</div>
 		</div>
 	)
