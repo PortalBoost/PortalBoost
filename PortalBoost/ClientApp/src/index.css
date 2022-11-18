@@ -23,9 +23,7 @@
     @apply text-lg;
   }
 
-  body {
-    @apply min-h-screen;
-  }
+
 
 
   button {
