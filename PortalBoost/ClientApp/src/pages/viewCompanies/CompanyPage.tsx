@@ -3,7 +3,7 @@ import {AiOutlineArrowLeft} from 'react-icons/ai'
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.';
 
-const buttonStyling = "bg-n-turquoise hover:n-turquioise-dark text-white font-bold py-2 px-6 rounded flex flex-shrink-0 justify-items-center ease-out duration-300"
+const buttonStyling = "bg-n-turquoise hover:n-turquioise-dark text-white font-bold py-2 px-6 rounded flex justify-start gap-2 items-center ease-out duration-300"
 const name = "pt-20 pb-10"
 const description = "p-4 pl-0 w-full "
 const image= "rounded-xl w-60 h-60 object-cover object-center mb-6 absolute right-1/4 top-60 border-2 p-6 h-40"
@@ -16,7 +16,7 @@ const CompanyPage = () => {
 			<div>
 				<Link to="/companies">
 					<button className={buttonStyling}>
-						<p className="px-2 "><AiOutlineArrowLeft /></p>
+						<p><AiOutlineArrowLeft /></p>
 						Fler kunder</button>
 				</Link>
 
