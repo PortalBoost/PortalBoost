@@ -11,9 +11,9 @@ const Profile = () => {
 	const user = useRecoilValue(userState)
 
 	return (
-		<div>
-			<h1> Welcome to Your Profile, {user.firstName}</h1>
-			<EditProfileForm />
+		<div className="flex flex-col items-center mt-10 gap-4">
+			<div className="text-2xl"> Placeholder profile text, hi {user.firstName}</div>
+			<EditProfileForm user={user} />
 		</div>
 	);
 };
