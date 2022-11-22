@@ -110,7 +110,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 					<span className="text-xs font-arial cursor-default text-gray-500 place-self-end">{`${MAX_LENGTH_SKILL - formFields.skill.length} characters remaining`}</span>
 				</div>
 
-				<div className="flex justify-between w-full">
+				<div className="flex flex-col gap-8 sm:flex-row justify-between w-full">
 					<button onClick={handlePreview}>Preview Profile</button>
 					<button>Update Profile</button>
 				</div>

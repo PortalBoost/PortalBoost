@@ -52,13 +52,16 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 								{/** Card Content */}
 								<div className="p-3 xs:py-8 xs:pb-12 sm:px-10">
 									<div className="text-n-purple text-3xl uppercase py-2 ">  {employee.firstName} {employee.lastName}</div>
-									<div className="bg-gradient-to-r from-n-purple  p-0.5 w-2/5 rounded-full"></div>
-									{/* <p className="mt-2 font-bold">One-liner</p> */}
-									<p className="pt-2 italic">Short intro stuff, interesting things in here. Short and sweet. </p>
+									<div className="bg-gradient-to-r from-n-purple h-0.5 w-2/5 rounded-full"></div>
+
+									<p className="pt-2 italic"> {employee.oneLiner} </p>
+
 									<p className="mt-2 font-bold">Presentation</p>
-									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
-									<p className="mt-2 font-bold">Surprising fact</p>
-									<p className=""> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
+									<p> {employee.presentation}</p>
+
+									<p className="mt-2 font-bold">Surprising fact or skill</p>
+									<p className="">{employee.skill}</p>
+
 									<button className="mt-5 flex items-center px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
 								</div>
 								<div role="button" id="close-modal" onClick={toggleOpen}
