@@ -11,7 +11,7 @@ const Profile = () => {
 	const user = useRecoilValue(userState)
 
 	return (
-		<div className="flex flex-col items-center mt-10 gap-4">
+		<div className="flex flex-col items-center mt-10 gap-4 animate-fade-in">
 			<div className="text-4xl font-serif"> View or edit your profile </div>
 			<EditProfileForm user={user} />
 		</div>

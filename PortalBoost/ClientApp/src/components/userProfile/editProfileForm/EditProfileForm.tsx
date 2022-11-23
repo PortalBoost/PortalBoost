@@ -113,7 +113,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto ">
 							<option disabled selected>Select your title</option>
 							{Object.values(EmployeeTitles).map((title) => (
-								<option className="" value={title}>{title}</option>
+								<option key={title} className="" value={title}>{title}</option>
 							))}
 						</select>
 					</div>
@@ -176,7 +176,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 				</div> */}
 
 			</form>
-			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} />
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} />}
 		</>
 	)
 }

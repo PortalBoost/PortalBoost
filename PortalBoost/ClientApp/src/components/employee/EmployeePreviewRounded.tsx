@@ -35,7 +35,7 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 				</div>
 
 			</div>
-			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />}
 		</>
 	)
 }
