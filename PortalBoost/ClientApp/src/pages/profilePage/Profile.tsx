@@ -12,7 +12,7 @@ const Profile = () => {
 
 	return (
 		<div className="flex flex-col items-center mt-10 gap-4">
-			<div className="text-4xl font-serif"> Placeholder profile text, hi {user.firstName}</div>
+			<div className="text-4xl font-serif"> View or edit your profile </div>
 			<EditProfileForm user={user} />
 		</div>
 	);

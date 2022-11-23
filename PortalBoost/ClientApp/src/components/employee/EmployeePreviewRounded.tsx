@@ -2,7 +2,8 @@ import { useState } from "react"
 import EmployeeModel from "../../models/employeeModel";
 import EmployeeModal from "./EmployeeModal"
 import { AiOutlineUser } from "react-icons/ai";
-import { PlaceholderUserImage } from "../common/PlaceHolderUserImage";
+import { PlaceholderUserImage } from "../common/PlaceholderUserImage";
+
 
 
 const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
