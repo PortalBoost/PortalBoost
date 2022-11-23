@@ -31,7 +31,7 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 					</div>
 					<div className="text-n-purple font-semibold text-lg text-center">{employee.firstName} {employee.lastName}</div>
 					<div className="flex mx-auto max-w-0 group-hover:max-w-[50%] transition-all duration-500 h-0.5 bg-n-purple"></div>
-					<p className="mt-2 italic text-center">Short one-liner intro, interesting things in here. Short and sweet. </p>
+					<p className="mt-2 italic text-center">{employee.oneLiner} </p>
 				</div>
 
 			</div>
