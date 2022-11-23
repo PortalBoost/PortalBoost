@@ -17,6 +17,7 @@ interface EmployeeModalProps {
 // TODO: Close button, fixed at top. When scrolled down, fixed at bottom.
 // TODO: Animation.
 // TODO: Send message button: Take email of viewed employee, open default mail program. 
+// TODO: Fix animate-fade-out on component unmount
 const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => {
 	const { getEmployeeAssignments } = useFetchData();
 
@@ -34,9 +35,9 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 			onClick={toggleOpen} >
 
 			{/** Modal background */}
-			<div id="modal" className="bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
+			<div id="modal" className={`bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
 						w-full h-screen sm:max-w-3xl xs:h-auto overflow-auto
-						rounded-sm  animate-fade-in"
+						rounded-sm  ${isOpen ? "animate-fade-in" : "animate-fade-out"}`}
 				onClick={(e) => e.stopPropagation()}>
 
 				{/** Main Content */}
