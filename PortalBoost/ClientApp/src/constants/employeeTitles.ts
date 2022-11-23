@@ -1,6 +1,6 @@
 enum EmployeeTitles {
 	SM = "Scrum Master",
-	TEST = "Tester",
+	TEST = "QA Tester",
 	DEV = "Developer",
 	UX = "UX-Developer",
 	ARCH = "Architect",
