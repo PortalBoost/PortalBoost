@@ -16,6 +16,7 @@ const EmployeePreview = ({ employee }: { employee: EmployeeModel }) => {
 
 
 	const toggleOpen = () => {
+		console.log("fired click")
 		setOpenModal(!openModal)
 	}
 	// TODO: Hover/Touch differences on mobile
@@ -44,7 +45,7 @@ const EmployeePreview = ({ employee }: { employee: EmployeeModel }) => {
 					<p className="mt-2 italic">Short one-liner intro, interesting things in here. Short and sweet. </p>
 				</div>
 			</div>
-			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />}
 		</>
 	)
 }

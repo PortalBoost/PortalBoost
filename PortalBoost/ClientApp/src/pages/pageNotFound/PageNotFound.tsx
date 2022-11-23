@@ -4,7 +4,7 @@ const PageNotFound = () => {
 
 
 	return (
-		<div>
+		<div className="animate-fade-in">
 			<p>Error 404 - Page not found </p>
 			<button className="">
 				<Link to="/">Return home</Link>

@@ -18,7 +18,7 @@ const ViewEmployees = () => {
 	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-1 sm:w-96 max-w-xs truncate shrink">Searchbar - placeholder </div>
 	//TODO: Proper grid sizing
 	return (
-		<div className="mt-20 ">
+		<div className="mt-20 animate-fade-in">
 			<div className="flex flex-col gap-10 ">
 
 
