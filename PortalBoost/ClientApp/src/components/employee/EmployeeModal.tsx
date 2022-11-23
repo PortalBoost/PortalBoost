@@ -4,6 +4,7 @@ import { IoCloseCircleOutline } from "react-icons/io5"
 import { RiMailSendLine } from "react-icons/ri"
 import useFetchData from "../../hooks/useFetchData";
 import EmployeeModel from "../../models/employeeModel";
+import PreviewCard from "../previewCard/PreviewCard";
 
 interface EmployeeModalProps {
 	isOpen: boolean;
@@ -51,16 +52,26 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 								<hr className="m-1 sm:mx-5"></hr>
 								{/** Card Content */}
 								<div className="p-3 xs:py-8 xs:pb-12 sm:px-10">
-									<div className="text-n-purple text-3xl uppercase py-2 ">  {employee.firstName} {employee.lastName}</div>
-									<div className="bg-gradient-to-r from-n-purple  p-0.5 w-2/5 rounded-full"></div>
-									{/* <p className="mt-2 font-bold">One-liner</p> */}
-									<p className="pt-2 italic">Short intro stuff, interesting things in here. Short and sweet. </p>
+									<div className="text-n-purple text-3xl uppercase">  {employee.firstName} {employee.lastName}</div>
+									<p className="text-sm pl-1"> {employee.title} </p>
+									<div className="bg-gradient-to-r from-n-purple h-0.5 w-2/5 rounded-full"></div>
+
+									<p className="pt-2 italic"> {employee.oneLiner} </p>
+
 									<p className="mt-2 font-bold">Presentation</p>
-									<p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
-									<p className="mt-2 font-bold">Surprising fact</p>
-									<p className=""> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe reprehenderit fugiat minus cum, doloremque deserunt aperiam nihil natus libero quisquam id pariatur possimus est magni dignissimos ratione sunt expedita non.</p>
-									<button className="mt-5 flex items-center px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
+									<p> {employee.presentation}</p>
+
+									<p className="mt-2 font-bold">Surprising fact or skill</p>
+									<p className="">{employee.skill}</p>
+
+									<div className="flex flex-col items-center justify-center pt-12 sm:pt-4">
+										<p className="font-bold ">Current Assignment</p>
+										<div>[Company Stuff]</div>
+									</div>
+
+									<button className="mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
 								</div>
+
 								<div role="button" id="close-modal" onClick={toggleOpen}
 									className="fixed top-0 right-0  ">
 									<IoCloseCircleOutline className="hover:rotate-90 transition-transform text-4xl m-2 text-white filter drop-shadow-lg " />

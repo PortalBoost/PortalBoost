@@ -2,6 +2,9 @@ import { useState } from "react"
 import EmployeeModel from "../../models/employeeModel";
 import EmployeeModal from "./EmployeeModal"
 import { AiOutlineUser } from "react-icons/ai";
+import { PlaceholderUserImage } from "../common/PlaceholderUserImage";
+
+
 
 const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 
@@ -11,9 +14,6 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 		setOpenModal(!openModal)
 	}
 
-	//from-n-dark to-slate-600 bg-gradient-to-br 
-	const placeholderImage = <div className=" from-n-dark to-slate-600 bg-gradient-to-br  p-10 mx-auto "> <AiOutlineUser className="text-8xl text-n-offwhite filter opacity-90 drop-shadow-[4px_4px_4px_black]" /> </div>
-	//transition-all hover:cursor-pointer hover:-translate-y-2 hover:shadow-xl
 
 	// TODO: Border thingy top right, bottom left opposite side. Animate?
 	return (
@@ -21,7 +21,7 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 			<div className=" flex flex-col relative group ">
 
 				<div onClick={toggleOpen} className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-transform " >
-					{placeholderImage}
+					<PlaceholderUserImage />
 				</div>
 
 				<div onClick={toggleOpen}
