@@ -145,7 +145,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						<FormLabel htmlFor="oneliner" > {"Write a short and sweet one-liner."} </FormLabel>
 						<textarea id="oneliner" name="oneLiner" placeholder={"\"A movie-fanatic who loves cats!\""} value={formFields.oneLiner} maxLength={MAX_LENGTH_ONELINER} rows={3}
 							onChange={handleFieldChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light" />
+							className="rounded ring-1 ring-n-dark px-5 py-1 font-serif text-lg outline-n-purple-light" />
 						<CharactersRemainingMessage characters={MAX_LENGTH_ONELINER - formFields.oneLiner.length} />
 						<ResetTextButton setResetText={resetTextOneliner} />
 					</div>
@@ -154,7 +154,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						<FormLabel htmlFor="presentation" >{"Write a short presentation of who you are."} </FormLabel>
 						<textarea id="presentation" name="presentation" placeholder={"Do you have any particular interests?\nDo you live somewhere exciting?"} value={formFields.presentation} maxLength={MAX_LENGTH_PRESENTATION} rows={6}
 							onChange={handleFieldChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light" />
+							className="rounded ring-1 ring-n-dark px-5 py-1 font-serif text-lg outline-n-purple-light" />
 						<CharactersRemainingMessage characters={MAX_LENGTH_PRESENTATION - formFields.presentation.length} />
 						<ResetTextButton setResetText={resetTextPresentation} />
 					</div>
@@ -164,7 +164,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						<FormLabel htmlFor="skill">{`The more random the better!`} </FormLabel>
 						<textarea id="skill" name="skill" placeholder={"Can you wiggle your ears?\nHave you written a book?\nDo you hold a Guinness World Record?"} value={formFields.skill} maxLength={MAX_LENGTH_SKILL} rows={4}
 							onChange={handleFieldChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light " />
+							className="rounded ring-1 ring-n-dark px-5 py-1 font-serif text-lg outline-n-purple-light " />
 						<CharactersRemainingMessage characters={MAX_LENGTH_SKILL - formFields.skill.length} />
 						<ResetTextButton setResetText={resetTextSkill} />
 					</div>
