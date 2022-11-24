@@ -41,19 +41,19 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 				onClick={(e) => e.stopPropagation()}>
 
 				{/** Main Content */}
-				<div className=" w-full h-full rounded-sm">
+				<div className=" w-full h-full rounded-sm break-words">
 					{/** Fake image*/}
 					<div className="flex justify-center mb-2 ">
 						{placeholderProfilePicture}
 					</div>
 					<hr className="m-1 sm:mx-5"></hr>
 					{/** Card Content */}
-					<div className="p-3 xs:py-8 xs:pb-12 sm:px-10">
+					<div className="p-3 xs:py-8 xs:pb-12 sm:px-10 overflow">
 						<div className="text-n-purple text-3xl uppercase">  {employee.firstName} {employee.lastName}</div>
 						<p className="text-sm pl-1"> {employee.title} </p>
 						<div className="bg-gradient-to-r from-n-purple h-0.5 w-2/5 rounded-full"></div>
 
-						<p className="pt-2 italic"> {employee.oneLiner} </p>
+						<p className="pt-2 italic "> {employee.oneLiner} </p>
 
 						<p className="mt-2 font-bold">Presentation</p>
 						<p> {employee.presentation}</p>

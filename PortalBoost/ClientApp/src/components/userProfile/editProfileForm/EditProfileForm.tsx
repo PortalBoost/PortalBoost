@@ -96,7 +96,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		tempUser.title = selectTitle;
 
 		setPreviewUser(tempUser);
-		console.log(previewUser)
 		toggleOpenModal();
 	}
 
