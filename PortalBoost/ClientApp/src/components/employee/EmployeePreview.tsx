@@ -2,21 +2,12 @@ import { useState } from "react"
 import EmployeeModel from "../../models/employeeModel";
 import EmployeeModal from "./EmployeeModal"
 
-// TODO: Get employee ID, send ID to employeemodal
-
-//Temp solution while doing layout
-interface TestEmployeeProps {
-	testId: number;
-}
 
 const EmployeePreview = ({ employee }: { employee: EmployeeModel }) => {
 
 	const [openModal, setOpenModal] = useState(false)
 
-
-
 	const toggleOpen = () => {
-		console.log("fired click")
 		setOpenModal(!openModal)
 	}
 	// TODO: Hover/Touch differences on mobile
