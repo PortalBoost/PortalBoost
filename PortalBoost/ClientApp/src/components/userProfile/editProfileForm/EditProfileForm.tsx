@@ -27,7 +27,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const MAX_LENGTH_SKILL = 100;
 
 	const companies = useRecoilValue(companyDataState)
-	const { getEmployeeAssignments, getCompanies } = useFetchData();
+	const { getEmployeeAssignment, getCompanies } = useFetchData();
 	const [username, setUsername] = useState("")
 	const [openModal, setOpenModal] = useState(false)
 	const [previewUser, setPreviewUser] = useState({ ...user })
@@ -35,7 +35,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const [selectTitle, setSelectTitle] = useState("")
 	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
 
-	const currentUserCompany = getEmployeeAssignments(({ id: user.id } as EmployeeModel))
+	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
 
 	const [formFields, setFormFields] = useState({
 		oneLiner: user.oneLiner ? user.oneLiner : "",
@@ -117,7 +117,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 		//temp
 		tempAddUserToCompany(tempUser);
-
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
@@ -125,8 +124,8 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 
 	useEffect(() => {
-		console.log(companies)
-	}, [companies])
+		console.log(currentUserCompany?.name)
+	}, [])
 	// TODO: Separate out into components?
 	return (
 		<>
@@ -170,7 +169,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 					<div className="w-full flex flex-col pb-2">
 						<FormLabel htmlFor="company">{"Select your current assignment"}</FormLabel>
-						<select id="company" name="company" defaultValue={"Current assignment"}
+						<select id="company" name="company" defaultValue={currentUserCompany?.id ? currentUserCompany.id : "Current assignment"}
 							onChange={handleCompanyChange}
 							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto ">
 							<option disabled> Current assignment </option>

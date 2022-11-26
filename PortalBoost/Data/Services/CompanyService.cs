@@ -52,6 +52,13 @@
             return await _companyCollection.Find(findUserFilter).FirstOrDefaultAsync();
         }
 
+        public async Task DeleteUserAtCompany(User user)
+        {
+            var companyFilter = Builders<Company>.Filter.ElemMatch(x => x.Employees, e => e.ID == user.ID);
+            var removeFilter = Builders<Company>.Update.PullFilter(x => x.Employees, x => x.ID == user.ID);
+            await _companyCollection.UpdateOneAsync(companyFilter, removeFilter);
+        }
+
         public async Task AddUser(Company company, User userToAdd)
         {
             var companyFilter = Builders<Company>.Filter.Eq(x => x.ID, company.ID);

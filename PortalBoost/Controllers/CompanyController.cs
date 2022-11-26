@@ -60,7 +60,7 @@
             var companyToUpdate = await _companyService.GetCompanyById(id);
             var userHasCompany = await _companyService.FindUserAtCompany(user);
             if (companyToUpdate == null) return NotFound("Invalid company ID");
-            if (userHasCompany != null) return BadRequest("User cannot add more companies");
+            if (userHasCompany != null) await _companyService.DeleteUserAtCompany(user);
             await _companyService.AddUser(companyToUpdate, user);
             return Ok();
         }
