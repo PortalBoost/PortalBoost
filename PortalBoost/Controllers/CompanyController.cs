@@ -54,5 +54,14 @@
             }
         }
 
+        [HttpPut("AddEmployee/{id:length(24)}")]
+        public async Task<ActionResult> AddEmployee(string id, User user)
+        {
+            var companyToUpdate = await _companyService.GetCompanyById(id);
+            if (companyToUpdate == null) return NotFound();
+            await _companyService.AddUser(companyToUpdate, user);
+            return Ok();
+        }
+
     }
 }

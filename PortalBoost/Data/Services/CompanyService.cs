@@ -44,5 +44,12 @@
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<DeleteResult> DeleteAsync(string id) => await _companyCollection.DeleteOneAsync(c => c.ID == id);
+
+        public async Task AddUser(Company company, User userToAdd)
+        {
+            var companyFilter = Builders<Company>.Filter.Eq(x => x.ID, company.ID);
+            var update = Builders<Company>.Update.AddToSet("employees", userToAdd);
+            await _companyCollection.UpdateOneAsync(companyFilter, update);
+        }
     }
 }
