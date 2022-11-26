@@ -13,6 +13,7 @@ import ResetTextButton from "./ResetTextButton";
 import CharactersRemainingMessage from "./CharactersRemainingMessage";
 import useFetchData from "../../../hooks/useFetchData";
 import EmployeeModel from "../../../models/employeeModel";
+import { addUserToCompany, fetchCompanies } from "../../../services/API/companyService";
 
 
 
@@ -26,7 +27,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const MAX_LENGTH_SKILL = 100;
 
 	const companies = useRecoilValue(companyDataState)
-	const { getEmployeeAssignments } = useFetchData();
+	const { getEmployeeAssignments, getCompanies } = useFetchData();
 	const [username, setUsername] = useState("")
 	const [openModal, setOpenModal] = useState(false)
 	const [previewUser, setPreviewUser] = useState({ ...user })
@@ -96,6 +97,16 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		setOpenModal(!openModal)
 	}
 
+
+	const tempAddUserToCompany = async (userToAdd: UserModel) => {
+		const addUserToCompanyRequest = await addUserToCompany(selectCompany?.id, userToAdd);
+		if (addUserToCompanyRequest === 404) console.log("User was not added")
+		else {
+			getCompanies();
+			console.log("User company updated")
+		}
+	}
+
 	const handlePreview = () => {
 		const tempUser = { ...user }
 		tempUser.username = username;
@@ -104,14 +115,18 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		tempUser.skill = formFields.skill ? formFields.skill : tempUser.skill;
 		tempUser.title = selectTitle;
 
+		//temp
+		tempAddUserToCompany(tempUser);
+
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
 
 
+
 	useEffect(() => {
-		console.log(currentUserCompany.map((x) => x.name))
-	}, [])
+		console.log(companies)
+	}, [companies])
 	// TODO: Separate out into components?
 	return (
 		<>
@@ -155,7 +170,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 					<div className="w-full flex flex-col pb-2">
 						<FormLabel htmlFor="company">{"Select your current assignment"}</FormLabel>
-						<select id="company" name="company" defaultValue={selectCompany?.name}
+						<select id="company" name="company" defaultValue={"Current assignment"}
 							onChange={handleCompanyChange}
 							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto ">
 							<option disabled> Current assignment </option>
@@ -202,31 +217,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 					</div>
 
 				</div>
-
-
-				{/* 
-				<div>
-					<div className="w-full flex flex-col">
-						<FormLabel htmlFor="title" >{"Title"} </FormLabel>
-						<select id="title" name="title" onChange={handleTitleChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto">
-							<option disabled selected>Select a title</option>
-							{Object.values(EmployeeTitles).map((title) => (
-								<option className="" value={title}>{title}</option>
-							))}
-						</select>
-
-
-						<FormLabel htmlFor="company" >{"Current Assignment"} </FormLabel>
-						<select id="company" name="company" onChange={handleCompanyChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto">
-							<option disabled selected>Select assignment</option>
-							{companies.map((company) => (
-								<option className="" value={company.name}>{company.name}</option>
-							))}
-						</select>
-					</div>
-				</div> */}
 
 			</form>
 			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} />}

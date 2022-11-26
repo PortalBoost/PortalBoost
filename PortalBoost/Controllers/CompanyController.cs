@@ -58,7 +58,9 @@
         public async Task<ActionResult> AddEmployee(string id, User user)
         {
             var companyToUpdate = await _companyService.GetCompanyById(id);
-            if (companyToUpdate == null) return NotFound();
+            var userHasCompany = await _companyService.FindUserAtCompany(user);
+            if (companyToUpdate == null) return NotFound("Invalid company ID");
+            if (userHasCompany != null) return BadRequest("User cannot add more companies");
             await _companyService.AddUser(companyToUpdate, user);
             return Ok();
         }
