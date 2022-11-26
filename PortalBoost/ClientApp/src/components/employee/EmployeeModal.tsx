@@ -18,6 +18,7 @@ interface EmployeeModalProps {
 // TODO: Animation.
 // TODO: Send message button: Take email of viewed employee, open default mail program. 
 // TODO: Fix animate-fade-out on component unmount
+//TODO: Company Preview Card in assignment section
 const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => {
 	const { getEmployeeAssignments } = useFetchData();
 
@@ -63,7 +64,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 
 						<div className="flex flex-col items-center justify-center pt-12 sm:pt-4">
 							<p className="font-bold ">Current Assignment</p>
-							<div>[Company Stuff]</div>
+							<div>{employeeAssignments.map((x) => x.name)}</div>
 						</div>
 
 						<button className="mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
