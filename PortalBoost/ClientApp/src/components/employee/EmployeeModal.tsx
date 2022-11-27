@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5"
 import { RiMailSendLine } from "react-icons/ri"
+import { Link } from "react-router-dom";
 import useFetchData from "../../hooks/useFetchData";
 import EmployeeModel from "../../models/employeeModel";
 import PreviewCard from "../previewCard/PreviewCard";
@@ -18,7 +19,7 @@ interface EmployeeModalProps {
 // TODO: Animation.
 // TODO: Send message button: Take email of viewed employee, open default mail program. 
 // TODO: Fix animate-fade-out on component unmount
-//TODO: Company Preview Card in assignment section
+//TODO: Company Preview Card in assignment section, link to company
 const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => {
 	const { getEmployeeAssignment } = useFetchData();
 
@@ -28,7 +29,6 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 
 	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px]  shrink flex justify-center items-center 
 	bg-gradient-to-br opacity-50 from-n-offwhite ">Placeholder Picture</div>
-
 
 	return (
 		< div id="modal-overlay"

@@ -26,8 +26,9 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const MAX_LENGTH_PRESENTATION = 210;
 	const MAX_LENGTH_SKILL = 100;
 
-	const companies = useRecoilValue(companyDataState)
 	const { getEmployeeAssignment, getCompanies } = useFetchData();
+	const companies = useRecoilValue(companyDataState)
+
 	const [username, setUsername] = useState("")
 	const [openModal, setOpenModal] = useState(false)
 	const [previewUser, setPreviewUser] = useState({ ...user })
@@ -62,8 +63,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		})
 	}
 
-
-
 	const handleUsernameFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUsername(e.target.value)
 	}
@@ -72,6 +71,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		setSelectTitle(e.target.value)
 	}
 
+	//TODO: Remove if?
 	const handleCompanyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedCompany = companies.find((x) => x.id === e.target.value);
 		if (selectedCompany)
@@ -90,7 +90,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		// More stuff in here
+		// More stuff in here, tempuser used to update user in database
 	}
 
 	const toggleOpenModal = () => {
