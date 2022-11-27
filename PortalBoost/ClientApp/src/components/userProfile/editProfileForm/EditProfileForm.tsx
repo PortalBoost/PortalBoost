@@ -11,6 +11,9 @@ import { useRecoilValue } from "recoil";
 import CompanyModel from "../../../models/companyModel";
 import ResetTextButton from "./ResetTextButton";
 import CharactersRemainingMessage from "./CharactersRemainingMessage";
+import useFetchData from "../../../hooks/useFetchData";
+import EmployeeModel from "../../../models/employeeModel";
+import { addUserToCompany, fetchCompanies } from "../../../services/API/companyService";
 
 
 
@@ -23,11 +26,17 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const MAX_LENGTH_PRESENTATION = 210;
 	const MAX_LENGTH_SKILL = 100;
 
-	// const companies = useRecoilValue(companyDataState)
+	const { getEmployeeAssignment, getCompanies } = useFetchData();
+	const companies = useRecoilValue(companyDataState)
+
 	const [username, setUsername] = useState("")
 	const [openModal, setOpenModal] = useState(false)
 	const [previewUser, setPreviewUser] = useState({ ...user })
 
+	const [selectTitle, setSelectTitle] = useState("")
+	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
+
+	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
 
 	const [formFields, setFormFields] = useState({
 		oneLiner: user.oneLiner ? user.oneLiner : "",
@@ -54,9 +63,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		})
 	}
 
-	const [selectTitle, setSelectTitle] = useState("")
-	const [selectCompany, setSelectCopmany] = useState<CompanyModel>()
-
 	const handleUsernameFieldChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUsername(e.target.value)
 	}
@@ -65,10 +71,14 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		setSelectTitle(e.target.value)
 	}
 
-	// const handleCompanyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-	// 	const selectedCompany = companies.find((x) => x.name === e.target.value);
-	// 	setSelectCopmany(selectedCompany)
-	// }
+	//TODO: Remove if?
+	const handleCompanyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedCompany = companies.find((x) => x.id === e.target.value);
+		if (selectedCompany)
+			setSelectedCompany(selectedCompany)
+		console.log(selectedCompany)
+		console.log(e.target.value)
+	}
 
 	const handleFieldChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const value = e.target.value;
@@ -80,11 +90,21 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		// More stuff in here
+		// More stuff in here, tempuser used to update user in database
 	}
 
 	const toggleOpenModal = () => {
 		setOpenModal(!openModal)
+	}
+
+
+	const tempAddUserToCompany = async (userToAdd: UserModel) => {
+		const addUserToCompanyRequest = await addUserToCompany(selectCompany?.id, userToAdd);
+		if (addUserToCompanyRequest === 404) console.log("User was not added")
+		else {
+			getCompanies();
+			console.log("User company updated")
+		}
 	}
 
 	const handlePreview = () => {
@@ -95,12 +115,17 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		tempUser.skill = formFields.skill ? formFields.skill : tempUser.skill;
 		tempUser.title = selectTitle;
 
+		//temp
+		// tempAddUserToCompany(tempUser);
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
 
 
 
+	useEffect(() => {
+		console.log(currentUserCompany?.name)
+	}, [])
 	// TODO: Separate out into components?
 	return (
 		<>
@@ -141,6 +166,22 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						</select>
 					</div>
 
+
+					<div className="w-full flex flex-col pb-2">
+						<FormLabel htmlFor="company">{"Select your current assignment"}</FormLabel>
+						<select id="company" name="company" defaultValue={currentUserCompany?.id ? currentUserCompany.id : "Current assignment"}
+							onChange={handleCompanyChange}
+							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto ">
+							<option disabled> Current assignment </option>
+							{companies.map((company) => (
+								<option key={company.id} value={company.id}>{company.name}</option>
+							))}
+						</select>
+					</div>
+
+
+
+
 					<div className="w-full flex flex-col relative">
 						<FormLabel htmlFor="oneliner" > {"Write a short and sweet one-liner."} </FormLabel>
 						<textarea id="oneliner" name="oneLiner" placeholder={"\"A movie-fanatic who loves cats!\""} value={formFields.oneLiner} maxLength={MAX_LENGTH_ONELINER} rows={3}
@@ -175,31 +216,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 					</div>
 
 				</div>
-
-
-				{/* 
-				<div>
-					<div className="w-full flex flex-col">
-						<FormLabel htmlFor="title" >{"Title"} </FormLabel>
-						<select id="title" name="title" onChange={handleTitleChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto">
-							<option disabled selected>Select a title</option>
-							{Object.values(EmployeeTitles).map((title) => (
-								<option className="" value={title}>{title}</option>
-							))}
-						</select>
-
-
-						<FormLabel htmlFor="company" >{"Current Assignment"} </FormLabel>
-						<select id="company" name="company" onChange={handleCompanyChange}
-							className="rounded ring-1 ring-n-dark px-4 py-1 font-serif text-lg outline-n-purple-light w-auto">
-							<option disabled selected>Select assignment</option>
-							{companies.map((company) => (
-								<option className="" value={company.name}>{company.name}</option>
-							))}
-						</select>
-					</div>
-				</div> */}
 
 			</form>
 			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} />}

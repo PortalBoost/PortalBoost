@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5"
 import { RiMailSendLine } from "react-icons/ri"
+import { Link } from "react-router-dom";
 import useFetchData from "../../hooks/useFetchData";
 import EmployeeModel from "../../models/employeeModel";
 import PreviewCard from "../previewCard/PreviewCard";
@@ -18,16 +19,16 @@ interface EmployeeModalProps {
 // TODO: Animation.
 // TODO: Send message button: Take email of viewed employee, open default mail program. 
 // TODO: Fix animate-fade-out on component unmount
+//TODO: Company Preview Card in assignment section, link to company
 const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => {
-	const { getEmployeeAssignments } = useFetchData();
+	const { getEmployeeAssignment } = useFetchData();
 
 
-	const employeeAssignments = getEmployeeAssignments({ id: `${employee.id}` } as EmployeeModel);
+	const employeeAssignment = getEmployeeAssignment({ id: `${employee.id}` } as EmployeeModel);
 
 
 	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px]  shrink flex justify-center items-center 
 	bg-gradient-to-br opacity-50 from-n-offwhite ">Placeholder Picture</div>
-
 
 	return (
 		< div id="modal-overlay"
@@ -36,7 +37,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 
 			{/** Modal background */}
 			<div id="modal" className={`bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
-						w-full h-screen sm:max-w-3xl xs:h-auto overflow-auto
+						w-full h-screen sm:max-w-3xl sm:h-auto overflow-auto
 						rounded-sm  ${isOpen ? "animate-fade-in" : "animate-fade-out"}`}
 				onClick={(e) => e.stopPropagation()}>
 
@@ -48,7 +49,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 					</div>
 					<hr className="m-1 sm:mx-5"></hr>
 					{/** Card Content */}
-					<div className="p-3 xs:py-8 xs:pb-12 sm:px-10 overflow">
+					<div className="p-3 xs:py-8 xs:pb-12 sm:px-10 ">
 						<div className="text-n-purple text-3xl uppercase">  {employee.firstName} {employee.lastName}</div>
 						<p className="text-sm pl-1"> {employee.title} </p>
 						<div className="bg-gradient-to-r from-n-purple h-0.5 w-2/5 rounded-full"></div>
@@ -61,12 +62,12 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 						<p className="mt-2 font-bold">Surprising fact or skill</p>
 						<p className="">{employee.skill}</p>
 
-						<div className="flex flex-col items-center justify-center pt-12 sm:pt-4">
-							<p className="font-bold ">Current Assignment</p>
-							<div>[Company Stuff]</div>
+						<div className="flex flex-col  pt-12 sm:pt-4">
+							<p className="font-bold underline underline-offset-2 decoration-n-dark/50 ">Current Assignment</p>
+							<div>{employeeAssignment?.name}</div>
 						</div>
 
-						<button className="mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
+						<button className="mt-10 sm:mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
 					</div>
 
 					<div role="button" id="close-modal" onClick={toggleOpen}
