@@ -62,8 +62,8 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 						<p className="mt-2 font-bold">Surprising fact or skill</p>
 						<p className="">{employee.skill}</p>
 
-						<div className="flex flex-col items-center justify-center pt-12 sm:pt-4">
-							<p className="font-bold ">Current Assignment</p>
+						<div className="flex flex-col  pt-12 sm:pt-4">
+							<p className="font-bold underline underline-offset-2 decoration-n-dark/50 ">Current Assignment</p>
 							<div>{employeeAssignment?.name}</div>
 						</div>
 

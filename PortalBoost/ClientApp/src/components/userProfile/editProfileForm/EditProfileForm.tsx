@@ -116,7 +116,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		tempUser.title = selectTitle;
 
 		//temp
-		tempAddUserToCompany(tempUser);
+		// tempAddUserToCompany(tempUser);
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
