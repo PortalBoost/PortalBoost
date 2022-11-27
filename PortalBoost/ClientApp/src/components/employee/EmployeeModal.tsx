@@ -37,7 +37,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 
 			{/** Modal background */}
 			<div id="modal" className={`bg-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
-						w-full h-screen sm:max-w-3xl xs:h-auto overflow-auto
+						w-full h-screen sm:max-w-3xl sm:h-auto overflow-auto
 						rounded-sm  ${isOpen ? "animate-fade-in" : "animate-fade-out"}`}
 				onClick={(e) => e.stopPropagation()}>
 
@@ -49,7 +49,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 					</div>
 					<hr className="m-1 sm:mx-5"></hr>
 					{/** Card Content */}
-					<div className="p-3 xs:py-8 xs:pb-12 sm:px-10 overflow">
+					<div className="p-3 xs:py-8 xs:pb-12 sm:px-10 ">
 						<div className="text-n-purple text-3xl uppercase">  {employee.firstName} {employee.lastName}</div>
 						<p className="text-sm pl-1"> {employee.title} </p>
 						<div className="bg-gradient-to-r from-n-purple h-0.5 w-2/5 rounded-full"></div>
@@ -67,7 +67,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 							<div>{employeeAssignment?.name}</div>
 						</div>
 
-						<button className="mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
+						<button className="mt-10 sm:mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
 					</div>
 
 					<div role="button" id="close-modal" onClick={toggleOpen}
