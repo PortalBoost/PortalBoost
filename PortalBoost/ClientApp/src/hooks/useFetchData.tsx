@@ -30,7 +30,7 @@ const useFetchData = () => {
 	}
 
 	// Show users working at a specific company
-	const getUsersAtCompany = ({ id }: CompanyModel) => companyData.filter((company) => company.id === id).map((x) => x.employees)
+	const getUsersAtCompany = ({ id }: CompanyModel) => companyData.find((company) => company.id === id)?.employees.map((employee) => employee)
 
 	// Shows the current company for a given employee
 	const getEmployeeAssignment = ({ id }: EmployeeModel) => companyData.find((company) => company.employees.some((employee) => employee.id == id))
