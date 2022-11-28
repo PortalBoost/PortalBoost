@@ -159,7 +159,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	return (
 		<>
 
-			<form id="editprofile" onSubmit={(e) => handleSubmit(e)}
+			<form id="editprofile" onSubmit={(e) => handleSubmit(e)} onClick={() => setInfoMessage({ ...infoMessage, show: false })}
 				className="flex  flex-col md:flex-row md:gap-4 lg:gap-10 justify-center items-center border-2 rounded-md p-5 py-10 lg:p-10  max-w-screen-2xl  bg-white ">
 
 				<div className="flex flex-col p-10  ">
