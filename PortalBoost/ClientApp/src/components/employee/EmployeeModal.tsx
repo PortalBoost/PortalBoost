@@ -1,31 +1,27 @@
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IoCloseCircleOutline } from "react-icons/io5"
 import { RiMailSendLine } from "react-icons/ri"
 import { Link } from "react-router-dom";
 import useFetchData from "../../hooks/useFetchData";
+import CompanyModel from "../../models/companyModel";
 import EmployeeModel from "../../models/employeeModel";
 import PreviewCard from "../previewCard/PreviewCard";
 
 interface EmployeeModalProps {
 	isOpen: boolean;
 	toggleOpen: () => void;
-	employee: EmployeeModel; // TODO:  Send in real User 
+	employee: EmployeeModel;
+	assignment: CompanyModel | undefined;
 }
 
 // TODO: Reusable modal container instead?
 // TODO: Esc to close modal
 // TODO: Close button, fixed at top. When scrolled down, fixed at bottom.
-// TODO: Animation.
 // TODO: Send message button: Take email of viewed employee, open default mail program. 
 // TODO: Fix animate-fade-out on component unmount
 //TODO: Company Preview Card in assignment section, link to company
-const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => {
-	const { getEmployeeAssignment } = useFetchData();
-
-
-	const employeeAssignment = getEmployeeAssignment({ id: `${employee.id}` } as EmployeeModel);
-
+const EmployeeModal = ({ isOpen, toggleOpen, employee, assignment }: EmployeeModalProps) => {
 
 	const placeholderProfilePicture = <div className="bg-n-purple-dark w-[1500px] h-[300px]  shrink flex justify-center items-center 
 	bg-gradient-to-br opacity-50 from-n-offwhite ">Placeholder Picture</div>
@@ -64,7 +60,7 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee }: EmployeeModalProps) => 
 
 						<div className="flex flex-col  pt-12 sm:pt-4">
 							<p className="font-bold underline underline-offset-2 decoration-n-dark/50 ">Current Assignment</p>
-							<div>{employeeAssignment?.name}</div>
+							<div>{assignment?.name}</div>
 						</div>
 
 						<button className="mt-10 sm:mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>

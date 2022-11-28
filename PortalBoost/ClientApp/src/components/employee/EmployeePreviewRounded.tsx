@@ -3,17 +3,20 @@ import EmployeeModel from "../../models/employeeModel";
 import EmployeeModal from "./EmployeeModal"
 import { AiOutlineUser } from "react-icons/ai";
 import { PlaceholderUserImage } from "../common/PlaceholderUserImage";
+import useFetchData from "../../hooks/useFetchData";
 
 
 
 const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
+
+	const { getEmployeeAssignment } = useFetchData();
+	const employeeAssignment = getEmployeeAssignment({ id: `${employee.id}` } as EmployeeModel);
 
 	const [openModal, setOpenModal] = useState(false)
 
 	const toggleOpen = () => {
 		setOpenModal(!openModal)
 	}
-
 
 	// TODO: Border thingy top right, bottom left opposite side. Animate?
 	return (
@@ -35,7 +38,7 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 				</div>
 
 			</div>
-			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />}
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} assignment={employeeAssignment} />}
 		</>
 	)
 }

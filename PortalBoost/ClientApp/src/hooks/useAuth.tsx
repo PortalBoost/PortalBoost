@@ -24,9 +24,14 @@ const useAuth = () => {
 		navigate("/")
 	}
 
+	const updateLoggedInUser = (user: UserModel) => {
+		setCurrentUser(user)
+	}
+
 	return {
 		logout,
-		setValidLogin
+		setValidLogin,
+		updateLoggedInUser
 	}
 };
 

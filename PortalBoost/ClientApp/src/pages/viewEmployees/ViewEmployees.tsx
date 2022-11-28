@@ -1,7 +1,6 @@
 import { useRecoilValue } from "recoil"
 import userDataState from "../../atoms/userDataState"
 import TitlesMenu from "../../components/employee/TitlesMenu"
-import EmployeePreview from "../../components/employee/EmployeePreview"
 import EmployeePreviewRounded from "../../components/employee/EmployeePreviewRounded"
 import filteredEmployeesState from "../../atoms/filteredEmployeesState"
 
