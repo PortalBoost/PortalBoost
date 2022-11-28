@@ -7,7 +7,6 @@ const BASE_URL = "/api/User"
 //TODO: Separate the fetch and handling of request into separate APIhandler/facade/hook? Default body/header stuff.
 const fetchUsers = async () => {
 
-
 	const response = await fetch(`${BASE_URL}/AllUsers`)
 	if (!response.ok) throw new Error(`Error: ${response.status}`)
 	const json = await response.json();
@@ -40,6 +39,20 @@ const loginUser = async (username: string, password: string) => {
 	}
 	const data = await response.json();
 	return data;
+}
+
+const updateUser = async (userId: string, updatedUser: UserModel) => {
+
+	const reqOptions = {
+		method: "PUT",
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify(updatedUser)
+	};
+
+	//TODO: Proper endpoint url.
+	const response = await fetch(`${BASE_URL}/URLHERE/${userId}`, reqOptions)
+	if (!response.ok) return response.status;
+
 }
 
 export { fetchUsers, loginUser }

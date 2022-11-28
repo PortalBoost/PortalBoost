@@ -3,6 +3,7 @@ import userDataState from "../../atoms/userDataState"
 import TitlesMenu from "../../components/employee/TitlesMenu"
 import EmployeePreview from "../../components/employee/EmployeePreview"
 import EmployeePreviewRounded from "../../components/employee/EmployeePreviewRounded"
+import filteredEmployeesState from "../../atoms/filteredEmployeesState"
 
 
 
@@ -11,12 +12,13 @@ import EmployeePreviewRounded from "../../components/employee/EmployeePreviewRou
 
 const ViewEmployees = () => {
 	const employeeData = useRecoilValue(userDataState)
+	const filteredEmployeeData = useRecoilValue(filteredEmployeesState)
 
 
 	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-1 sm:w-96 max-w-xs truncate shrink">Searchbar - placeholder </div>
 	//TODO: Proper grid sizing
 	return (
-		<div className="mt-20 ">
+		<div className="mt-20 animate-fade-in">
 			<div className="flex flex-col gap-10 ">
 
 
@@ -31,7 +33,7 @@ const ViewEmployees = () => {
 				</div>
 
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-5">
-					{employeeData.map((employee) => (
+					{filteredEmployeeData.map((employee) => (
 						<EmployeePreviewRounded key={employee.id} employee={employee} />
 					))}
 				</div>

@@ -2,18 +2,10 @@ import { useState } from "react"
 import EmployeeModel from "../../models/employeeModel";
 import EmployeeModal from "./EmployeeModal"
 
-// TODO: Get employee ID, send ID to employeemodal
-
-//Temp solution while doing layout
-interface TestEmployeeProps {
-	testId: number;
-}
 
 const EmployeePreview = ({ employee }: { employee: EmployeeModel }) => {
 
 	const [openModal, setOpenModal] = useState(false)
-
-
 
 	const toggleOpen = () => {
 		setOpenModal(!openModal)
@@ -44,7 +36,7 @@ const EmployeePreview = ({ employee }: { employee: EmployeeModel }) => {
 					<p className="mt-2 italic">Short one-liner intro, interesting things in here. Short and sweet. </p>
 				</div>
 			</div>
-			<EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpen} employee={employee} />}
 		</>
 	)
 }

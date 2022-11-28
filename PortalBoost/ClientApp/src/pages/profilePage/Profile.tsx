@@ -1,9 +1,20 @@
-const Profile = () => {
+import { useRecoilValue } from "recoil"
+import userState from "../../atoms/userState"
+import TitlesMenu from "../../components/employee/TitlesMenu"
+import EmployeePreview from "../../components/employee/EmployeePreview"
+import EmployeePreviewRounded from "../../components/employee/EmployeePreviewRounded"
+import EditProfileForm from "../../components/userProfile/editProfileForm/EditProfileForm"
 
-  return (
-	<div>
-	  <h1> Welcome to Your Profile</h1>
-	</div>
-  );
+
+
+const Profile = () => {
+	const user = useRecoilValue(userState)
+
+	return (
+		<div className="flex flex-col items-center mt-10 gap-4 animate-fade-in">
+			<div className="text-4xl font-serif"> View or edit your profile </div>
+			<EditProfileForm user={user} />
+		</div>
+	);
 };
 export default Profile;

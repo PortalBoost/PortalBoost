@@ -33,7 +33,21 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      }
+      },
+      animation: {
+        "fade-in": "fadein 200ms linear",
+        "fade-out": "fadeout 200ms linear"
+      },
+      keyframes: {
+        fadein: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 }
+        },
+        fadeout: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 }
+        }
+      },
     },
     fontFamily: {
       "sans": ["BwGradual", ...defaultTheme.fontFamily.sans],

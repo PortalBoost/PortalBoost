@@ -28,18 +28,18 @@ const useFetchData = () => {
 		const companies = await fetchCompanies();
 		setCompanyData(companies)
 	}
-
+	//TODO: Double check if working
 	// Show users working at a specific company
 	const getUsersAtCompany = ({ id }: CompanyModel) => companyData.filter((company) => company.id === id).map((x) => x.employees)
 
-	// Show companies a specific user works at
-	const getEmployeeAssignments = ({ id }: EmployeeModel) => companyData.filter((company) => company.employees.map((x) => x.id).includes(id))
+	// Shows the current company for a given employee
+	const getEmployeeAssignment = ({ id }: EmployeeModel) => companyData.find((company) => company.employees.some((employee) => employee.id == id))
 
 
 	return {
 		getUsers,
 		getCompanies,
-		getEmployeeAssignments,
+		getEmployeeAssignment,
 		getUsersAtCompany,
 		setData
 	}

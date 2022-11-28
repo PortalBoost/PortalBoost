@@ -20,7 +20,7 @@ const LandingPage = () => {
 
 
 	return (
-		<div className="">
+		<div className="animate-fade-in">
 			<p className="">This is a LandingPage</p>
 			<p>You appear to be logged in as: </p>
 			<p className="font-bold">Username: {loggedinUser.username}<br /> Email: {loggedinUser.email} </p>
