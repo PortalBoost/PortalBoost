@@ -32,17 +32,18 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const { getEmployeeAssignment, getCompanies, setData, getUsers } = useFetchData();
 	const companies = useRecoilValue(companyDataState)
 
-	const [username, setUsername] = useState(user.username)
 	const [openModal, setOpenModal] = useState(false)
-	const [previewUser, setPreviewUser] = useState({ ...user })
 
-	const [selectTitle, setSelectTitle] = useState(user.title)
-	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
+	const [previewUser, setPreviewUser] = useState({ ...user })
+	const [previewAssignment, setPreviewAssignment] = useState<CompanyModel>()
 
 	const [infoMessage, setInfoMessage] = useState({ show: false, text: "infomessage" })
 	const [loading, setIsLoading] = useState(false)
-	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
 
+	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
+	const [username, setUsername] = useState(user.username)
+	const [selectTitle, setSelectTitle] = useState(user.title)
+	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
 	const [formFields, setFormFields] = useState({
 		oneLiner: user.oneLiner ? user.oneLiner : "",
 		presentation: user.presentation ? user.presentation : "",
@@ -136,7 +137,8 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const handlePreview = () => {
 		const tempUser = getTemporaryUser();
-		// updateUserCompany(tempUser);
+		const assignment = companies.find((x) => x.id === selectCompany?.id)
+		setPreviewAssignment(assignment)
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
@@ -152,13 +154,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		return tempUser
 	}
 
-	useEffect(() => {
-
-	}, [])
-
-	// useEffect(() => {
-	// 	setData();
-	// }, [user])
 
 	// TODO: Separate out into components?
 	return (
@@ -240,19 +235,23 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						<ResetTextButton setResetText={resetTextSkill} />
 					</div>
 
+
 					<p className={`${infoMessage.show ? "visible" : "invisible"}
 					font-sans text-n-purple text-center`}>
 						{infoMessage.text}</p>
 
 					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-5">
 						<button className="bg-n-turquoise" id="preview" type="button" disabled={loading} onClick={handlePreview}>Preview Profile</button>
-						<button className="bg-n-turquoise" id="submit" type="submit" disabled={loading} onClick={() => handleSubmit}>Update Profile</button>
+						<button className="bg-n-turquoise" id="submit" type="submit" disabled={loading} onClick={() => handleSubmit}>
+
+							Update Profile
+						</button>
 					</div>
 
 				</div>
 
 			</form>
-			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} />}
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} assignment={previewAssignment} />}
 		</>
 	)
 }
