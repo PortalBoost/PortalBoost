@@ -237,13 +237,12 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 
 					<p className={`${infoMessage.show ? "visible" : "invisible"}
-					font-sans text-n-purple text-center`}>
+					font-sans text-n-purple text-center py-2`}>
 						{infoMessage.text}</p>
 
-					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-5">
+					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-2">
 						<button className="bg-n-turquoise" id="preview" type="button" disabled={loading} onClick={handlePreview}>Preview Profile</button>
 						<button className="bg-n-turquoise" id="submit" type="submit" disabled={loading} onClick={() => handleSubmit}>
-
 							Update Profile
 						</button>
 					</div>
