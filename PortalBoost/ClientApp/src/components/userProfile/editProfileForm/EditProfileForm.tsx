@@ -40,7 +40,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
 
 	const [infoMessage, setInfoMessage] = useState({ show: false, text: "infomessage" })
-
+	const [loading, setIsLoading] = useState(false)
 	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
 
 	const [formFields, setFormFields] = useState({
@@ -81,8 +81,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		const selectedCompany = companies.find((x) => x.id === e.target.value);
 		if (selectedCompany)
 			setSelectedCompany(selectedCompany)
-		console.log(selectedCompany)
-		console.log(e.target.value)
 	}
 
 	const handleFieldChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -95,7 +93,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-
+		setIsLoading(true)
 		const tempUser = getTemporaryUser();
 		const updateUserRequest = await updateUser(tempUser);
 		if (!updateUserRequest) {
@@ -118,6 +116,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 				text: "Succesfully updated profile"
 			})
 		}
+		setIsLoading(false)
 	}
 
 	const toggleOpenModal = () => {
@@ -127,7 +126,9 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const updateUserCompany = async (userToAdd: UserModel) => {
 		const addUserToCompanyRequest = await addUserToCompany(selectCompany?.id, userToAdd);
-		if (addUserToCompanyRequest === 404) console.log("User was not added")
+		if (!addUserToCompanyRequest) {
+			console.log("User was not added")
+		}
 		else {
 			console.log("User company updated")
 		}
@@ -152,9 +153,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	}
 
 	useEffect(() => {
-		console.log(currentUserCompany?.name)
-		console.log(user.oneLiner);
-		console.log(user)
+
 	}, [])
 
 	// useEffect(() => {
@@ -201,7 +200,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						</select>
 					</div>
 
-
 					<div className="w-full flex flex-col pb-2">
 						<FormLabel htmlFor="company">{"Select your current assignment"}</FormLabel>
 						<select id="company" name="company" defaultValue={currentUserCompany?.id ? currentUserCompany.id : "Current assignment"}
@@ -213,9 +211,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 							))}
 						</select>
 					</div>
-
-
-
 
 					<div className="w-full flex flex-col relative">
 						<FormLabel htmlFor="oneliner" > {"Write a short and sweet one-liner."} </FormLabel>
@@ -250,8 +245,8 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						{infoMessage.text}</p>
 
 					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-5">
-						<button className="bg-n-turquoise" id="preview" type="button" onClick={handlePreview}>Preview Profile</button>
-						<button className="bg-n-turquoise" id="submit" type="submit" onClick={() => handleSubmit}>Update Profile</button>
+						<button className="bg-n-turquoise" id="preview" type="button" disabled={loading} onClick={handlePreview}>Preview Profile</button>
+						<button className="bg-n-turquoise" id="submit" type="submit" disabled={loading} onClick={() => handleSubmit}>Update Profile</button>
 					</div>
 
 				</div>

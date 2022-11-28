@@ -20,7 +20,7 @@ const addUserToCompany = async (companyId: string | undefined, user: UserModel) 
 	};
 
 	const response = await fetch(`${BASE_URL}/AddEmployee/${companyId}`, reqOptions)
-	if (!response.ok) return response.status;
+	return response.ok;
 	// const data = await response.json();
 	// return data;
 }
