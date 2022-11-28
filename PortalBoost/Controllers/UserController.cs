@@ -4,10 +4,7 @@
     using MongoDB.Driver;
     using PortalBoost.Data.Models;
     using PortalBoost.Data.Services;
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     [ApiController]
@@ -24,15 +21,19 @@
         [HttpGet("AllUsers")]
         public async Task<ActionResult<List<User>>> Get()
         {
-            var users = await _userService.GetAsync();
-            if (users == null) return NotFound();
+            List<User> users = await _userService.GetAsync();
+            if (users == null)
+            {
+                return NotFound();
+            }
+
             return Ok(users);
         }
 
         [HttpGet("GetUserById")]
         public async Task<ActionResult<User>> Get(string id)
         {
-            var user = await _userService.GetUserById(id);
+            User user = await _userService.GetUserById(id);
             if (user == null)
             {
                 return NotFound();
@@ -43,7 +44,7 @@
         [HttpDelete("DeleteUser")]
         public async Task<ActionResult<DeleteResult>> Delete(string id)
         {
-            var deletion = await _userService.DeleteAsync(id);
+            DeleteResult deletion = await _userService.DeleteAsync(id);
             if (deletion.IsAcknowledged)
             {
                 return Ok();
@@ -63,9 +64,31 @@
         [HttpPost("LoginPass")]
         public async Task<ActionResult<User>> LoginUsingPassword([FromBody] User user)
         {
-            var foundUser = await _userService.LoginPasswordAsync(user.Username, user.Password);
-            if (foundUser == null) return NotFound();
+            User foundUser = await _userService.LoginPasswordAsync(user.Username, user.Password);
+            if (foundUser == null)
+            {
+                return NotFound();
+            }
+
             return Ok(foundUser);
+        }
+
+
+        /// <summary>
+        /// <para>Compares parameter <see cref="User"/> with UserCollection and applies changes to relevant <see cref="User"/></para>
+        /// <para>Finds relevant <see cref="User"/> with the <see cref="User.ID"/> parameter.</para>
+        /// </summary>
+        /// <param name="user">User Object</param>
+        /// <returns>Code 200 if successful</returns>
+        [HttpPost("UpdateUser")]
+        public async Task<ActionResult> UpdateUser(User user)
+        {
+            ReplaceOneResult result = await _userService.UpdateUserAsync(user);
+            if (result.IsAcknowledged)
+            {
+                return Ok(user);
+            }
+            return NotFound("User not found");
         }
     }
 }
