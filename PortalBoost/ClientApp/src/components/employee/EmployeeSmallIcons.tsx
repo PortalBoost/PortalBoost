@@ -1,5 +1,5 @@
 const testPersons = [
-	 {pic: "https://media.istockphoto.com/id/1288129985/sv/vektor/saknad-bild-av-en-platsh%C3%A5llare-f%C3%B6r-person.jpg?s=612x612&w=0&k=20&c=xjNT0OYnQAjditiExX4BPXiy5n0irhGiM2A4GfGq99I=", name: "John Smith" },
+	 {pic: "p1", name: "John Smith" },
 	 {pic: "p2", name: "Hanna Tester" },
 	 {pic: "p3", name: "Anoter Testname" },
 	 {pic: "p4", name: "Who Isthis" },
