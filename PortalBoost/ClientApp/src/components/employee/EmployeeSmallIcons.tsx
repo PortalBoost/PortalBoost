@@ -1,3 +1,5 @@
+import EmployeeModel from "../../models/employeeModel";
+
 const testPersons = [
 	 {pic: "p1", name: "John Smith" },
 	 {pic: "p2", name: "Hanna Tester" },

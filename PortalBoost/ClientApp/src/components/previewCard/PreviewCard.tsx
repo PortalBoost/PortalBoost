@@ -9,13 +9,6 @@ interface CompanyProps {
 //TODO: add a link to the company page
 const PreviewCard = ({company}: {company: CompanyModel}) => {
 
-	//() => {
-
-		// const { getCompanyAssignments } = useFetchData();
-
-
-		// const companyAssignments = getCompanyAssignments({ id: `${company.id}` } as CompanyModel);
-	
 	const [isHovered, setIsHovered] = useState(false)
 
 	const card = "bg-white rounded-lg shadow-lg p-5 hover:shadow-2xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
