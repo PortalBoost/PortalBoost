@@ -14,9 +14,9 @@ const useFetchData = () => {
 
 
 
-	const setData = () => {
-		getUsers();
-		getCompanies();
+	const setData = async () => {
+		await getUsers();
+		await getCompanies();
 	}
 
 	const getUsers = async () => {
@@ -28,7 +28,7 @@ const useFetchData = () => {
 		const companies = await fetchCompanies();
 		setCompanyData(companies)
 	}
-	//TODO: Double check if working
+
 	// Show users working at a specific company
 	const getUsersAtCompany = ({ id }: CompanyModel) => companyData.filter((company) => company.id === id).map((x) => x.employees)
 

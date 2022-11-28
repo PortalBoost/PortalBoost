@@ -12,13 +12,15 @@ import CompanyModel from "../../../models/companyModel";
 import ResetTextButton from "./ResetTextButton";
 import CharactersRemainingMessage from "./CharactersRemainingMessage";
 import useFetchData from "../../../hooks/useFetchData";
+import useAuth from "../../../hooks/useAuth";
 import EmployeeModel from "../../../models/employeeModel";
 import { addUserToCompany, fetchCompanies } from "../../../services/API/companyService";
+import { updateUser } from "../../../services/API/userService";
 
 
 
 // TODO: Update user in database
-// TODO: Determine if user should be able to assign themselves to a company.
+// TODO: Logged in user update
 const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const MAX_LENGTH_USERNAME = 20;
@@ -26,15 +28,18 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const MAX_LENGTH_PRESENTATION = 210;
 	const MAX_LENGTH_SKILL = 100;
 
-	const { getEmployeeAssignment, getCompanies } = useFetchData();
+	const { updateLoggedInUser } = useAuth();
+	const { getEmployeeAssignment, getCompanies, setData, getUsers } = useFetchData();
 	const companies = useRecoilValue(companyDataState)
 
-	const [username, setUsername] = useState("")
+	const [username, setUsername] = useState(user.username)
 	const [openModal, setOpenModal] = useState(false)
 	const [previewUser, setPreviewUser] = useState({ ...user })
 
-	const [selectTitle, setSelectTitle] = useState("")
+	const [selectTitle, setSelectTitle] = useState(user.title)
 	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
+
+	const [infoMessage, setInfoMessage] = useState({ show: false, text: "infomessage" })
 
 	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
 
@@ -88,9 +93,31 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		});
 	}
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		// More stuff in here, tempuser used to update user in database
+
+		const tempUser = getTemporaryUser();
+		const updateUserRequest = await updateUser(tempUser);
+		if (!updateUserRequest) {
+			console.log("User was not updated")
+			setInfoMessage({
+				show: true,
+				text: "Could not update profile"
+			})
+		}
+		else {
+			console.log("User was updated")
+			await updateUserCompany(updateUserRequest)
+			updateLoggedInUser(updateUserRequest)
+			await getCompanies();
+			await getUsers();
+
+
+			setInfoMessage({
+				show: true,
+				text: "Succesfully updated profile"
+			})
+		}
 	}
 
 	const toggleOpenModal = () => {
@@ -98,34 +125,42 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	}
 
 
-	const tempAddUserToCompany = async (userToAdd: UserModel) => {
+	const updateUserCompany = async (userToAdd: UserModel) => {
 		const addUserToCompanyRequest = await addUserToCompany(selectCompany?.id, userToAdd);
 		if (addUserToCompanyRequest === 404) console.log("User was not added")
 		else {
-			getCompanies();
 			console.log("User company updated")
 		}
 	}
 
 	const handlePreview = () => {
-		const tempUser = { ...user }
-		tempUser.username = username;
-		tempUser.presentation = formFields.presentation ? formFields.presentation : tempUser.presentation;
-		tempUser.oneLiner = formFields.oneLiner ? formFields.oneLiner : tempUser.oneLiner;
-		tempUser.skill = formFields.skill ? formFields.skill : tempUser.skill;
-		tempUser.title = selectTitle;
-
-		//temp
-		// tempAddUserToCompany(tempUser);
+		const tempUser = getTemporaryUser();
+		// updateUserCompany(tempUser);
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
 
+	const getTemporaryUser = () => {
+		const tempUser = { ...user }
+		tempUser.username = username;
+		tempUser.presentation = formFields.presentation ? formFields.presentation : tempUser.presentation;
+		tempUser.oneLiner = formFields.oneLiner;
+		tempUser.skill = formFields.skill ? formFields.skill : tempUser.skill;
+		tempUser.title = selectTitle;
 
+		return tempUser
+	}
 
 	useEffect(() => {
 		console.log(currentUserCompany?.name)
+		console.log(user.oneLiner);
+		console.log(user)
 	}, [])
+
+	// useEffect(() => {
+	// 	setData();
+	// }, [user])
+
 	// TODO: Separate out into components?
 	return (
 		<>
@@ -210,9 +245,13 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						<ResetTextButton setResetText={resetTextSkill} />
 					</div>
 
+					<p className={`${infoMessage.show ? "visible" : "invisible"}
+					font-sans text-n-purple text-center`}>
+						{infoMessage.text}</p>
+
 					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-5">
-						<button onClick={handlePreview}>Preview Profile</button>
-						<button>Update Profile</button>
+						<button className="bg-n-turquoise" id="preview" type="button" onClick={handlePreview}>Preview Profile</button>
+						<button className="bg-n-turquoise" id="submit" type="submit" onClick={() => handleSubmit}>Update Profile</button>
 					</div>
 
 				</div>
