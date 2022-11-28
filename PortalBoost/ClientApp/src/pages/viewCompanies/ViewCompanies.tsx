@@ -5,7 +5,7 @@ import CompanyModel from "../../models/companyModel";
 import PreviewCard from '../../components/previewCard/PreviewCard'
 import { Link } from 'react-router-dom'
 
-const ViewCompanies = () => {
+const ViewCompanies = ({ company }: { company: CompanyModel }) => {
 
 	
 
@@ -41,10 +41,7 @@ const ViewCompanies = () => {
 			{testCompanies.map((company) => (
 				<Link to="./testCompany">
 				<PreviewCard 
-				key={company.companyId} 
-				id={company.companyId}
-				companyName={company.companyName} 
-				companyDescription={company.companyDescription}/>
+				company={company}/>
 				</Link>))}
 			
 			</div>
@@ -53,3 +50,10 @@ const ViewCompanies = () => {
 }
 
 export default ViewCompanies
+
+
+// key={company.companyId} 
+// id={company.companyId}
+// company={company}
+// companyName={company.companyName} 
+// companyDescription={company.companyDescription}/>
