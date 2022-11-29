@@ -9,13 +9,15 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Class used to seed a local MongoDB database.
+    /// </summary>
     public class MongoDBSeeder
     {
         private readonly IMongoDatabase _database;
         private readonly IMongoCollection<User> _userCollection;
         private readonly IMongoCollection<Company> _companyCollection;
 
-        // TODO: Get values directly from MongoDbSettings instead of hardcoding them in.
         public MongoDBSeeder()
         {
             MongoClient client = new("mongodb://localhost:27017");
@@ -37,7 +39,11 @@
             await _userCollection.InsertManyAsync(usersCollectionDocument);
         }
 
-        // TODO: Error handling
+        /// <summary>
+        /// Uses an isntance of StreamReader to read text-data from the <paramref name="filename"/> file.
+        /// </summary>
+        /// <param name="filename">The filename of the file to be read.</param>
+        /// <returns>The read data</returns>
         private static string ReadTextFromFile(string filename)
         {
             string filePath = Environment.CurrentDirectory + $@"\{filename}";
@@ -47,12 +53,19 @@
             return sr.ReadToEnd();
         }
 
+        /// <summary>
+        /// Manually drops the two database collections
+        /// </summary>
         private void DropAllCollections()
         {
             DropDbCollection("Users");
             DropDbCollection("Companies");
         }
 
+        /// <summary>
+        /// Drops the database collection.
+        /// </summary>
+        /// <param name="collectionName">Name of the collection to be dropped.</param>
         private void DropDbCollection(string collectionName) => _database.DropCollection(collectionName);
     }
 }

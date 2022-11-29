@@ -60,10 +60,18 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee, assignment }: EmployeeMod
 
 						<div className="flex flex-col  pt-12 sm:pt-4">
 							<p className="font-bold underline underline-offset-2 decoration-n-dark/50 ">Current Assignment</p>
-							<div>{assignment?.name}</div>
+							<div className="mt-1 shadow-md max-w-sm p-2 ring-1 ring-n-purple">
+								<p className="font-bold">{assignment?.name}</p>
+								<p className="">{assignment?.description}</p>
+							</div>
 						</div>
 
-						<button className="mt-10 sm:mt-5 flex mx-auto items-center  px-4 gap-3" > <RiMailSendLine className="text-xl" /> Send a message</button>
+						<button className="mt-10 sm:mt-5 flex px-4" >
+							<a className="flex gap-2 items-center"
+								href={`mailto:${employee.email}`}>
+								<RiMailSendLine className="text-xl" /> Send a message
+							</a>
+						</button>
 					</div>
 
 					<div role="button" id="close-modal" onClick={toggleOpen}

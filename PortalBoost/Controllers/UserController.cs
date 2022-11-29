@@ -73,7 +73,6 @@
             return Ok(foundUser);
         }
 
-
         /// <summary>
         /// <para>Compares parameter <see cref="User"/> with UserCollection and applies changes to relevant <see cref="User"/></para>
         /// <para>Finds relevant <see cref="User"/> with the <see cref="User.ID"/> parameter.</para>
