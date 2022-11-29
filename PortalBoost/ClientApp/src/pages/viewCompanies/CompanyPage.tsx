@@ -5,9 +5,10 @@ import { AiOutlineArrowLeft } from 'react-icons/ai'
 import EmployeeSmallIcons from "../../components/employee/EmployeeSmallIcons"
 import { useRecoilValue } from "recoil"
 import { useParams } from 'react-router-dom'
+import { Navigate } from "react-router-dom"
 import companyDataState from "../../atoms/companyDataState"
 import useFetchData from "../../hooks/useFetchData";
-import EmployeePreview from "../../components/employee/EmployeePreview"
+import EmployeePreviewRounded from "../../components/employee/EmployeePreviewRounded"
 
 interface CompanyProps {
 	id: string,
@@ -53,7 +54,8 @@ const CompanyPage = () => {
 							Fler kunder</button>
 					</Link>
 				</div>
-				<div className="grid grid-cols-2 m-10 p-20 rounded-lg shadow-lg">
+				<div className="rounded-lg shadow-lg">
+				<div className="grid grid-cols-2 m-10 p-20">
 					<div className="">
 						<h1 className={name}>{company.name}</h1>
 
@@ -78,18 +80,24 @@ const CompanyPage = () => {
 
 					<div className="flex flex-col justify-start place-items-center pl-20">
 						<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
-						<h3 className="py-4">Teamet</h3>
+						
 
-						<div className="flex  ">
+		
+					</div>
+				</div>
+				<h3 className="py-4 ">Teamet</h3>
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
 							
-							{usersWorkingAtASpecificCompany.map((employee) => <EmployeePreview key={id} employee={employee} />)}
+							{usersWorkingAtASpecificCompany?.map((employee) => <EmployeePreviewRounded key={employee.id} employee={employee} />)}
 							
 						</div>
-					</div>
 				</div>
 
 
 			</div>
+		)
+		return(
+			<Navigate to="/404" />
 		)
 }
 
