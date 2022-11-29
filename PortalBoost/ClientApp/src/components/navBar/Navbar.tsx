@@ -16,7 +16,7 @@ const Navbar: React.FC<{}> = () => {
 
 	return (
 		<div className="fixed top-0 left-0
-		bg-white dark:bg-n-gray shadow-lg">
+		 bg-n-gray shadow-lg">
 
 			<div className="mt-20 pt-6 m-2 text-black p-3 h-screen flex items-start">
 				<ul className="flex flex-col justify-evenly gap-4">
