@@ -9,7 +9,7 @@ const MobileNavBar: React.FC<{}> = () => {
 
 	return (
 		<div className="fixed bottom-0 flex 
-		 dark:bg-n-gray shadow-xl">
+		 bg-n-gray shadow-xl">
 			<div className=" text-black">
 
 				<ul className=" flex justify-around p-2 w-screen ">
