@@ -15,7 +15,7 @@ const ViewEmployees = () => {
 	const filteredEmployeeData = useRecoilValue(filteredEmployeesState)
 
 
-	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-1 sm:w-96 max-w-xs truncate shrink">Searchbar - placeholder </div>
+	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-1  truncate shrink text-n-dark/50 text-left pl-2 w-full max-w-xs">Search... </div>
 	//TODO: Proper grid sizing
 	return (
 		<div className="mt-20 animate-fade-in">
