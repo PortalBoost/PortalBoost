@@ -47,7 +47,7 @@ const Navbar: React.FC<{}> = () => {
 				{/* log out button */}
 				<div onClick={auth.logout} className="fixed bottom-2 hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center">
 					<p><IoLogOutOutline /></p>
-					<p>Log out</p>
+					<p>Logga ut</p>
 				</div>
 			</div>
 		</div>

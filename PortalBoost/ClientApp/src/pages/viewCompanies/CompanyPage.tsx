@@ -1,40 +1,96 @@
 import { Link } from "react-router-dom"
+import CompanyModel from "../../models/companyModel"
+import EmployeeModel from "../../models/employeeModel"
 import { AiOutlineArrowLeft } from 'react-icons/ai'
+import EmployeeSmallIcons from "../../components/employee/EmployeeSmallIcons"
+import { useRecoilValue } from "recoil"
+import { useParams } from 'react-router-dom'
+import companyDataState from "../../atoms/companyDataState"
+import useFetchData from "../../hooks/useFetchData";
+import EmployeePreview from "../../components/employee/EmployeePreview"
 
-const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros. Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.';
+interface CompanyProps {
+	id: string,
+	name: string,
+	description: string[],
+	techniques: string[],
+	systemsUsed: string[],
+	employees: EmployeeModel[]
+}
 
-const buttonStyling = "bg-n-turquoise hover:n-turquioise-dark text-white font-bold py-2 px-6 rounded flex flex-shrink-0 justify-items-center ease-out duration-300"
-const name = "pt-20 pb-10"
+type Params = {
+	id: string
+}
+
+
+
+const buttonStyling = "border-2 border-n-turquoise bg-white  text-black py-2 px-6 rounded flex justify-start gap-2 items-center ease-out-duration-300 hover:n-turquioise-dark hover:text-white hover:border-white"
+const name = "pt-20 pb-10 text-n-purple"
 const description = "p-4 pl-0 w-full "
-const image = "rounded-xl w-60 h-60 object-cover object-center mb-6 absolute right-1/4 top-60 border-2 p-6 h-40"
+const image = "rounded-xl w-60 h-60 object-cover object-center mb-6 border-2 p-6 h-40"
 
-//TODO: routing via id
 
 const CompanyPage = () => {
-	return (
-		<div className="grid grid-cols-2 m-10 p-10 rounded-lg shadow-lg animate-fade-in">
-			<div>
-				<Link to="/companies">
-					<button className={buttonStyling}>
-						<p className="px-2 "><AiOutlineArrowLeft /></p>
-						Fler kunder</button>
-				</Link>
 
-				<div className="">
-					<h1 className={name}>Company name</h1>
+	const { id } = useParams<Params>();
 
-					<p className={description}>{lorem}</p>
-					<p>Company website</p>
+	const fetchedCompanies = useRecoilValue(companyDataState)
+	const company = fetchedCompanies.find(comp => comp.id === id);
+
+
+	const { getUsersAtCompany } = useFetchData();
+
+	// Lägg in ID från valt company in som id parameter, och så får man tillbaka en array med anställda som jobbar på det företaget
+	const usersWorkingAtASpecificCompany = getUsersAtCompany({ id: id } as CompanyModel)
+	
+	if (company)
+		return (
+			<div className=" animate-fade-in">
+				<div className="m-10">
+					<Link to="/companies">
+						<button className={buttonStyling}>
+							<p><AiOutlineArrowLeft /></p>
+							Fler kunder</button>
+					</Link>
+				</div>
+				<div className="grid grid-cols-2 m-10 p-20 rounded-lg shadow-lg">
+					<div className="">
+						<h1 className={name}>{company.name}</h1>
+
+						<p className={description}>{company.description}</p>
+						<div className="flex flex-wrap gap-20 mt-6">
+							<div>
+								<h3>System</h3>
+								<p>
+									{company.systemsUsed.map((system, i) => <li key={i}> {system} </li>)}
+								</p>
+							</div>
+
+							<div>
+
+								<h3>Tekniker</h3>
+								<p>
+									{company.techniques?.map((technique, i) => <li key={i}> {technique} </li>)}
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div className="flex flex-col justify-start place-items-center pl-20">
+						<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
+						<h3 className="py-4">Teamet</h3>
+
+						<div className="flex  ">
+							
+							{usersWorkingAtASpecificCompany.map((employee) => <EmployeePreview key={id} employee={employee} />)}
+							
+						</div>
+					</div>
 				</div>
 
-			</div>
-			<div className="flex flex-col-reverse">
-				<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
 
-				<div className="absolute right-1/4 ">Här kommer teamet eventuellt</div>
 			</div>
-		</div>
-	)
+		)
 }
 
 export default CompanyPage
