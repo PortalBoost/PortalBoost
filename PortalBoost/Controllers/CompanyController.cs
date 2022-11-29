@@ -29,7 +29,6 @@
             return Ok(users);
         }
 
-
         [HttpGet("GetCompanyById")]
         public async Task<ActionResult<Company>> Get(string id)
         {
@@ -55,7 +54,7 @@
         }
 
         /// <summary>
-        /// Tries to add a user to a company matching the <paramref name="id"/>. 
+        /// Tries to add a user to a company matching the <paramref name="id"/>.
         /// If the user is already assigned to a company, removes the user from the current company before adding it to the selected company matching the <paramref name="id"/>.
         /// </summary>
         /// <param name="id">The id of the company to update.</param>
@@ -71,6 +70,5 @@
             await _companyService.AddUser(companyToUpdate, user);
             return Ok();
         }
-
     }
 }

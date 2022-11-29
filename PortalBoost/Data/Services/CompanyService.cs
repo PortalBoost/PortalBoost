@@ -27,7 +27,6 @@
         /// <returns> A list of companies </returns>
         public async Task<List<Company>> GetAsync() => await _companyCollection.Find(_ => true).ToListAsync();
 
-
         /// <summary>
         /// Gets a company by id
         /// </summary>
