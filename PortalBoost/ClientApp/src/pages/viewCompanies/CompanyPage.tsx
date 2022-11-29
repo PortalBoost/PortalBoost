@@ -7,6 +7,7 @@ import { useRecoilValue } from "recoil"
 import { useParams } from 'react-router-dom'
 import companyDataState from "../../atoms/companyDataState"
 import useFetchData from "../../hooks/useFetchData";
+import EmployeePreview from "../../components/employee/EmployeePreview"
 
 interface CompanyProps {
 	id: string,
@@ -31,7 +32,7 @@ const image = "rounded-xl w-60 h-60 object-cover object-center mb-6 border-2 p-6
 
 const CompanyPage = () => {
 
-	const { id } = useParams<'id'>(); //använder params som är en interface som har id som string
+	const { id } = useParams<Params>();
 
 	const fetchedCompanies = useRecoilValue(companyDataState)
 	const company = fetchedCompanies.find(comp => comp.id === id);
@@ -40,8 +41,8 @@ const CompanyPage = () => {
 	const { getUsersAtCompany } = useFetchData();
 
 	// Lägg in ID från valt company in som id parameter, och så får man tillbaka en array med anställda som jobbar på det företaget
-	const usersWorkingAtASpecificCompanyTest = getUsersAtCompany({ id: "6374cf17193bf25d5515a513" } as CompanyModel)
-
+	const usersWorkingAtASpecificCompany = getUsersAtCompany({ id: id } as CompanyModel)
+	
 	if (company)
 		return (
 			<div className=" animate-fade-in">
@@ -60,9 +61,9 @@ const CompanyPage = () => {
 						<div className="flex flex-wrap gap-20 mt-6">
 							<div>
 								<h3>System</h3>
-								<ul>
+								<p>
 									{company.systemsUsed.map((system, i) => <li key={i}> {system} </li>)}
-								</ul>
+								</p>
 							</div>
 
 							<div>
@@ -80,7 +81,9 @@ const CompanyPage = () => {
 						<h3 className="py-4">Teamet</h3>
 
 						<div className="flex  ">
-							<EmployeeSmallIcons />
+							
+							{usersWorkingAtASpecificCompany.map((employee) => <EmployeePreview key={id} employee={employee} />)}
+							
 						</div>
 					</div>
 				</div>
