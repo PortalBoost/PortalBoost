@@ -12,13 +12,15 @@ import CompanyModel from "../../../models/companyModel";
 import ResetTextButton from "./ResetTextButton";
 import CharactersRemainingMessage from "./CharactersRemainingMessage";
 import useFetchData from "../../../hooks/useFetchData";
+import useAuth from "../../../hooks/useAuth";
 import EmployeeModel from "../../../models/employeeModel";
 import { addUserToCompany, fetchCompanies } from "../../../services/API/companyService";
+import { updateUser } from "../../../services/API/userService";
 
 
 
 // TODO: Update user in database
-// TODO: Determine if user should be able to assign themselves to a company.
+// TODO: Logged in user update
 const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 	const MAX_LENGTH_USERNAME = 20;
@@ -26,18 +28,22 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	const MAX_LENGTH_PRESENTATION = 210;
 	const MAX_LENGTH_SKILL = 100;
 
-	const { getEmployeeAssignment, getCompanies } = useFetchData();
+	const { updateLoggedInUser } = useAuth();
+	const { getEmployeeAssignment, getCompanies, setData, getUsers } = useFetchData();
 	const companies = useRecoilValue(companyDataState)
 
-	const [username, setUsername] = useState("")
 	const [openModal, setOpenModal] = useState(false)
-	const [previewUser, setPreviewUser] = useState({ ...user })
 
-	const [selectTitle, setSelectTitle] = useState("")
-	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
+	const [previewUser, setPreviewUser] = useState({ ...user })
+	const [previewAssignment, setPreviewAssignment] = useState<CompanyModel>()
+
+	const [infoMessage, setInfoMessage] = useState({ show: false, text: "infomessage" })
+	const [loading, setIsLoading] = useState(false)
 
 	const currentUserCompany = getEmployeeAssignment(({ id: user.id } as EmployeeModel))
-
+	const [username, setUsername] = useState(user.username)
+	const [selectTitle, setSelectTitle] = useState(user.title)
+	const [selectCompany, setSelectedCompany] = useState<CompanyModel>()
 	const [formFields, setFormFields] = useState({
 		oneLiner: user.oneLiner ? user.oneLiner : "",
 		presentation: user.presentation ? user.presentation : "",
@@ -76,8 +82,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		const selectedCompany = companies.find((x) => x.id === e.target.value);
 		if (selectedCompany)
 			setSelectedCompany(selectedCompany)
-		console.log(selectedCompany)
-		console.log(e.target.value)
 	}
 
 	const handleFieldChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -88,9 +92,32 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		});
 	}
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		// More stuff in here, tempuser used to update user in database
+		setIsLoading(true)
+		const tempUser = getTemporaryUser();
+		const updateUserRequest = await updateUser(tempUser);
+		if (!updateUserRequest) {
+			console.log("User was not updated")
+			setInfoMessage({
+				show: true,
+				text: "Could not update profile"
+			})
+		}
+		else {
+			console.log("User was updated")
+			await updateUserCompany(updateUserRequest)
+			updateLoggedInUser(updateUserRequest)
+			await getCompanies();
+			await getUsers();
+
+
+			setInfoMessage({
+				show: true,
+				text: "Succesfully updated profile"
+			})
+		}
+		setIsLoading(false)
 	}
 
 	const toggleOpenModal = () => {
@@ -98,39 +125,41 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 	}
 
 
-	const tempAddUserToCompany = async (userToAdd: UserModel) => {
+	const updateUserCompany = async (userToAdd: UserModel) => {
 		const addUserToCompanyRequest = await addUserToCompany(selectCompany?.id, userToAdd);
-		if (addUserToCompanyRequest === 404) console.log("User was not added")
+		if (!addUserToCompanyRequest) {
+			console.log("User was not added")
+		}
 		else {
-			getCompanies();
 			console.log("User company updated")
 		}
 	}
 
 	const handlePreview = () => {
-		const tempUser = { ...user }
-		tempUser.username = username;
-		tempUser.presentation = formFields.presentation ? formFields.presentation : tempUser.presentation;
-		tempUser.oneLiner = formFields.oneLiner ? formFields.oneLiner : tempUser.oneLiner;
-		tempUser.skill = formFields.skill ? formFields.skill : tempUser.skill;
-		tempUser.title = selectTitle;
-
-		//temp
-		// tempAddUserToCompany(tempUser);
+		const tempUser = getTemporaryUser();
+		const assignment = companies.find((x) => x.id === selectCompany?.id)
+		setPreviewAssignment(assignment)
 		setPreviewUser(tempUser);
 		toggleOpenModal();
 	}
 
+	const getTemporaryUser = () => {
+		const tempUser = { ...user }
+		tempUser.username = username;
+		tempUser.presentation = formFields.presentation ? formFields.presentation : tempUser.presentation;
+		tempUser.oneLiner = formFields.oneLiner;
+		tempUser.skill = formFields.skill ? formFields.skill : tempUser.skill;
+		tempUser.title = selectTitle;
+
+		return tempUser
+	}
 
 
-	useEffect(() => {
-		console.log(currentUserCompany?.name)
-	}, [])
 	// TODO: Separate out into components?
 	return (
 		<>
 
-			<form id="editprofile" onSubmit={(e) => handleSubmit(e)}
+			<form id="editprofile" onSubmit={(e) => handleSubmit(e)} onClick={() => setInfoMessage({ ...infoMessage, show: false })}
 				className="flex  flex-col md:flex-row md:gap-4 lg:gap-10 justify-center items-center border-2 rounded-md p-5 py-10 lg:p-10  max-w-screen-2xl  bg-white ">
 
 				<div className="flex flex-col p-10  ">
@@ -166,7 +195,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						</select>
 					</div>
 
-
 					<div className="w-full flex flex-col pb-2">
 						<FormLabel htmlFor="company">{"Select your current assignment"}</FormLabel>
 						<select id="company" name="company" defaultValue={currentUserCompany?.id ? currentUserCompany.id : "Current assignment"}
@@ -178,9 +206,6 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 							))}
 						</select>
 					</div>
-
-
-
 
 					<div className="w-full flex flex-col relative">
 						<FormLabel htmlFor="oneliner" > {"Write a short and sweet one-liner."} </FormLabel>
@@ -210,15 +235,22 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 						<ResetTextButton setResetText={resetTextSkill} />
 					</div>
 
-					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-5">
-						<button onClick={handlePreview}>Preview Profile</button>
-						<button>Update Profile</button>
+
+					<p className={`${infoMessage.show ? "visible" : "invisible"}
+					font-sans text-n-purple text-center py-2`}>
+						{infoMessage.text}</p>
+
+					<div className="flex flex-col gap-8 sm:flex-row justify-between w-full mt-2">
+						<button className="bg-n-turquoise" id="preview" type="button" disabled={loading} onClick={handlePreview}>Preview Profile</button>
+						<button className="bg-n-turquoise" id="submit" type="submit" disabled={loading} onClick={() => handleSubmit}>
+							Update Profile
+						</button>
 					</div>
 
 				</div>
 
 			</form>
-			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} />}
+			{openModal && <EmployeeModal isOpen={openModal} toggleOpen={toggleOpenModal} employee={previewUser} assignment={previewAssignment} />}
 		</>
 	)
 }

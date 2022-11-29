@@ -4,10 +4,8 @@
     using MongoDB.Driver;
     using PortalBoost.Data.Database;
     using PortalBoost.Data.Models;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     public class UserService
@@ -29,7 +27,10 @@
         /// Gets a list containing all users
         /// </summary>
         /// <returns> A list of users </returns>
-        public async Task<List<User>> GetAsync() => await _userCollection.Find(_ => true).ToListAsync();
+        public async Task<List<User>> GetAsync()
+        {
+            return await _userCollection.Find(_ => true).ToListAsync();
+        }
 
         /// <summary>
         /// Gets a user by id.
@@ -46,7 +47,10 @@
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<DeleteResult> DeleteAsync(string id) => await _userCollection.DeleteOneAsync(u => u.ID == id);
+        public async Task<DeleteResult> DeleteAsync(string id)
+        {
+            return await _userCollection.DeleteOneAsync(u => u.ID == id);
+        }
 
         /// <summary>
         /// Returns a user by username and password.
@@ -54,6 +58,20 @@
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
         /// <returns>A user with matching username and password.</returns>
-        public async Task<User> LoginPasswordAsync(string username, string password) => await _userCollection.Find(x => x.Username == username && x.Password == password).FirstOrDefaultAsync();
+        public async Task<User> LoginPasswordAsync(string username, string password)
+        {
+            return await _userCollection.Find(x => x.Username == username && x.Password == password).FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// <para>Compares parameter <see cref="User"/> with UserCollection and applies changes to relevant <see cref="User"/>.</para>
+        /// <para>Finds relevant <see cref="User"/> with the <see cref="User.ID"/> parameter.</para>
+        /// </summary>
+        /// <param name="user">User Object</param>
+        /// <returns><see cref="ReplaceOneResult"/></returns>
+        public async Task<ReplaceOneResult> UpdateUserAsync(User user)
+        {
+            return await _userCollection.ReplaceOneAsync(u => user.ID == u.ID, user);
+        }
     }
 }

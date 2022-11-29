@@ -41,19 +41,22 @@ const loginUser = async (username: string, password: string) => {
 	return data;
 }
 
-const updateUser = async (userId: string, updatedUser: UserModel) => {
+const updateUser = async (updatedUser: UserModel) => {
 
 	const reqOptions = {
-		method: "PUT",
+		method: "POST",
 		headers: { "Content-Type": "application/json" },
 		body: JSON.stringify(updatedUser)
 	};
 
-	//TODO: Proper endpoint url.
-	const response = await fetch(`${BASE_URL}/URLHERE/${userId}`, reqOptions)
-	if (!response.ok) return response.status;
+	const response = await fetch(`${BASE_URL}/UpdateUser`, reqOptions)
+	if (!response.ok) {
+		return response.ok
+	}
+	const data = await response.json();
+	return data;
 
 }
 
-export { fetchUsers, loginUser }
+export { fetchUsers, loginUser, updateUser }
 

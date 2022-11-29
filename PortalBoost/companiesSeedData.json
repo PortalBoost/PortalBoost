@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Gislason Inc",
-		"description": [ "This is a placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"description": [ "This is a placeholder company, here's some intro text.", " Here's some more placeholder text, this company is really quite something." ],
 		"techniques": [ "C#", "React", "TypeScript" ],
 		"systemsUsed": [ "Public web", "Admin web", "External Integration" ],
 		"employees": [
@@ -66,7 +66,7 @@
 
 	{
 		"name": "Herzog-Herzog",
-		"description": [ "This is a placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"description": [ "This is a placeholder company, here's some intro text.", " Here's some more placeholder text, this company is really quite something." ],
 		"techniques": [ "C#", "React", "TypeScript", "MongoDB Atlas" ],
 		"systemsUsed": [ "External Integrations", "Admin web" ],
 		"employees": [
@@ -116,7 +116,7 @@
 	},
 	{
 		"name": "Kovacek-Abshire",
-		"description": [ "This is another placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"description": [ "This is another placeholder company, here's some intro text.", " Here's some more placeholder text, this company is really quite something." ],
 		"techniques": [ "C#", "Angular", "JavaScript", ".NET Core", "SQL Server" ],
 		"systemsUsed": [ "Public web", "Admin web", "External DB" ],
 		"employees": [
@@ -195,7 +195,7 @@
 
 	{
 		"name": "Terry LLC",
-		"description": [ "This is yet another placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"description": [ "This is yet another placeholder company, here's some intro text.", " Here's some more placeholder text, this company is really quite something." ],
 		"techniques": [ "C#", "React", "JavaScript" ],
 		"systemsUsed": [ "Public web", "Admin web", "External Integration" ],
 		"employees": [
@@ -274,7 +274,7 @@
 
 	{
 		"name": "Yost-Pacocha",
-		"description": [ "This is a placeholder company, here's some intro text.", "Here's some more placeholder text, this company is really quite something.'" ],
+		"description": [ "This is a placeholder company, here's some intro text.", " Here's some more placeholder text, this company is really quite something." ],
 		"techniques": [ "C#", "Vue", "TypeScript" ],
 		"systemsUsed": [ "Public web", "Admin web", "External Integration" ],
 		"employees": [

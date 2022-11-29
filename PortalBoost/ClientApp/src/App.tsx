@@ -42,7 +42,7 @@ function App() {
     <Router>
 
       <Header />
-      <ConditionalNavbar/>
+      <ConditionalNavbar />
 
       <ContentWrapper>
 
@@ -56,7 +56,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
 
           </Route>
-          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/404" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
 
         </Routes>
