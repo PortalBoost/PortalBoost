@@ -160,7 +160,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 		<>
 
 			<form id="editprofile" onSubmit={(e) => handleSubmit(e)} onClick={() => setInfoMessage({ ...infoMessage, show: false })}
-				className="flex  flex-col md:flex-row md:gap-4 lg:gap-10 justify-center items-center border-2 rounded-md p-5 py-10 lg:p-10  max-w-screen-2xl  bg-white ">
+				className="flex  flex-col md:flex-row md:gap-4 lg:gap-10 justify-center items-center border-2 rounded-md p-5 py-10 lg:p-10  max-w-screen-2xl  bg-white">
 
 				<div className="flex flex-col p-10  ">
 					<div className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark" >
