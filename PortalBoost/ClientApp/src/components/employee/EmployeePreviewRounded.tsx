@@ -4,6 +4,7 @@ import EmployeeModal from "./EmployeeModal"
 import { AiOutlineUser } from "react-icons/ai";
 import { PlaceholderUserImage } from "../common/PlaceholderUserImage";
 import useFetchData from "../../hooks/useFetchData";
+import placeholder from "../../assets/images/placeholder.jpg"
 
 
 
@@ -23,8 +24,10 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 		<>
 			<div className=" flex flex-col relative group ">
 
-				<div onClick={toggleOpen} className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-transform " >
-					<PlaceholderUserImage />
+				<div onClick={toggleOpen} className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-transform relative
+				before:rounded-full before:w-full before:h-full 
+				before:absolute before:ring-4 before:ring-inset before:ring-n-turquoise-dark " >
+					<img className="" src={placeholder}></img>
 				</div>
 
 				<div onClick={toggleOpen}
