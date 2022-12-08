@@ -16,6 +16,7 @@ import useAuth from "../../../hooks/useAuth";
 import EmployeeModel from "../../../models/employeeModel";
 import { addUserToCompany, fetchCompanies } from "../../../services/API/companyService";
 import { updateUser } from "../../../services/API/userService";
+import PlaceholderAvatar from "../../../assets/images/avatar-placeholder.jpg"
 
 
 
@@ -164,7 +165,7 @@ const EditProfileForm = ({ user }: { user: UserModel }) => {
 
 				<div className="flex flex-col p-10  ">
 					<div className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark" >
-						<PlaceholderUserImage></PlaceholderUserImage>
+						<img src={PlaceholderAvatar}></img>
 					</div>
 
 					<div className="text-center text-2xl text-n-purple" >
