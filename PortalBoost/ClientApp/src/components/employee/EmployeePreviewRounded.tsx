@@ -24,7 +24,7 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 		<>
 			<div className=" flex flex-col relative group ">
 
-				<div onClick={toggleOpen} className=" rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-all relative
+				<div onClick={toggleOpen} className="rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-all relative
 				before:rounded-full before:w-full before:h-full 
 				before:absolute before:ring-4 before:ring-inset before:ring-n-blue
 				before:outline before:outline-n-dark before:outline-2 before:-outline-offset-4
