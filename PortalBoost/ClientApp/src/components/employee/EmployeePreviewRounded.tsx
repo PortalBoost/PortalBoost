@@ -8,7 +8,10 @@ import PlaceholderAvatar from "../../assets/images/avatar-placeholder.jpg"
 
 
 
-const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
+const EmployeePreviewRounded = ({ employee, sizeSmall }: { employee: EmployeeModel, sizeSmall?: boolean }) => {
+
+	const NORMAL_SIZE_PX = 176;
+	const SMALL_SIZE_PX = 176
 
 	const { getEmployeeAssignment } = useFetchData();
 	const employeeAssignment = getEmployeeAssignment({ id: `${employee.id}` } as EmployeeModel);
@@ -24,12 +27,14 @@ const EmployeePreviewRounded = ({ employee }: { employee: EmployeeModel }) => {
 		<>
 			<div className=" flex flex-col relative group ">
 
-				<div onClick={toggleOpen} className="rounded-full max-w-[176px] max-h-[176px] mx-auto overflow-clip ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-all relative
+				<div onClick={toggleOpen} className={` 
+				max-w-[176px] 
+				rounded-full mx-auto overflow-hidden ring-2 ring-n-dark cursor-pointer group-hover:scale-110 transition-all relative
 				before:rounded-full before:w-full before:h-full 
 				before:absolute before:ring-4 before:ring-inset before:ring-n-blue
 				before:outline before:outline-n-dark before:outline-2 before:-outline-offset-4
-				before:group-hover:ring-n-purple-light before:group-hover:outline-n-offwhite" >
-					<img className="" src={PlaceholderAvatar}></img>
+				before:group-hover:ring-n-purple-light before:group-hover:outline-n-offwhite`} >
+					<img src={PlaceholderAvatar}></img>
 				</div>
 
 
