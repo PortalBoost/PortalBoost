@@ -10,9 +10,6 @@ const fetchUsers = async () => {
 	const response = await fetch(`${BASE_URL}/AllUsers`)
 	if (!response.ok) throw new Error(`Error: ${response.status}`)
 	const json = await response.json();
-
-	if (!response.ok) throw new Error(`Error: ${response.status}`)
-
 	const data = json.map((employee: UserModel) => {
 		employee.password = ""
 		return employee
