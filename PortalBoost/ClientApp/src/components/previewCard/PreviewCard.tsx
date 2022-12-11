@@ -6,7 +6,6 @@ interface CompanyProps {
 	company: CompanyModel
 }
 
-//TODO: add a link to the company page
 const PreviewCard = ({company}: {company: CompanyModel}) => {
 
 	const [isHovered, setIsHovered] = useState(false)
