@@ -8,7 +8,7 @@ const MobileNavBar: React.FC<{}> = () => {
 	const navBarItem = "hover:text-n-turquoise-dark grid justify-items-center"
 
 	return (
-		<div className="fixed bottom-0 flex 
+		<div className="fixed z-40 bottom-0 flex 
 		 bg-n-gray shadow-xl">
 			<div className=" text-black">
 
