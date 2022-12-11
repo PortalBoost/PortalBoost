@@ -55,7 +55,7 @@ const CompanyPage = () => {
 					</Link>
 				</div>
 				<div className="rounded-lg shadow-lg">
-				<div className="grid grid-cols-2 m-10 p-20">
+				<div className="grid grid-cols-2 m-10 p-20 sm:grid-cols-1 xs:grid-cols-1 xxs:grid-cols-1 xxs:p-1">
 					<div className="">
 						<h1 className={name}>{company.name}</h1>
 
@@ -78,7 +78,7 @@ const CompanyPage = () => {
 						</div>
 					</div>
 
-					<div className="flex flex-col justify-start place-items-center pl-20">
+					<div className="flex flex-col justify-start place-items-center pl-20 xxs:p-4 xxs:m-auto">
 						<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
 						
 
