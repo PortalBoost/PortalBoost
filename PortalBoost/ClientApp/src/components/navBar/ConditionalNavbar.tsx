@@ -1,19 +1,23 @@
 import Navbar from './Navbar'
 import MobileNavBar from './MobileNavBar'
+import { useRecoilValue } from 'recoil';
+import successfullLogin from "../../atoms/successfulLoginState";
 
 const ConditionalNavBar = () => {
 
-  return (
-	<>
-		  <div className="hidden md:block">
-			  <Navbar />
-		  </div>
+	const isAuth = useRecoilValue(successfullLogin)
 
-		  <div className="md:hidden">
-			  <MobileNavBar />
-		  </div>
-	  </>
-  );
+	return (
+		<>
+			<div className={`hidden ${isAuth && "md:block"}`}>
+				<Navbar />
+			</div>
+
+			<div className={`md:hidden ${isAuth && "md:hidden"}`}>
+				<MobileNavBar />
+			</div>
+		</>
+	);
 };
 
 export default ConditionalNavBar;

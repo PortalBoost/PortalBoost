@@ -47,22 +47,22 @@ const CompanyPage = () => {
 	if (company)
 		return (
 			<div className=" animate-fade-in">
-				<div className="m-10">
+				<div className="m-10 ml-20 md:ml-30">
 					<Link to="/companies">
 						<button className={buttonStyling}>
 							<p><AiOutlineArrowLeft /></p>
-							Fler kunder</button>
+							More clients</button>
 					</Link>
 				</div>
-				<div className="rounded-lg shadow-lg">
-					<div className="grid grid-cols-2 m-10 p-20">
+				<div className="rounded-lg shadow-lg pb-10">
+					<div className="grid grid-cols-2 m-10 p-20 pb-5">
 						<div className="">
 							<h1 className={name}>{company.name}</h1>
 
 							<p className={description}>{company.description}</p>
 							<div className="flex flex-wrap gap-20 mt-6">
 								<div>
-									<h3>System</h3>
+									<h3>Systems</h3>
 									<p>
 										{company.systemsUsed.map((system, i) => <li key={i}> {system} </li>)}
 									</p>
@@ -70,7 +70,7 @@ const CompanyPage = () => {
 
 								<div>
 
-									<h3>Tekniker</h3>
+									<h3>Technologies</h3>
 									<p>
 										{company.techniques?.map((technique, i) => <li key={i}> {technique} </li>)}
 									</p>
@@ -80,29 +80,15 @@ const CompanyPage = () => {
 
 						<div className="flex flex-col justify-start place-items-center pl-20">
 							<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
-
-
-
 						</div>
 					</div>
-					<h3 className="py-4 ">Teamet</h3>
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
 
-					<div className="flex flex-col justify-start place-items-center pl-20 xxs:p-4 xxs:m-auto">
-						<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
-						
-
-						{usersWorkingAtASpecificCompany?.map((employee) => <EmployeePreviewRounded key={employee.id} employee={employee} sizeSmall />)}
-
-
+					<h3 className="py-4 flex justify-center text-2xl text-n-purple my-4">Meet the team</h3>
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-1 md:px-40 justify-center place-items-center">
+						{usersWorkingAtASpecificCompany?.map((employee) =>
+							<EmployeePreviewRounded key={employee.id} employee={employee} sizeSmall />
+						)}
 					</div>
-				</div>
-				<h3 className="py-4 flex justify-center my-4">Teamet</h3>
-				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
-							
-							{usersWorkingAtASpecificCompany?.map((employee) => <EmployeePreviewRounded key={employee.id} employee={employee} />)}
-							
-						</div>
 				</div>
 
 
