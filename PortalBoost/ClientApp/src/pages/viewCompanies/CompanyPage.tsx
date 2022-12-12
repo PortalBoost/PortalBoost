@@ -88,10 +88,23 @@ const CompanyPage = () => {
 					<h3 className="py-4 ">Teamet</h3>
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
 
+					<div className="flex flex-col justify-start place-items-center pl-20 xxs:p-4 xxs:m-auto">
+						<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
+						
+
 						{usersWorkingAtASpecificCompany?.map((employee) => <EmployeePreviewRounded key={employee.id} employee={employee} sizeSmall />)}
+
 
 					</div>
 				</div>
+				<h3 className="py-4 flex justify-center my-4">Teamet</h3>
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
+							
+							{usersWorkingAtASpecificCompany?.map((employee) => <EmployeePreviewRounded key={employee.id} employee={employee} />)}
+							
+						</div>
+				</div>
+
 
 
 			</div>
