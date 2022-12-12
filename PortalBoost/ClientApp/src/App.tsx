@@ -15,9 +15,6 @@ import Footer from "./components/footer/Footer";
 import ConditionalNavbar from './components/navBar/ConditionalNavbar';
 import successfullLogin from "./atoms/successfulLoginState";
 import useFetchData from "./hooks/useFetchData";
-import EmployeeModel from "./models/employeeModel";
-import companyDataState from "./atoms/companyDataState";
-import CompanyModel from "./models/companyModel";
 
 
 // TODO: Reusable modal component
@@ -42,10 +39,10 @@ function App() {
     <Router>
 
       <Header />
-      <ConditionalNavbar />
+
 
       <ContentWrapper>
-
+        <ConditionalNavbar />
         <Routes>
 
           <Route path="/" element={<AuthRoute />} >

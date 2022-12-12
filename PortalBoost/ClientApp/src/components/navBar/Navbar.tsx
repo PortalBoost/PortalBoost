@@ -5,50 +5,31 @@ import { IoLogOutOutline } from 'react-icons/io5'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
+import MenuItem from './MenuItem'
 
 const Navbar: React.FC<{}> = () => {
 	const auth = useAuth();
-	//TODO: use recoilstate instead of state 
-	const [isOpen, setIsOpen] = useState(true)
 
-	const navBarItem = "hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center"
-
-
+	//TODO: Animation when expanding menu
 	return (
-		<div className="fixed top-0 left-0
-		 bg-n-gray shadow-lg">
+		<div className="fixed top-0 left-0 z-40
+		 bg-n-blue shadow-lg 
+		 w-14 overflow-clip xl:w-auto transition-all ease-in-out duration-300">
 
-			<div className="mt-20 pt-6 m-2 text-black p-3 h-screen flex items-start">
-				<ul className="flex flex-col justify-evenly gap-4">
+			<div className="mt-40 pt-6 m-2 text-black p-3 h-screen flex items-start relative ">
 
-					<Link to="/">
-						<li className={navBarItem}>
-							<p><AiOutlineHome /></p>
-							<p>home</p>
-						</li>
-					</Link>
+				<ul className="flex flex-col justify-evenly gap-10 ">
 
-					<Link to="/employees">
-						<li className={navBarItem}>
-							<p><AiOutlineTeam /></p>
-							<p>medarbetare</p>
-						</li>
-					</Link>
+					<MenuItem link='' text='home' icon={<AiOutlineHome />} ></MenuItem>
 
-					<Link to="/companies">
-						<li className={navBarItem}>
-							<p><RiSuitcaseLine /></p>
-							<p>kunder</p>
-						</li>
-					</Link>
+					<MenuItem link='employees' text='employees' icon={<AiOutlineTeam />} ></MenuItem>
+
+					<MenuItem link='companies' text='clients' icon={<RiSuitcaseLine />} ></MenuItem>
+
+					<MenuItem link='' text='log out' icon={<IoLogOutOutline />} logout={auth.logout} ></MenuItem>
+
 				</ul>
 
-				{/* TODO: add functionality to log out*/}
-				{/* log out button */}
-				<div onClick={auth.logout} className="fixed bottom-2 hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center">
-					<p><IoLogOutOutline /></p>
-					<p>Logga ut</p>
-				</div>
 			</div>
 		</div>
 	)
