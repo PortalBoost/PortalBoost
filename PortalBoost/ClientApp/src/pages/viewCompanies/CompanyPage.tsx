@@ -43,7 +43,7 @@ const CompanyPage = () => {
 
 	// Lägg in ID från valt company in som id parameter, och så får man tillbaka en array med anställda som jobbar på det företaget
 	const usersWorkingAtASpecificCompany = getUsersAtCompany({ id: id } as CompanyModel)
-	
+
 	if (company)
 		return (
 			<div className=" animate-fade-in">
@@ -55,34 +55,46 @@ const CompanyPage = () => {
 					</Link>
 				</div>
 				<div className="rounded-lg shadow-lg">
-				<div className="grid grid-cols-2 m-10 p-20 sm:grid-cols-1 xs:grid-cols-1 xxs:grid-cols-1 xxs:p-1">
-					<div className="">
-						<h1 className={name}>{company.name}</h1>
+					<div className="grid grid-cols-2 m-10 p-20">
+						<div className="">
+							<h1 className={name}>{company.name}</h1>
 
-						<p className={description}>{company.description}</p>
-						<div className="flex flex-wrap gap-20 mt-6">
-							<div>
-								<h3>System</h3>
-								<p>
-									{company.systemsUsed.map((system, i) => <li key={i}> {system} </li>)}
-								</p>
-							</div>
+							<p className={description}>{company.description}</p>
+							<div className="flex flex-wrap gap-20 mt-6">
+								<div>
+									<h3>System</h3>
+									<p>
+										{company.systemsUsed.map((system, i) => <li key={i}> {system} </li>)}
+									</p>
+								</div>
 
-							<div>
+								<div>
 
-								<h3>Tekniker</h3>
-								<p>
-									{company.techniques?.map((technique, i) => <li key={i}> {technique} </li>)}
-								</p>
+									<h3>Tekniker</h3>
+									<p>
+										{company.techniques?.map((technique, i) => <li key={i}> {technique} </li>)}
+									</p>
+								</div>
 							</div>
 						</div>
+
+						<div className="flex flex-col justify-start place-items-center pl-20">
+							<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
+
+
+
+						</div>
 					</div>
+					<h3 className="py-4 ">Teamet</h3>
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4">
 
 					<div className="flex flex-col justify-start place-items-center pl-20 xxs:p-4 xxs:m-auto">
 						<img className={image} src="https://media.istockphoto.com/id/1347612424/sv/vektor/cloud-logo-template-design-vector.jpg?s=612x612&w=0&k=20&c=YzDDQ0ZRXNhP3Q4j4jscP1gSR4Psvhit3HVyHpeTxTU=" alt="image" />
 						
 
-		
+						{usersWorkingAtASpecificCompany?.map((employee) => <EmployeePreviewRounded key={employee.id} employee={employee} sizeSmall />)}
+
+
 					</div>
 				</div>
 				<h3 className="py-4 flex justify-center my-4">Teamet</h3>
@@ -94,11 +106,12 @@ const CompanyPage = () => {
 				</div>
 
 
+
 			</div>
 		)
-		return(
-			<Navigate to="/404" />
-		)
+	return (
+		<Navigate to="/404" />
+	)
 }
 
 export default CompanyPage
