@@ -61,10 +61,10 @@ const EmployeeModal = ({ isOpen, toggleOpen, employee, assignment }: EmployeeMod
 
 						<div className="flex flex-col  pt-12 sm:pt-4">
 							<p className="font-bold underline underline-offset-2 decoration-n-dark/50 ">Current Assignment</p>
-							<div className="mt-1 shadow-md max-w-sm p-2 ring-1 ring-n-purple">
+							<Link to={`/companies/${assignment?.id}`} className="mt-1 shadow-md max-w-sm p-2 ring-1 ring-n-purple">
 								<p className="font-bold">{assignment?.name}</p>
 								<p className="">{assignment?.description}</p>
-							</div>
+							</Link>
 						</div>
 
 						<button className="mt-10 sm:mt-5 flex px-4" >

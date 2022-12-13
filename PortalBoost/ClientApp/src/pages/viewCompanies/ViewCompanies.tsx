@@ -20,7 +20,7 @@ const ViewCompanies = () => {
 
 				{/* preview card */}
 				{companyData.map((company) => (
-					<Link to={`/companies/${company.id}`} key={company.id} {...company}>
+					<Link to={`/companies/${company.id}`} key={company.id} >
 						<PreviewCard key={company.id} company={company} />
 					</Link>
 				))}

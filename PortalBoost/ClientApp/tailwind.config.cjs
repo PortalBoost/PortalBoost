@@ -34,6 +34,9 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
+      transitionProperty: {
+        "width": "width"
+      },
       animation: {
         "fade-in": "fadein 200ms linear",
         "fade-out": "fadeout 200ms linear"
