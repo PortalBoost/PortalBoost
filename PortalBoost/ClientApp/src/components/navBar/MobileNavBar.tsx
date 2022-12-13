@@ -7,12 +7,12 @@ import useAuth from '../../hooks/useAuth'
 
 const MobileNavBar: React.FC<{}> = () => {
 	const auth = useAuth();
-	const navBarItem = "hover:text-n-turquoise-dark grid justify-items-center"
+	const navBarItem = "hover:text-n-turquoise-dark grid justify-items-center cursor-pointer"
 	const biggerIcons = "font-bold text-2xl"
 
 	return (
 		<div className="fixed z-50 bottom-0 flex 
-		 bg-n-gray shadow-xl">
+		bg-n-blue shadow-xl">
 			<div className=" text-black">
 
 				<ul className=" flex justify-around p-2 w-screen">
@@ -27,7 +27,7 @@ const MobileNavBar: React.FC<{}> = () => {
 					<Link to="/employees">
 						<li className={navBarItem}>
 							<p><AiOutlineTeam className={biggerIcons} /></p>
-							<p>collagues</p>
+							<p>employees</p>
 						</li>
 					</Link>
 
@@ -38,9 +38,9 @@ const MobileNavBar: React.FC<{}> = () => {
 						</li>
 					</Link>
 
-					<div onClick={auth.logout} className={navBarItem + ""}>
-						<p className='md:pr-4'><IoLogOutOutline className={biggerIcons} /></p>
-						<p>Log out</p>
+					<div onClick={auth.logout} className={navBarItem}>
+						<p ><IoLogOutOutline className={biggerIcons} /></p>
+						<p>log out</p>
 					</div>
 
 				</ul>

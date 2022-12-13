@@ -14,7 +14,7 @@ const Navbar: React.FC<{}> = () => {
 	return (
 		<div className="fixed top-0 left-0 z-40
 		 bg-n-blue shadow-lg 
-		 w-14 overflow-clip xl:w-auto transition-all ease-in-out duration-300">
+		 w-14 overflow-clip max-w-[175px] xl:w-full hover:w-full transition-width ease-in-out duration-300">
 
 			<div className="mt-40 pt-6 m-2 text-black p-3 h-screen flex items-start relative ">
 

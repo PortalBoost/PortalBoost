@@ -18,10 +18,10 @@ const Header = () => {
 						</Link>
 					</div>
 					<div>
-						<div className={profileIcon + ""}>
-							<Link to="./profile">
+						<div className={profileIcon}>
+							<Link to="./profile" className='flex flex-col place-items-center'>
 								<p><BsPerson className='text-3xl' /></p>
-								<p>profil</p>
+								<p>profile</p>
 							</Link>
 						</div>
 					</div>

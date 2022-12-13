@@ -9,11 +9,11 @@ const MenuItem = ({ link, icon, text, logout }: { link: string, icon: React.Reac
 
 		<li onClick={logout} >
 			<Link to={`/${link}`} className="shadow-sm md:shadow-none  p-4 rounded hover:text-n-turquoise-dark ease-in-out duration-300 hover:cursor-pointer flex justify-start gap-4 items-center ">
-				<p className='md:-ml-5'>
-					<div className="font-bold text-2xl" >
+				<div className='md:-ml-5'>
+					<p className="font-bold text-2xl" >
 						{icon}
-					</div>
-				</p>
+					</p>
+				</div>
 				<p className='font-bold'>{text}</p>
 			</Link>
 		</li >

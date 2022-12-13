@@ -13,7 +13,7 @@ const ConditionalNavBar = () => {
 				<Navbar />
 			</div>
 
-			<div className={`md:hidden ${isAuth && "md:hidden"}`}>
+			<div className={`hidden ${isAuth && "max-md:block"}  `}>
 				<MobileNavBar />
 			</div>
 		</>
