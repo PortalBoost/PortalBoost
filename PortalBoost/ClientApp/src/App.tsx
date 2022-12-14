@@ -1,33 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import AuthRoute from "./components/AuthRoute";
+import ContentWrapper from './components/common/ContentWrapper';
+import LandingPage from './pages/landingPage/LandingPage';
+import PageNotFound from './pages/pageNotFound/PageNotFound';
+import ViewEmployees from './pages/viewEmployees/ViewEmployees';
+import ViewCompanies from './pages/viewCompanies/ViewCompanies';
+import CompanyPage from './pages/viewCompanies/CompanyPage';
+import LoginPage from "./pages/loginPage/LoginPage";
+import Profile from "./pages/profilePage/Profile";
+import Header from './components/header/Header';
+import Footer from "./components/footer/Footer";
+import ConditionalNavbar from './components/navBar/ConditionalNavbar';
+import successfullLogin from "./atoms/successfulLoginState";
+import useFetchData from "./hooks/useFetchData";
 
+
+// TODO: Reusable modal component
+// TODO: EmployeePreview minimalistic rounded version
+// TODO: Rounded typical "Avatar"-style profile picture for previews. Larger image on expanded modal. 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const validLogin = useRecoilValue(successfullLogin)
+  const { setData } = useFetchData();
+
+  useEffect(() => {
+    console.log(validLogin)
+    setData();
+  }, [])
+
+
+  /** Test-user login:
+   *  username: user
+   *  password: 1234
+   */
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    <Router>
+
+      <Header />
+
+
+      <ContentWrapper>
+        <ConditionalNavbar />
+        <Routes>
+
+          <Route path="/" element={<AuthRoute />} >
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/employees" element={<ViewEmployees />} />
+            <Route path="/companies" element={<ViewCompanies />} />
+            <Route path="/companies/:id" element={<CompanyPage />} />
+            <Route path="/profile" element={<Profile />} />
+
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/404" element={<PageNotFound />} />
+          <Route path="*" element={<PageNotFound />} />
+
+        </Routes>
+
+      </ContentWrapper>
+      <Footer />
+
+    </Router>
   )
 }
 
