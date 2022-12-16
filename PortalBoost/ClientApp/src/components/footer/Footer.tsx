@@ -3,9 +3,6 @@ import { Link } from "react-router-dom";
 // text-4xl mb-10 hover:text-purple-800 flex items-center justify-center text-4xl 
 
 const Footer = () => {
-    const scrollToTop = () => { 
-        window.scrollTo(0, 0);
-    }
 
     return (
 
