@@ -11,7 +11,7 @@ const ViewEmployees = () => {
 	//TODO: Proper grid sizing
 	return (
 		<div className="mt-20 animate-fade-in">
-			<div className="flex flex-col gap-10 ">
+			<div className="flex flex-col justify-center items-center gap-10 sm:px-24">
 
 
 				<div className="text-center ">
