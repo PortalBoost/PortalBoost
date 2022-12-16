@@ -4,30 +4,18 @@ import TitlesMenu from "../../components/employee/TitlesMenu"
 import EmployeePreviewRounded from "../../components/employee/EmployeePreviewRounded"
 import filteredEmployeesState from "../../atoms/filteredEmployeesState"
 
-
-
-
-
-
 const ViewEmployees = () => {
 	const employeeData = useRecoilValue(userDataState)
 	const filteredEmployeeData = useRecoilValue(filteredEmployeesState)
 
-
-	const placeholderSearchbar = <div className="ring-1 ring-n-purple rounded-md p-1  truncate shrink text-n-dark/50 text-left pl-2 w-full max-w-xs">Search... </div>
 	//TODO: Proper grid sizing
 	return (
 		<div className="mt-20 animate-fade-in">
-			<div className="flex flex-col justify-center items-center gap-10 sm:px-24">
+			<div className="flex flex-col gap-10 ">
 
 
 				<div className="text-center ">
 					<p className="text-4xl  font-serif"> Meet the <span className="text-n-dark font-semibold">MyTeam</span> Team.</p>
-
-					<div className="mx-auto flex justify-center pt-4">
-						{placeholderSearchbar}
-					</div>
-
 					<TitlesMenu />
 				</div>
 
