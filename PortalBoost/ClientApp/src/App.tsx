@@ -12,6 +12,7 @@ import LoginPage from "./pages/loginPage/LoginPage";
 import Profile from "./pages/profilePage/Profile";
 import Header from './components/header/Header';
 import Footer from "./components/footer/Footer";
+import ScrollToTopButton from "./components/common/ScrollToTopButton";
 import ConditionalNavbar from './components/navBar/ConditionalNavbar';
 import successfullLogin from "./atoms/successfulLoginState";
 import useFetchData from "./hooks/useFetchData";
@@ -61,6 +62,7 @@ function App() {
 
       </ContentWrapper>
       <Footer />
+      <ScrollToTopButton />
 
     </Router>
   )

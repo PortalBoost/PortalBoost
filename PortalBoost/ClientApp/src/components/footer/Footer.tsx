@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 // text-4xl mb-10 hover:text-purple-800 flex items-center justify-center text-4xl 
 
 const Footer = () => {
+
     return (
 
         <footer className="bg-n-dark text-white max-h-half mt-10 sticky w-full z-40">
@@ -11,10 +12,11 @@ const Footer = () => {
                 lg:items-start md:flex-row md:flex-nowrap
                 text-xl">
                 <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-                    <Link className="mb-10 hover:text-purple-800 flex items-center justify-center text-4xl 
-                    md:justify-start" to="/">
-                        PortalBoost
-                    </Link>
+                    <div className="text-4xl mb-10 hover:text-purple-800">
+                        <Link to="/">
+                            PortalBoost
+                        </Link>
+                    </div>
                 </div>
                 <div className="justify-between w-full mt-4 text-center lg:flex">
                     <div className="w-full px-4 lg:w-1/3 md:w-1/2">
