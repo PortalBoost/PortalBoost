@@ -1,7 +1,9 @@
 const apiRequest = async <T>(url: string, reqOptions: RequestInit): Promise<T> => {
 	const response = await fetch(url, reqOptions)
+	if (!response.ok) throw new Error(`\nHTTP status: ${response.status}. Message: ${response.statusText} `)
 	const data = await response.json();
-	return response.ok ? data : Promise.reject(data)
+	return data;
+	//	return response.ok ? data : Promise.reject(data)
 }
 
 const get = async <T>(url: string) => {

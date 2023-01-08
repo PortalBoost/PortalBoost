@@ -4,6 +4,9 @@ import * as fetchWrapper from "../utils/fetchWrapper";
 
 const BASE_URL = "/api/User"
 
+//TODO: Better error handling. Create an object containing error/loading/data properties somewhere to make it easier to conditionaly render the fetched data/failed fetched data?
+
+// TODO: Catch error
 const fetchUsers = async () => {
 	const request = await fetchWrapper.get<EmployeeModel[]>(`${BASE_URL}/AllUsers`)
 
