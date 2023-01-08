@@ -1,58 +1,45 @@
 import EmployeeModel from "../../models/employeeModel";
 import UserModel from "../../models/userModel";
+import * as fetchWrapper from "../utils/fetchWrapper";
 
 const BASE_URL = "/api/User"
 
-
-//TODO: Separate the fetch and handling of request into separate APIhandler/facade/hook? Default body/header stuff.
 const fetchUsers = async () => {
+	const request = await fetchWrapper.get<EmployeeModel[]>(`${BASE_URL}/AllUsers`)
 
-	const response = await fetch(`${BASE_URL}/AllUsers`)
-	if (!response.ok) throw new Error(`Error: ${response.status}`)
-	const json = await response.json();
-	const data = json.map((employee: UserModel) => {
-		employee.password = ""
-		return employee
+	return request.map((emp: UserModel) => {
+		emp.password = ""
+		return emp
 	})
-	return data
 }
 
+/**
+ * Tries to log in a user.
+ * @returns a User object if the fetched promise was resolved, or null if the fetched promise was rejected.
+ */
 const loginUser = async (username: string, password: string) => {
 
-	const loginInfo = {
+	type loginInfo = {
+		username: string,
+		password: string
+	}
+
+	const userInfo = {
 		username: username,
 		password: password
 	};
 
-	const reqOptions = {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(loginInfo)
-	};
-
-	const response = await fetch(`${BASE_URL}/LoginPass`, reqOptions)
-	if (!response.ok) {
-		return response.status;
-	}
-	const data = await response.json();
-	return data;
+	// TODO: Proper error handling without using null?
+	const user = await fetchWrapper.post<loginInfo, UserModel>(`${BASE_URL}/LoginPass`, userInfo)
+		.catch(() => { return null; })
+	return user;
 }
 
+
 const updateUser = async (updatedUser: UserModel) => {
-
-	const reqOptions = {
-		method: "POST",
-		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify(updatedUser)
-	};
-
-	const response = await fetch(`${BASE_URL}/UpdateUser`, reqOptions)
-	if (!response.ok) {
-		return response.ok
-	}
-	const data = await response.json();
-	return data;
-
+	const userRequest = await fetchWrapper.post<UserModel, UserModel>(`${BASE_URL}/UpdateUser`, updatedUser).
+		catch(() => { return null })
+	return userRequest;
 }
 
 export { fetchUsers, loginUser, updateUser }

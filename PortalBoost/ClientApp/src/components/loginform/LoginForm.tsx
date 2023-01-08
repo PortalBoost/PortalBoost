@@ -28,7 +28,7 @@ const LoginForm = () => {
 
 		setDisableLogin(true)
 		const loginRequest = await loginUser(usernameField, passField)
-		if (loginRequest == 404) {
+		if (!loginRequest) {
 			setInfoText("User could not be found")
 			setShowInfoText(true)
 		}
